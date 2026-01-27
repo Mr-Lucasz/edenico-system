@@ -9,6 +9,7 @@ interface NavLink {
   label: string
   icon: React.ReactNode
   href: string
+  id: string
   isActive?: boolean
 }
 
