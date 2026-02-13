@@ -8,8 +8,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Edénicos Academy - Dashboard',
-  description: 'Plataforma educacional Edénicos Academy',
+  title: 'Edênicos Academy - Educação gamificada e integral',
+  description: 'Transforme seu aprendizado com a metodologia Edênicos. Educação gamificada nos 5 pilares: físico, mental, espiritual, social e profissional.',
 }
 
 export default function RootLayout({

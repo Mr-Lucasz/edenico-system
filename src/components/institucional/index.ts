@@ -1,0 +1,8 @@
+export { InstitucionalHero } from './InstitucionalHero'
+export { AboutSection } from './AboutSection'
+export { PrinciplesSection } from './PrinciplesSection'
+export { DifferentiatorsImpactSection } from './DifferentiatorsImpactSection'
+export { ServicesSection } from './ServicesSection'
+export { InstitutionalCtaSection } from './InstitutionalCtaSection'
+export { StarsMethodologySection } from './StarsMethodologySection'
+export { Philosophy50Section } from './Philosophy50Section'

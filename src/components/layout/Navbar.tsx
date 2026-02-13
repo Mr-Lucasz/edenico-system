@@ -17,7 +17,7 @@ export function Navbar() {
   const [activeLink, setActiveLink] = useState('dashboard')
 
   const navLinks: NavLink[] = [
-    { label: 'Dashboard', icon: <FiBarChart2 />, href: '/', id: 'dashboard' },
+    { label: 'Dashboard', icon: <FiBarChart2 />, href: '/dashboard', id: 'dashboard' },
     { label: 'Meus Cursos', icon: <FiBook />, href: '/cursos', id: 'cursos' },
     { label: 'Conquistas', icon: <FiAward />, href: '/conquistas', id: 'conquistas' },
     { label: 'Comunidade', icon: <FiUsers />, href: '/comunidade', id: 'comunidade' },

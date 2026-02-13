@@ -9,6 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Landing Edênicos Academy
+        edenicos: {
+          navy: '#0f172a',
+          'navy-light': '#1e293b',
+          'header-float': '#07162B',
+          purple: '#6d28d9',
+          'purple-light': '#8b5cf6',
+          yellow: '#fbbf24',
+          pink: '#ec4899',
+          cream: '#fef3c7',
+          'royal-blue': '#2F80ED',
+          'cta-magenta': '#E91E63',
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
