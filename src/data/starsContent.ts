@@ -16,6 +16,8 @@ export interface StarsCategory {
   id: StarsCategoryId
   letter: string
   title: string
+  /** Título exibido na landing (ex.: "Relations" no Figma); se não definido, usa title */
+  landingTitle?: string
   subtitle: string
   leftColumnTitle: string
   rightColumnTitle: string
@@ -23,6 +25,14 @@ export interface StarsCategory {
   rightCards: StarsCard[]
   icon: IconType
   color: string
+  /** Cor em hex para aba ativa, título e botão na landing (Figma) */
+  colorHex?: string
+  /** Descrição longa para a landing (Figma/Gemini) */
+  description?: string
+  /** Tags "Áreas de Estudo" na landing (Figma) */
+  areas?: string[]
+  /** Caminho da imagem do mascote na landing (public) */
+  image?: string
 }
 
 export const starsCategories: StarsCategory[] = [
@@ -35,6 +45,11 @@ export const starsCategories: StarsCategory[] = [
     rightColumnTitle: 'Atividades Práticas',
     icon: FiActivity,
     color: 'text-amber-700',
+    colorHex: '#A66B46',
+    description:
+      'Na Edênicos Academy, a ciência é o caminho para despertar a curiosidade e compreender o funcionamento da vida e do universo. Por meio da observação, da investigação e da experimentação, os alunos desenvolvem uma mente analítica e crítica, aprendendo a valorizar a verdade e a buscar respostas fundamentadas. Acreditamos que a ciência abre portas para o conhecimento e inspira o desejo de explorar e transformar o mundo em um lugar melhor.',
+    areas: ['Biologia Aplicada', 'Física Experimental', 'Química Sustentável', 'Ciências da Terra'],
+    image: '/Science%20(Cat).png',
     leftCards: [
       { title: 'Biologia', description: 'Estudo da vida e organismos vivos' },
       { title: 'Química', description: 'Propriedades e transformações da matéria' },
@@ -57,6 +72,11 @@ export const starsCategories: StarsCategory[] = [
     rightColumnTitle: 'Projetos Tecnológicos',
     icon: FiCpu,
     color: 'text-purple-600',
+    colorHex: '#A855F7',
+    description:
+      'Na Edênicos Academy, a tecnologia é entendida como uma ferramenta criativa para solucionar problemas e melhorar a vida em comunidade. Ao explorar a programação, a robótica e as inovações digitais, os alunos desenvolvem não apenas competências técnicas, mas também pensamento lógico, colaboração e visão empreendedora. Ensinamos que a tecnologia deve estar a serviço do ser humano e da natureza, promovendo avanços sustentáveis e éticos.',
+    areas: ['Programação Criativa', 'Robótica Educacional', 'Design de Games', 'IA Ética'],
+    image: '/Technology%20(Beaver)%202.png',
     leftCards: [
       { title: 'Matemática Aplicada', description: 'Resolução de problemas reais usando lógica matemática e cálculos práticos' },
       { title: 'Programação Criativa', description: 'Desenvolvimento de jogos, aplicativos e soluções digitais inovadoras' },
@@ -78,6 +98,11 @@ export const starsCategories: StarsCategory[] = [
     rightColumnTitle: 'Projetos Artísticos',
     icon: FiMusic,
     color: 'text-orange-600',
+    colorHex: '#F97316',
+    description:
+      'Na Edênicos Academy, a arte é uma linguagem viva que desperta criatividade, sensibilidade e expressão individual. Por meio da música, desenho, pintura, teatro e outras formas artísticas, os alunos desenvolvem não apenas habilidades técnicas, mas também a capacidade de comunicar valores, emoções e ideias de forma autêntica. Acreditamos que a arte educa o olhar, amplia o pensamento e conecta o ser humano com o belo e o transcendente.',
+    areas: ['Pintura Digital', 'Música Moderna', 'Teatro Criativo', 'Literatura'],
+    image: '/A%20Zorro%201.png',
     leftCards: [
       { title: 'Oratória e Teatro', description: 'Desenvolvimento da comunicação oral e expressão corporal' },
       { title: 'Escrita Criativa', description: 'Produção literária, poesia e narrativas autorais' },
@@ -96,11 +121,17 @@ export const starsCategories: StarsCategory[] = [
     id: 'relationship',
     letter: 'R',
     title: 'Relationship',
+    landingTitle: 'Relations',
     subtitle: 'Construindo conexões significativas e inteligência emocional',
     leftColumnTitle: 'Dimensões Relacionais',
     rightColumnTitle: 'Atividades Relacionais',
     icon: FiHeart,
     color: 'text-green-600',
+    colorHex: '#22C55E',
+    description:
+      'Na Edênicos Academy, as relações humanas são o coração da formação integral. Acreditamos que aprender a conviver, dialogar e respeitar a diversidade é essencial para a vida em sociedade. Por meio de experiências de cooperação, liderança e empatia, os alunos constroem vínculos saudáveis e desenvolvem habilidades socioemocionais que fortalecem o caráter e a convivência comunitária. O ser humano cresce quando aprende a viver em relação.',
+    areas: ['Comunicação e Oratória', 'Liderança Colaborativa', 'Inteligência Emocional', 'Mediação de Conflitos'],
+    image: '/Relations%20(Panda).png',
     leftCards: [
       { title: 'Autoconhecimento', description: 'Desenvolvimento da consciência sobre si mesmo e suas emoções' },
       { title: 'Família e Casa', description: 'Fortalecimento dos vínculos familiares e responsabilidades domésticas' },
@@ -124,6 +155,11 @@ export const starsCategories: StarsCategory[] = [
     rightColumnTitle: 'Projetos de Impacto',
     icon: FiHelpCircle,
     color: 'text-red-600',
+    colorHex: '#EF4444',
+    description:
+      'Na Edênicos Academy, o serviço é a expressão prática do amor ao próximo. Incentivamos os alunos a se engajar em projetos sociais, ambientais e comunitários, colocando seus talentos a favor de causas maiores. O serviço desperta a solidariedade, a humildade e a responsabilidade cidadã, formando indivíduos comprometidos em transformar a realidade ao seu redor com gestos concretos de bondade e justiça.',
+    areas: ['Projetos Comunitários', 'Educação Ambiental', 'Voluntariado Social', 'Empreendedorismo'],
+    image: '/Service%20(Dog).png',
     leftCards: [
       { title: 'Serviço Doméstico', description: 'Responsabilidades em casa: organização, cuidado e colaboração familiar' },
       { title: 'Ação Comunitária', description: 'Projetos sociais, voluntariado e impacto positivo na comunidade' },
