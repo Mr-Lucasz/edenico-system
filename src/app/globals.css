@@ -36,3 +36,84 @@ a {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+
+@keyframes filosofia-octogono-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.filosofia-octogono--float {
+  animation: filosofia-octogono-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filosofia-octogono--float {
+    animation: none;
+  }
+}
+
+/* Seção Filosofia — fundo radial + luz ambiente (Figma) */
+.filosofia-section {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 25% 20%,
+    #a855f7 0%,
+    #9333ea 30%,
+    #7e22ce 55%,
+    #6b21a8 75%,
+    #581c87 100%
+  );
+}
+
+.filosofia-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes floatStar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.filosofia-section .star {
+  filter: drop-shadow(0 6px 12px rgba(255, 223, 0, 0.35));
+  animation: floatStar 6s ease-in-out infinite;
+}
+
+.filosofia-section .star--delay-1 {
+  animation-delay: 0.4s;
+}
+
+.filosofia-section .star--delay-2 {
+  animation-delay: 0.8s;
+}
+
+.filosofia-section .star--delay-3 {
+  animation-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filosofia-section .star {
+    animation: none;
+  }
+}
