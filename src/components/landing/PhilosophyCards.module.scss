@@ -1,0 +1,54 @@
+@use 'styles/variables' as *;
+
+.root {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 642px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  column-gap: 18px;
+  row-gap: 24px;
+  justify-items: center;
+  width: 100%;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  /* default */
+}
+
+.cellCenter {
+  display: flex;
+  justify-content: center;
+
+  @include sm {
+    grid-column: span 2;
+  }
+}
+
+.cardWrap {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  height: 146px;
+  width: 100%;
+  max-width: 309px;
+  flex-shrink: 0;
+
+  @include sm {
+    width: 309px;
+  }
+}
+
+.cardImg {
+  object-fit: contain;
+  object-position: center;
+}

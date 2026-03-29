@@ -1,14 +1,12 @@
 import Link from 'next/link'
+import styles from '../authPage.module.scss'
 
 export default function RegisterPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-edenicos-navy px-4">
-      <h1 className="text-2xl font-bold text-white">Inscreva-se</h1>
-      <p className="mt-2 text-white/70">Fluxo de cadastro / onboarding (a implementar).</p>
-      <Link
-        href="/"
-        className="mt-6 text-edenicos-yellow hover:underline"
-      >
+    <div className={styles.page}>
+      <h1 className={styles.title}>Inscreva-se</h1>
+      <p className={styles.sub}>Fluxo de cadastro / onboarding (a implementar).</p>
+      <Link href="/" className={styles.link}>
         Voltar à home
       </Link>
     </div>

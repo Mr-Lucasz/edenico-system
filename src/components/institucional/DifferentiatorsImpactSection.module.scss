@@ -1,0 +1,257 @@
+@use 'styles/variables' as *;
+
+.section {
+  background-color: #fff;
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.topGrid {
+  display: grid;
+  gap: 3rem;
+
+  @include lg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include lg {
+    grid-column: span 2;
+  }
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.accent {
+  color: $edenicos-yellow;
+}
+
+.cards2 {
+  display: grid;
+  gap: 1.5rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.artGreen {
+  border-radius: 1rem;
+  border: 1px solid $gray-100;
+  background-color: rgb(240 253 244 / 0.5);
+  padding: 1.5rem;
+}
+
+.artOrange {
+  border-radius: 1rem;
+  border: 1px solid $gray-100;
+  background-color: rgb(255 247 237 / 0.5);
+  padding: 1.5rem;
+}
+
+.iconGreen {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.iconOrange {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.iconSm {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.artHead {
+  margin-top: 1rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.artBody {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: $gray-700;
+}
+
+.statsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.statsTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.statsSub {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  border-radius: 0.75rem;
+  border: 1px solid $gray-100;
+  background-color: $gray-50;
+  padding: 1rem;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.statBar {
+  margin-top: 0.25rem;
+  height: 2px;
+  width: 3rem;
+  border-radius: 2px;
+}
+
+.statLabel {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $gray-700;
+}
+
+.presence {
+  margin-top: 3rem;
+  border-radius: 1rem;
+  background-color: $edenicos-navy;
+  padding: 2rem;
+  color: #fff;
+}
+
+.presenceInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include md {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.presenceRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.pinWrap {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.pinIcon {
+  height: 1.75rem;
+  width: 1.75rem;
+  color: $edenicos-yellow;
+}
+
+.presenceTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.presenceSub {
+  margin-top: 0.25rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.presenceDesc {
+  margin-top: 1rem;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.badgeRow {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $edenicos-yellow;
+}
+
+.badgeDot {
+  display: flex;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: $edenicos-yellow;
+}
+
+.mapPlaceholder {
+  height: 10rem;
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: rgb(255 255 255 / 0.05);
+
+  @include md {
+    width: 16rem;
+  }
+}
+
+.mapInner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255 255 255 / 0.4);
+}

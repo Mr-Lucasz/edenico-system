@@ -1,0 +1,156 @@
+@use 'styles/variables' as *;
+
+.root {
+  position: relative;
+  height: 10rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.titleBlock {
+  margin-bottom: 0.625rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.titleSm {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.titleLg {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.titleXl {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.dot {
+  height: 0.25rem;
+  width: 0.25rem;
+  border-radius: 9999px;
+}
+
+.valueRow {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.valueGradient {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.messageRow {
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.message {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.action {
+  margin-top: auto;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.iconWrap {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.iconBox {
+  position: relative;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.iconBgBlue {
+  background-color: $blue-100;
+}
+
+.iconBgGreen {
+  background-color: #dcfce7;
+}
+
+.iconBgOrange {
+  background-color: #ffedd5;
+}
+
+.iconBgPurple {
+  background-color: #f3e8ff;
+}
+
+.iconCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionIcon {
+  font-size: 0.875rem;
+}

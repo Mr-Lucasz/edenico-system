@@ -1,0 +1,53 @@
+@use 'styles/variables' as *;
+
+.root {
+  border-radius: 0.5rem;
+  border: 1px solid #e9d5ff;
+  background-color: #fff;
+  padding: 1rem;
+}
+
+.top {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.iconBox {
+  border-radius: 0.5rem;
+  background-color: #f3e8ff;
+  padding: 0.5rem;
+  color: #9333ea;
+}
+
+.cardTitle {
+  font-weight: 600;
+  color: $gray-900;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cta {
+  background-color: #9333ea !important;
+  color: #fff !important;
+
+  &:hover {
+    background-color: #7e22ce !important;
+  }
+}

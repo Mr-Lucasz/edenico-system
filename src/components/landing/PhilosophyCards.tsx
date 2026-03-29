@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { cn } from '@src/utils/cn'
+import styles from './PhilosophyCards.module.scss'
 
 const PILLARS = [
   { id: 'fisico', svg: '/fisico-section-filosofia.svg' },
@@ -31,28 +33,28 @@ const itemVariants = {
 export function PhilosophyCards() {
   return (
     <motion.div
-      className="filosofia-cards mx-auto w-full max-w-[642px]"
+      className={`filosofia-cards ${styles.root}`}
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: '-48px' }}
     >
-      <div className="grid grid-cols-1 grid-rows-[auto] gap-x-[18px] gap-y-[24px] sm:grid-cols-2">
+      <div className={styles.grid}>
         {PILLARS.map((pillar, index) => (
           <motion.div
             key={pillar.id}
             variants={itemVariants}
-            className={index === 4 ? 'flex justify-center sm:col-span-2' : ''}
+            className={cn(index === 4 ? styles.cellCenter : styles.cell)}
           >
             <div
-              className="relative mx-auto h-[146px] w-full max-w-[309px] shrink-0 sm:w-[309px]"
+              className={styles.cardWrap}
               style={{ aspectRatio: '309/146' }}
             >
               <Image
                 src={pillar.svg}
                 alt=""
                 fill
-                className="object-contain object-left"
+                className={styles.cardImg}
                 sizes="(max-width: 640px) 100vw, 309px"
                 unoptimized
               />

@@ -1,87 +1,208 @@
 import Link from 'next/link'
-import { FiInstagram, FiFacebook, FiTwitter, FiYoutube } from 'react-icons/fi'
+import {
+  FiChevronDown,
+  FiFacebook,
+  FiInstagram,
+  FiMail,
+  FiTwitter,
+  FiYoutube,
+} from 'react-icons/fi'
+import { FooterCountryFlag } from './FooterCountryFlag'
+import styles from './LandingFooter.module.scss'
 
-const INSTITUTIONAL = [
-  { label: 'Sobre nós', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
-  { label: 'Política de Privacidade', href: '/privacidade' },
-]
-const HELP = [
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Suporte', href: '#contato' },
-]
-const COURSES = [
-  { label: 'Cursos', href: '#cursos' },
-  { label: 'Planos', href: '/planos' },
-]
+const ABOUT_LINKS = [
+  { label: 'Institucional', href: '/institucional' },
+  { label: 'Jogo', href: '#sobre' },
+  { label: 'Doações', href: '#contato' },
+  { label: 'Entrar', href: '/login' },
+  { label: 'Registrar', href: '/register' },
+  { label: 'Nossa equipe', href: '#contato' },
+  { label: 'Nossos estagiários', href: '#contato' },
+  { label: 'Carreiras', href: '#contato' },
+] as const
+
+const CONTACT_LINKS = [
+  { label: 'Central de ajuda', href: '#contato' },
+  { label: 'Comunidade de apoio', href: '#contato' },
+  { label: 'Compartilhe sua história', href: '#contato' },
+  { label: 'Imprensa', href: '#contato' },
+] as const
+
+const COURSE_LINKS = [
+  { label: 'Matemática Ensino Fundamental', href: '#cursos' },
+  { label: 'Matemática Ensino Médio', href: '#cursos' },
+  { label: 'Ciências Ensino Fundamental', href: '#cursos' },
+  { label: 'Ciências Ensino Médio', href: '#cursos' },
+  { label: 'Biblioteca de Matemática', href: '#cursos' },
+  { label: 'Ciências Humanas', href: '#cursos' },
+  { label: 'Habilidades para a vida', href: '#cursos' },
+  { label: 'Ciências e Engenharia', href: '#cursos' },
+] as const
+
 const SOCIAL = [
-  { icon: FiInstagram, label: 'Instagram', href: 'https://instagram.com' },
   { icon: FiFacebook, label: 'Facebook', href: 'https://facebook.com' },
+  { icon: FiInstagram, label: 'Instagram', href: 'https://instagram.com' },
   { icon: FiTwitter, label: 'Twitter', href: 'https://twitter.com' },
   { icon: FiYoutube, label: 'YouTube', href: 'https://youtube.com' },
-]
+  { icon: FiMail, label: 'E-mail', href: 'mailto:contato@edenicos.com' },
+] as const
+
+const COUNTRIES = [
+  { code: 'BR' as const, label: 'Brasil' },
+  { code: 'US' as const, label: 'USA' },
+  { code: 'ES' as const, label: 'Espanha' },
+] as const
 
 export function LandingFooter() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-edenicos-navy text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className={styles.footer} role="contentinfo">
+      <div className={styles.decor} aria-hidden>
+        <span className={styles.decorStarLg}>✦</span>
+        <span className={styles.decorStarSm}>✧</span>
+        <span className={styles.decorCluster}>✦</span>
+        <span className={styles.decorFlower}>❋</span>
+      </div>
+
+      <div className={styles.inner}>
+        <div className={styles.topRule} aria-hidden />
+
+        <div className={styles.topGrid}>
+          <div className={styles.brandCol}>
+            <h2 className={styles.brandTitle}>Edênicos Academy</h2>
+            <p className={styles.brandText}>
+              Transformando a educação através da filosofia STARS com nossos adoráveis mascotes
+              animais. Uma plataforma onde aprender é uma aventura divertida e significativa.
+            </p>
+          </div>
+
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/80">Institucional</h3>
-            <ul className="mt-4 space-y-2">
-              {INSTITUTIONAL.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-edenicos-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-edenicos-navy">
-                    {link.label}
+            <h3 className={styles.colHeading}>Acerca de</h3>
+            <ul className={styles.linkList}>
+              {ABOUT_LINKS.map((item) => (
+                <li key={item.href + item.label}>
+                  <Link href={item.href} className={styles.link}>
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/80">Ajuda</h3>
-            <ul className="mt-4 space-y-2">
-              {HELP.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-edenicos-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-edenicos-navy">
-                    {link.label}
+            <h3 className={styles.colHeading}>Contato</h3>
+            <ul className={styles.linkList}>
+              {CONTACT_LINKS.map((item) => (
+                <li key={item.href + item.label}>
+                  <Link href={item.href} className={styles.link}>
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/80">Cursos</h3>
-            <ul className="mt-4 space-y-2">
-              {COURSES.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-edenicos-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-edenicos-navy">
-                    {link.label}
+            <h3 className={styles.colHeading}>Cursos</h3>
+            <ul className={styles.linkList}>
+              {COURSE_LINKS.map((item) => (
+                <li key={item.href + item.label}>
+                  <Link href={item.href} className={styles.link}>
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="flex flex-col items-start sm:items-end">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/80">Redes Sociais</h3>
-            <div className="mt-4 flex gap-4">
-              {SOCIAL.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-edenicos-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-edenicos-navy"
-                  aria-label={item.label}
+        </div>
+
+        <div className={styles.midRow}>
+          <div className={styles.localeBlock}>
+            <div className={styles.localeRow}>
+              <label htmlFor="footer-lang" className={styles.localeLabel}>
+                Idioma:
+              </label>
+              <div className={styles.selectWrap}>
+                <select
+                  id="footer-lang"
+                  className={styles.select}
+                  defaultValue="pt"
+                  aria-label="Idioma do site"
                 >
-                  <item.icon className="h-5 w-5" />
-                </a>
-              ))}
+                  <option value="pt">Português</option>
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                </select>
+                <FiChevronDown className={styles.selectChevron} aria-hidden />
+              </div>
+            </div>
+
+            <fieldset className={styles.countryField}>
+              <legend className={styles.countryLegend}>País:</legend>
+              <div className={styles.countryBtns}>
+                {COUNTRIES.map((c) => (
+                  <button
+                    key={c.code}
+                    type="button"
+                    className={styles.countryBtn}
+                    aria-pressed={c.code === 'BR'}
+                  >
+                    <span className={styles.countryFlag} aria-hidden>
+                      <FooterCountryFlag
+                        code={c.code}
+                        className={styles.countryFlagSvg}
+                      />
+                    </span>
+                    <span className={styles.countryLabel}>
+                      <span className={styles.countryCode}>{c.code}</span>{' '}
+                      {c.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          </div>
+
+          <div className={styles.socialBlock}>
+            <h3 className={styles.socialHeading}>Conecte-se Conosco</h3>
+            <div className={styles.socialRow}>
+              {SOCIAL.map((item) => {
+                const isMail = item.href.startsWith('mailto:')
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    {...(isMail
+                      ? {}
+                      : { target: '_blank', rel: 'noopener noreferrer' })}
+                    className={styles.socialBtn}
+                    aria-label={item.label}
+                  >
+                    <item.icon className={styles.socialIcon} />
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
-          © {new Date().getFullYear()} Edênicos Academy. Todos os direitos reservados.
+
+        <div className={styles.bottomRow}>
+          <p className={styles.bottomLeft}>Feito com ❤️ para educação</p>
+          <p className={styles.bottomCenter}>
+            © {year} Edênicos Academy. Todos os direitos reservados.
+          </p>
+          <nav className={styles.bottomNav} aria-label="Legal">
+            <Link href="/privacidade" className={styles.legalLink}>
+              Privacidade
+            </Link>
+            <Link href="/termos" className={styles.legalLink}>
+              Termos
+            </Link>
+            <Link href="/cookies" className={styles.legalLink}>
+              Cookies
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

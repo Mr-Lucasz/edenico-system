@@ -1,0 +1,476 @@
+@use 'styles/variables' as *;
+
+.root {
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: $edenicos-navy-light;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+  @include sm {
+    padding: 2rem;
+  }
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4ade80;
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.lead {
+  margin-top: 0.5rem;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.hint {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.6);
+}
+
+.form {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.field {
+  /* default column */
+}
+
+.fieldFull {
+  @include sm {
+    grid-column: span 2;
+  }
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.input {
+  margin-top: 0.25rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  background-color: rgb(255 255 255 / 0.05);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font: inherit;
+
+  &::placeholder {
+    color: rgb(255 255 255 / 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $edenicos-yellow;
+    box-shadow: 0 0 0 1px $edenicos-yellow;
+  }
+}
+
+.select {
+  margin-top: 0.25rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  background-color: rgb(255 255 255 / 0.05);
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: $edenicos-yellow;
+    box-shadow: 0 0 0 1px $edenicos-yellow;
+  }
+
+  option {
+    color: $gray-900;
+  }
+}
+
+.error {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #f87171;
+}
+
+.submit {
+  border-radius: 0.5rem;
+  border: none;
+  background-color: $edenicos-purple;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background-color: $edenicos-purple-light;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-navy, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.statusOk {
+  font-size: 0.875rem;
+  color: #4ade80;
+}
+
+.statusErr {
+  font-size: 0.875rem;
+  color: #f87171;
+}
+
+/* ——— Variante landing: “Precisa de Ajuda?” (protótipo) ——— */
+$help-shell: #1b2537;
+$help-surface: #2d384c;
+$help-muted: #94a3b8;
+$help-badge-green: #22c55e;
+$help-badge-border: rgb(34 197 94 / 0.45);
+
+.helpRoot {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background-color: $help-shell;
+  padding: 2rem 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.2),
+    0 25px 50px -12px rgb(0 0 0 / 0.35);
+
+  @include sm {
+    padding: 2.25rem 2rem;
+  }
+
+  @include lg {
+    padding: 2.5rem 2.5rem 2.75rem;
+  }
+}
+
+.helpHeader {
+  margin: 0 auto;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.helpBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid $help-badge-border;
+  background: rgb(34 197 94 / 0.12);
+  padding: 0.4rem 1rem 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ecfdf5;
+  box-shadow: 0 0 20px rgb(34 197 94 / 0.12);
+}
+
+.helpBadgeDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: $help-badge-green;
+  box-shadow: 0 0 8px $help-badge-green;
+  animation: helpPulse 2s ease-in-out infinite;
+}
+
+@keyframes helpPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.helpTitle {
+  margin: 1.35rem 0 0;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.2;
+
+  @include sm {
+    font-size: 1.875rem;
+  }
+}
+
+.helpSubtitle {
+  margin: 0.85rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $help-muted;
+
+  @include sm {
+    font-size: 1rem;
+  }
+}
+
+.helpColumns {
+  margin-top: 2.25rem;
+  display: grid;
+  gap: 2rem;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+    align-items: start;
+  }
+}
+
+.helpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.helpField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.helpLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.helpInput {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background-color: $help-surface;
+  padding: 0.85rem 3rem 0.85rem 1rem;
+  font-size: 0.9375rem;
+  color: #fff;
+  font: inherit;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: rgb(148 163 184 / 0.85);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgb(96 165 250 / 0.55);
+    box-shadow: 0 0 0 1px rgb(96 165 250 / 0.35);
+  }
+}
+
+.inputTrailingIcon {
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  transform: translateY(-50%);
+  color: rgb(255 255 255 / 0.45);
+}
+
+.helpSubmit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.625rem;
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 45%, #7c3aed 100%);
+  padding: 0.95rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  font: inherit;
+  box-shadow:
+    0 4px 14px rgb(59 130 246 / 0.35),
+    0 2px 4px rgb(0 0 0 / 0.15);
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    filter: grayscale(0.2);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px $help-shell,
+      0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.helpSubmitIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.helpInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgb(96 165 250 / 0.2);
+  background: rgb(30 58 95 / 0.55);
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgb(148 197 255 / 0.92);
+}
+
+.helpInfoIcon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.1rem;
+  color: rgb(147 197 253 / 0.9);
+}
+
+.helpAside {
+  @include lg {
+    padding-top: 0.25rem;
+  }
+}
+
+.asideTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+
+  @include sm {
+    font-size: 1.0625rem;
+  }
+}
+
+.asideList {
+  margin: 1.15rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.asideCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background-color: $help-surface;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:where(a):hover {
+    background-color: rgb(255 255 255 / 0.06);
+    border-color: rgb(255 255 255 / 0.12);
+  }
+
+  &:where(a):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $help-shell, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.asideIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+}
+
+.asideIconChat {
+  background: rgb(59 130 246 / 0.2);
+  color: #93c5fd;
+}
+
+.asideIconWa {
+  background: rgb(34 197 94 / 0.18);
+  color: #4ade80;
+}
+
+.asideIconPin {
+  background: rgb(167 139 250 / 0.2);
+  color: #c4b5fd;
+}
+
+.asideIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.asideCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  text-align: left;
+}
+
+.asideCardTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.asideCardSub {
+  font-size: 0.8125rem;
+  color: $help-muted;
+}

@@ -1,0 +1,40 @@
+.root {
+  width: 100%;
+}
+
+.labelRow {
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.track {
+  height: 0.5rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  background-color: #e5e7eb;
+}
+
+.fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.fillBlue {
+  background-color: #3b82f6;
+}
+
+.fillGreen {
+  background-color: #22c55e;
+}
+
+.fillPurple {
+  background-color: #a855f7;
+}
+
+.fillOrange {
+  background-color: #f97316;
+}

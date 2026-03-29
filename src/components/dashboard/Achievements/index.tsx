@@ -8,6 +8,7 @@ import { AchievementService } from '@src/domain/services/AchievementService'
 import { AchievementRepository } from '@src/infrastructure/repositories/AchievementRepository'
 import { AchievementCard } from './AchievementCard'
 import type { Achievement } from '@src/types/achievement.types'
+import styles from './Achievements.module.scss'
 
 export function Achievements() {
   const [achievements, setAchievements] = useState<Achievement[]>([])
@@ -27,28 +28,28 @@ export function Achievements() {
   }, [])
 
   return (
-    <Card variant="gradient" gradient={gradients.achievements} className="space-y-4 shadow-md">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <FiAward className="h-5 w-5 text-purple-600" />
-          <h2 className="text-xl font-bold text-gray-900">Conquistas Recentes</h2>
+    <Card variant="gradient" gradient={gradients.achievements} className={styles.cardContent}>
+      <div className={styles.header}>
+        <div className={styles.titleRow}>
+          <FiAward className={styles.iconPurple} aria-hidden />
+          <h2 className={styles.title}>Conquistas Recentes</h2>
         </div>
-        <div className="flex items-center gap-2">
+        <div className={styles.actions}>
           <Badge variant="new">Novidade</Badge>
-          <Button variant="ghost" size="sm" className="font-medium">
+          <Button variant="ghost" size="sm" className={styles.ghostMedium}>
             Explorar Agora
           </Button>
         </div>
       </div>
 
       {isLoading ? (
-        <div className="space-y-3">
+        <div className={styles.list}>
           {[1, 2, 3].map((i) => (
-            <div key={i} className="h-24 animate-pulse rounded-lg bg-white/50" />
+            <div key={i} className={styles.skeleton} />
           ))}
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className={styles.list}>
           {achievements.map((achievement) => (
             <AchievementCard key={achievement.id} achievement={achievement} />
           ))}

@@ -1,0 +1,267 @@
+@use 'styles/variables' as *;
+
+.section {
+  position: relative;
+  z-index: 3;
+  /* Sobrepõe a bridge branca para o divisor de nuvens não ficar por baixo do navy */
+  margin-top: clamp(-12rem, -20vw, -7rem);
+  background-color: $edenicos-navy;
+  overflow: visible;
+  isolation: isolate;
+  /* Espaço extra no topo para o cartão branco com margin negativo */
+  padding: 3.25rem 1rem 4rem;
+
+  @include sm {
+    padding: 3.5rem 1.5rem 4.5rem;
+  }
+
+  @include lg {
+    padding: 3.75rem 2rem 5rem;
+  }
+}
+
+/*
+ * Clouds Footer.svg: camada 0; conteúdo (.inner) em z-index 2 para o cartão ficar por cima (protótipo).
+ * Mesmo padrão de recorte que StarsBelowPhilosophy (135% × 240%, object-position bottom).
+ */
+.cloudsTransition {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(-5.5rem, -12vw, -3.25rem);
+  height: clamp(11rem, 32vw, 20rem);
+  pointer-events: none;
+  /* Acima do fundo navy da secção, abaixo do conteúdo (.inner) */
+  z-index: 1;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cloudsImageWrap {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 135%;
+  max-width: none;
+  height: 240%;
+  transform: translateX(-50%);
+}
+
+.cloudsImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  max-width: 52rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: $edenicos-yellow;
+  text-shadow: 2px 2px 0 #0f172a;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+}
+
+.sub {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+/* Cartão branco com métricas (protótipo ~30px radius) */
+.statsCard {
+  position: relative;
+  z-index: 2;
+  /* margin-top positivo: evita o cartão branco cobrir a faixa de nuvens (.cloudsTransition, z-index 0) */
+  margin-top: 0.75rem;
+
+  @include sm {
+    margin-top: 1rem;
+  }
+
+  border-radius: 1.875rem;
+  background-color: #fff;
+  padding: 2rem 1.25rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.08),
+    0 20px 40px -12px rgb(15 23 42 / 0.18);
+
+  @include sm {
+    margin-top: -2.25rem;
+    padding: 2.25rem 2rem;
+  }
+
+  @include lg {
+    margin-top: 1.125rem;
+    padding: 2.5rem 2.5rem;
+  }
+}
+
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 1.75rem 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: min(100%, 8.5rem);
+}
+
+.statValue {
+  font-size: clamp(1.75rem, 4vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.statIndigo {
+  color: #4f46e5;
+}
+
+.statViolet {
+  color: #7c3aed;
+}
+
+.statPink {
+  color: #db2777;
+}
+
+.ratingWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.statStar {
+  font-size: 1.35rem;
+  line-height: 1;
+  color: #db2777;
+}
+
+.statLabel {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.35;
+  max-width: 11rem;
+}
+
+/* Badges pretos com ícones PNG (Play Store / Apple) */
+.badgesRow {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem 1.5rem;
+
+  @include sm {
+    margin-top: 3rem;
+    gap: 1.5rem 2rem;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3.375rem;
+  border-radius: 0.4375rem;
+  background-color: #000;
+  padding: 0.45rem 1rem 0.45rem 0.55rem;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px $edenicos-navy,
+      0 0 0 4px $edenicos-yellow,
+      0 2px 8px rgb(0 0 0 / 0.25);
+  }
+}
+
+.badgeIconWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.badgeIconPlay {
+  display: block;
+  width: 2.35rem;
+  height: auto;
+  max-height: 2.5rem;
+  object-fit: contain;
+}
+
+/* Logo Apple preta → branca no badge escuro */
+.badgeIconApple {
+  display: block;
+  width: 1.85rem;
+  height: auto;
+  max-height: 2.35rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.badgeCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.1rem;
+  line-height: 1.15;
+  padding-right: 0.15rem;
+}
+
+.badgeKicker {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.badgeTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}

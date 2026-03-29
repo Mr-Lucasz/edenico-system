@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { cn } from '@src/utils/cn'
+import styles from './StarsTitleSvg.module.scss'
 
 const VIEWBOX = { width: 500, height: 150 }
 
@@ -25,7 +27,7 @@ export function StarsTitleSvg({ activeIndex, onSelectLetter, id = 'stars-heading
   const highlightIndex = hoveredIndex ?? activeIndex
 
   return (
-    <div className={`relative inline-block w-full max-w-md ${className}`} aria-labelledby={id}>
+    <div className={cn(styles.wrap, className)} aria-labelledby={id}>
       <svg
         viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`}
         className="h-auto w-full object-contain"

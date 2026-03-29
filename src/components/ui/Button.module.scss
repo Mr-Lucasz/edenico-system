@@ -1,0 +1,75 @@
+@use 'styles/variables' as *;
+
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  border: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $blue-500;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.variantPrimary {
+  background-color: $blue-600;
+  color: #fff;
+
+  &:hover {
+    background-color: $blue-700;
+  }
+}
+
+.variantSecondary {
+  background-color: $edenicos-purple;
+  color: #fff;
+
+  &:hover {
+    background-color: #5b21b6;
+  }
+}
+
+.variantOutline {
+  border: 1px solid $gray-300;
+  background: transparent;
+
+  &:hover {
+    background-color: $gray-50;
+  }
+}
+
+.variantGhost {
+  background: transparent;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+}
+
+.sizeSm {
+  height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+}
+
+.sizeMd {
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+.sizeLg {
+  height: 3rem;
+  padding: 0 1.5rem;
+  font-size: 1.125rem;
+}

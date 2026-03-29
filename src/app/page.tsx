@@ -4,26 +4,29 @@ import {
   StarsSection,
   WhyChooseSection,
   PhilosophySection,
-  TestimonialsSection,
+  StarsBelowPhilosophySection,
+  EdenicosTitleBridgeSection,
   AppDownloadSection,
   ContactForm,
   LandingFooter,
 } from '@src/components/landing'
+import styles from './homePage.module.scss'
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className={styles.page}>
       <LandingHeader />
-      <main className="pt-[100px]">
+      <main className={styles.main}>
         <HeroSection />
         <StarsSection />
         <WhyChooseSection />
         <PhilosophySection />
-        <TestimonialsSection />
+        <StarsBelowPhilosophySection />
+        <EdenicosTitleBridgeSection />
         <AppDownloadSection />
-        <section className="bg-edenicos-navy px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="contato">
-          <div className="mx-auto max-w-4xl">
-            <ContactForm />
+        <section className={styles.contactSection} aria-labelledby="contato">
+          <div className={styles.contactInner}>
+            <ContactForm variant="help" />
           </div>
         </section>
         <LandingFooter />

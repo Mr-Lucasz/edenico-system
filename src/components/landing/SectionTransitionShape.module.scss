@@ -1,0 +1,18 @@
+.root {
+  background: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+
+.graphic {
+  background: transparent;
+  line-height: 0;
+}
+
+.wave {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: none;
+  background: transparent;
+}

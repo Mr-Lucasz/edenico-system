@@ -58,8 +58,8 @@ export function WelcomeCard() {
 
   return (
     <div
-      className="shadow-md"
       style={{
+        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
         borderRadius: '8.75px',
         padding: '21px',
         background: 'linear-gradient(to bottom right, rgb(235, 245, 255), rgb(215, 235, 255))',

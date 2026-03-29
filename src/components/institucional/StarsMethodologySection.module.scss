@@ -1,0 +1,261 @@
+@use 'styles/variables' as *;
+
+.section {
+  border-top: 1px solid $gray-200;
+  background-color: #fff;
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.desc {
+  margin: 1rem auto 0;
+  max-width: 42rem;
+  color: #4b5563;
+}
+
+.layout {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.accordionList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.accordionItem {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid $gray-200;
+  background-color: $gray-50;
+}
+
+.accordionBtn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+  color: $gray-900;
+  font: inherit;
+}
+
+.accordionIconWrap {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.chevron {
+  margin-left: auto;
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.panelMobile {
+  border-top: 1px solid $gray-200;
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+}
+
+.desktopMain {
+  flex: 1;
+  border-radius: 1rem;
+  border: 1px solid $gray-200;
+  background-color: #fff;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.tabPanelHidden {
+  display: none;
+}
+
+.tabPanelVisible {
+  display: block;
+}
+
+.aside {
+  width: 100%;
+  flex-shrink: 0;
+
+  @include lg {
+    width: 20rem;
+  }
+}
+
+.navBox {
+  border-radius: 1rem;
+  background-color: $edenicos-navy;
+  padding: 1.5rem;
+}
+
+.navTitle {
+  font-weight: 600;
+  color: #fff;
+}
+
+.navDesc {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.navList {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.navBtn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+  background: transparent;
+  color: rgb(255 255 255 / 0.7);
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+  }
+}
+
+.navBtnActive {
+  background-color: rgb(14 165 233 / 0.2);
+  color: #fff;
+  border-left: 4px solid #38bdf8;
+}
+
+.navIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* StarsCategoryContent */
+.catHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.catIconBox {
+  border-radius: 0.75rem;
+  background-color: $gray-100;
+  padding: 0.75rem;
+}
+
+.catIcon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.catBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.catTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.catSubtitle {
+  margin-top: 0.25rem;
+  color: #4b5563;
+}
+
+.grid2 {
+  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.colTitle {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: $gray-900;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.smallCard {
+  border-radius: 0.75rem;
+  border: 1px solid $gray-100;
+  background-color: $gray-50;
+  padding: 1rem;
+}
+
+.smallCardTitle {
+  font-weight: 500;
+  color: $gray-900;
+}
+
+.smallCardDesc {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}

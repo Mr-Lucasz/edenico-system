@@ -1,0 +1,27 @@
+@use 'styles/variables' as *;
+
+.footer {
+  border-top: 1px solid $gray-200;
+  background-color: #fff;
+  padding: 1rem 0;
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.sep {
+  margin: 0 0.5rem;
+}
+
+.link {
+  &:hover {
+    color: $gray-900;
+    text-decoration: underline;
+  }
+}

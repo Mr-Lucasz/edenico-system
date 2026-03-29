@@ -7,8 +7,10 @@ export interface Philosophy50Dimension {
   id: string
   title: string
   subtitle: string
-  color: string
-  bgLight: string
+  /** Cor do ícone (hex) */
+  iconColor: string
+  /** Fundo do cartão da dimensão (hex ou rgba) */
+  cardSurface: string
   howWeCare: Philosophy50Item[]
   activities: Philosophy50Item[]
 }
@@ -18,8 +20,8 @@ export const philosophy50Dimensions: Philosophy50Dimension[] = [
     id: 'fisica',
     title: 'Dimensão Física',
     subtitle: 'Cuidado integral do corpo e promoção da saúde',
-    color: 'text-rose-700',
-    bgLight: 'bg-rose-50',
+    iconColor: '#be123c',
+    cardSurface: '#fff1f2',
     howWeCare: [
       {
         title: 'Avaliação Nutricional Personalizada',
@@ -65,8 +67,8 @@ export const philosophy50Dimensions: Philosophy50Dimension[] = [
     id: 'mental',
     title: 'Dimensão Mental',
     subtitle: 'Desenvolvimento cognitivo e bem-estar emocional',
-    color: 'text-emerald-700',
-    bgLight: 'bg-emerald-50',
+    iconColor: '#047857',
+    cardSurface: '#ecfdf5',
     howWeCare: [
       { title: 'Acompanhamento Psicopedagógico', description: 'Suporte para dificuldades de aprendizagem e desenvolvimento de estratégias de estudo.' },
       { title: 'Programas de Inteligência Emocional', description: 'Atividades que fortalecem autoconhecimento, empatia e regulação emocional.' },
@@ -84,8 +86,8 @@ export const philosophy50Dimensions: Philosophy50Dimension[] = [
     id: 'espiritual',
     title: 'Dimensão Espiritual',
     subtitle: 'Valores, propósito e conexão com o transcendente',
-    color: 'text-amber-700',
-    bgLight: 'bg-amber-50',
+    iconColor: '#b45309',
+    cardSurface: '#fffbeb',
     howWeCare: [
       { title: 'Educação em Valores', description: 'Reflexão sobre ética, honestidade, respeito e responsabilidade.' },
       { title: 'Espaço para Reflexão', description: 'Momentos de silêncio e introspecção no cotidiano escolar.' },
@@ -103,8 +105,8 @@ export const philosophy50Dimensions: Philosophy50Dimension[] = [
     id: 'social',
     title: 'Dimensão Social',
     subtitle: 'Relacionamentos saudáveis e cidadania',
-    color: 'text-red-700',
-    bgLight: 'bg-red-50',
+    iconColor: '#b91c1c',
+    cardSurface: '#fef2f2',
     howWeCare: [
       { title: 'Mediação de Conflitos', description: 'Resolução pacífica de desentendimentos entre estudantes.' },
       { title: 'Programas de Liderança', description: 'Formação de representantes de turma e líderes positivos.' },
@@ -122,8 +124,8 @@ export const philosophy50Dimensions: Philosophy50Dimension[] = [
     id: 'profissional',
     title: 'Dimensão Profissional',
     subtitle: 'Preparação para o mundo do trabalho e empreendedorismo',
-    color: 'text-violet-700',
-    bgLight: 'bg-violet-50',
+    iconColor: '#6d28d9',
+    cardSurface: '#f5f3ff',
     howWeCare: [
       { title: 'Orientação de Carreira', description: 'Informações sobre profissões e caminhos de formação.' },
       { title: 'Desenvolvimento de Competências', description: 'Comunicação, trabalho em equipe e resolução de problemas.' },

@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { cn } from '@src/utils/cn'
+import styles from './IconBadge.module.scss'
 
 export interface IconBadgeProps {
   children: ReactNode
@@ -8,33 +9,28 @@ export interface IconBadgeProps {
   size?: 'sm' | 'md'
 }
 
+const colorClass = {
+  green: styles.green,
+  orange: styles.orange,
+  pink: styles.pink,
+} as const
+
+const sizeClass = {
+  sm: styles.sm,
+  md: styles.md,
+} as const
+
 export function IconBadge({ children, color, className, size = 'sm' }: IconBadgeProps) {
-  const colorClasses = {
-    green: 'bg-green-500',
-    orange: 'bg-orange-500',
-    pink: 'bg-pink-500',
-  }
-
-  const sizeClasses = {
-    sm: 'h-5 w-5',
-    md: 'h-6 w-6',
-  }
-
   const isString = typeof children === 'string'
 
   return (
     <div
-      className={cn(
-        'absolute -top-1 -right-1 z-10 flex items-center justify-center rounded-full text-white shadow-md',
-        colorClasses[color],
-        sizeClasses[size],
-        className
-      )}
+      className={cn(styles.root, colorClass[color], sizeClass[size], className)}
     >
       {isString ? (
-        <span className="text-xs font-bold">{children}</span>
+        <span className={styles.textXs}>{children}</span>
       ) : (
-        <span className="text-[10px]">{children}</span>
+        <span className={styles.text10}>{children}</span>
       )}
     </div>
   )

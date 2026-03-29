@@ -1,9 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use 'variables' as *;
 
 :root {
   --font-sans: system-ui, -apple-system, sans-serif;
+  --edenicos-navy: #{$edenicos-navy};
+  --edenicos-header-float: #{$edenicos-header-float};
+  --edenicos-purple: #{$edenicos-purple};
+  --edenicos-yellow: #{$edenicos-yellow};
+  --edenicos-royal-blue: #{$edenicos-royal-blue};
+  --edenicos-cta-magenta: #{$edenicos-cta-magenta};
+  --page-cream: #fffdf9;
 }
 
 * {
@@ -16,12 +21,14 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: var(--font-sans);
+  font-family: var(--font-inter, var(--font-sans));
 }
 
 body {
-  color: #1f2937;
-  background: #f9fafb;
+  color: $gray-800;
+  background: $gray-50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -29,10 +36,17 @@ a {
   text-decoration: none;
 }
 
-/* Smooth transitions */
 * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
-    opacity, box-shadow, transform;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -57,18 +71,25 @@ a {
   }
 }
 
-/* Seção Filosofia — fundo radial + luz ambiente (Figma) */
+:root {
+  --filosofia-overlap: max(4.75rem, min(34vw, 42rem));
+}
+
 .filosofia-section {
   position: relative;
+  z-index: 15;
+  isolation: isolate;
   overflow: hidden;
-  background: radial-gradient(
-    circle at 25% 20%,
-    #a855f7 0%,
-    #9333ea 30%,
-    #7e22ce 55%,
-    #6b21a8 75%,
-    #581c87 100%
-  );
+  min-height: 38rem;
+  margin-top: calc(-1 * var(--filosofia-overlap) - 3px);
+  padding-top: calc(var(--filosofia-overlap) + 4rem + 3px);
+  background: transparent;
+}
+
+@include sm {
+  .filosofia-section {
+    padding-top: calc(var(--filosofia-overlap) + 5rem + 3px);
+  }
 }
 
 .filosofia-section::before {
@@ -79,8 +100,21 @@ a {
   width: 500px;
   height: 500px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
+}
+
+.filosofia-section__bg span,
+.section-transition-shape__graphic > span,
+.stars-below-philosophy__divider span {
+  background-color: transparent !important;
+}
+
+.filosofia-section__bg img,
+.section-transition-shape__wave,
+.stars-below-philosophy__divider img,
+.app-download-clouds img {
+  background-color: transparent;
 }
 
 @keyframes floatStar {
@@ -115,5 +149,15 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .filosofia-section .star {
     animation: none;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }

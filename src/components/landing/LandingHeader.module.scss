@@ -1,0 +1,421 @@
+@use 'styles/variables' as *;
+
+.topBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  height: 2.25rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-100;
+  background-color: #fff;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+
+  @include sm {
+    padding: 0 1.5rem;
+  }
+
+  @include lg {
+    padding: 0 2rem;
+  }
+}
+
+.topLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.topLink {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $gray-900;
+  }
+}
+
+.topIcon {
+  height: 1rem;
+  width: 1rem;
+}
+
+.langWrap {
+  position: relative;
+}
+
+.langBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $gray-900;
+  }
+}
+
+.chevron {
+  height: 1rem;
+  width: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  margin-top: 0.25rem;
+  min-width: 140px;
+  border-radius: 0.5rem;
+  border: 1px solid $gray-200;
+  background-color: #fff;
+  padding: 0.25rem 0;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: $gray-900;
+}
+
+.dropdownBtn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: #4b5563;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: $gray-50;
+  }
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 2.25rem;
+  z-index: 50;
+  background: transparent;
+  padding: 0.75rem 1rem;
+
+  @include sm {
+    padding: 0.75rem 1.5rem;
+  }
+
+  @include lg {
+    padding: 0.75rem 2rem;
+  }
+}
+
+.pill {
+  margin: 0 auto;
+  display: flex;
+  max-width: 72rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: $edenicos-header-float;
+  padding: 0.625rem 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.explore {
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.95;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.exploreActive {
+  background-color: $edenicos-royal-blue;
+}
+
+.exploreInactive {
+  background-color: $edenicos-royal-blue;
+
+  &:hover {
+    background-color: #2563eb;
+  }
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+
+  @include md {
+    display: flex;
+  }
+}
+
+.navLink {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+    color: #fff;
+  }
+}
+
+.logoCenter {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+  align-items: center;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.logoText {
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.logoLine1 {
+  display: block;
+  font-size: 1.125rem;
+  letter-spacing: -0.025em;
+}
+
+.logoLine2 {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.logoImg {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+
+  @include sm {
+    height: 3rem;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.linkMuted {
+  display: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+    color: #fff;
+  }
+
+  @include sm {
+    display: inline-block;
+  }
+}
+
+.cta {
+  border-radius: 9999px;
+  background-color: $edenicos-cta-magenta;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background-color: #d81b60;
+    opacity: 0.95;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-header-float, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.menuBtn {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @include md {
+    display: none;
+  }
+}
+
+.menuIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.mobileMenu {
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: $edenicos-header-float;
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  @include md {
+    display: none;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileLink {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+  }
+
+  &:active {
+    background-color: rgb(255 255 255 / 0.15);
+  }
+}
+
+.mobileLinkSoft {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: rgb(255 255 255 / 0.8);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.1);
+    color: #fff;
+  }
+
+  &:active {
+    background-color: rgb(255 255 255 / 0.15);
+  }
+}
+
+.mobileCta {
+  margin-top: 0.5rem;
+  display: block;
+  border-radius: 9999px;
+  background-color: $edenicos-cta-magenta;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.95;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

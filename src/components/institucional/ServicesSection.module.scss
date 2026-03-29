@@ -1,0 +1,92 @@
+@use 'styles/variables' as *;
+
+.section {
+  background-color: $gray-50;
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid $gray-100;
+  background-color: #fff;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+}
+
+.iconBlue {
+  display: inline-flex;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: $blue-100;
+  color: #2563eb;
+}
+
+.iconOrange {
+  display: inline-flex;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.iconPurple {
+  display: inline-flex;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: #f3e8ff;
+  color: #9333ea;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.cardTitle {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.cardDesc {
+  margin-top: 0.75rem;
+  color: #4b5563;
+}

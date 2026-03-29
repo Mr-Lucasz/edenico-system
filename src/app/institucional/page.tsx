@@ -10,6 +10,7 @@ import { InstitutionalCtaSection } from '@src/components/institucional/Instituti
 import { StarsMethodologySection } from '@src/components/institucional/StarsMethodologySection'
 import { Philosophy50Section } from '@src/components/institucional/Philosophy50Section'
 import { ContactForm } from '@src/components/landing/ContactForm'
+import styles from './institucionalPage.module.scss'
 
 export const metadata: Metadata = {
   title: 'Institucional | Edênicos Academy - Educação do Futuro',
@@ -24,7 +25,8 @@ const structuredData = {
       '@type': 'EducationalOrganization',
       '@id': 'https://edenicos.academy/#organization',
       name: 'Edênicos Academy',
-      description: 'Empresa de tecnologia educacional dedicada à transformação da educação através da metodologia STARS e Filosofia Educação 5.0.',
+      description:
+        'Empresa de tecnologia educacional dedicada à transformação da educação através da metodologia STARS e Filosofia Educação 5.0.',
       url: 'https://edenicos.academy',
     },
     {
@@ -36,13 +38,15 @@ const structuredData = {
     {
       '@type': 'Service',
       name: 'Jogos Interativos',
-      description: 'Criação de jogos educativos que tornam o aprendizado divertido e envolvente para todas as idades.',
+      description:
+        'Criação de jogos educativos que tornam o aprendizado divertido e envolvente para todas as idades.',
       provider: { '@id': 'https://edenicos.academy/#organization' },
     },
     {
       '@type': 'Service',
       name: 'Ferramentas Pedagógicas',
-      description: 'Desenvolvimento de recursos digitais avançados para apoiar educadores em suas práticas pedagógicas.',
+      description:
+        'Desenvolvimento de recursos digitais avançados para apoiar educadores em suas práticas pedagógicas.',
       provider: { '@id': 'https://edenicos.academy/#organization' },
     },
   ],
@@ -50,13 +54,13 @@ const structuredData = {
 
 export default function InstitucionalPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <LandingHeader />
-      <main className="pt-[100px]">
+      <main className={styles.main}>
         <InstitucionalHero />
         <AboutSection />
         <PrinciplesSection />
@@ -65,8 +69,8 @@ export default function InstitucionalPage() {
         <InstitutionalCtaSection />
         <StarsMethodologySection />
         <Philosophy50Section />
-        <section id="contato" className="bg-edenicos-navy px-4 py-16 sm:px-6 lg:px-8" aria-labelledby="contato-heading">
-          <div className="mx-auto max-w-4xl">
+        <section id="contato" className={styles.contactSection} aria-labelledby="contato">
+          <div className={styles.contactInner}>
             <ContactForm />
           </div>
         </section>

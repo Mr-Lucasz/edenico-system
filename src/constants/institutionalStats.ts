@@ -11,10 +11,13 @@ export const institutionalStats = {
     supportLabel: '24/7', // exibido estático (sem CountUp)
     projectsDeveloped: '800+',
   },
-  /** Métricas do app (seção download / home). */
+  /** Métricas do app (faixa branca acima das lojas na home). */
   app: {
-    students: '2.000+',
-    classes: '350+',
-    rating: '4.8/5.0',
+    students: '50K+',
+    studentsLabel: 'Estudantes Ativos',
+    missions: '100+',
+    missionsLabel: 'Missões Disponíveis',
+    rating: '4.9',
+    ratingLabel: 'Avaliação',
   },
 } as const

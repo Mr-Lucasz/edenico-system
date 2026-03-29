@@ -1,5 +1,6 @@
 'use client'
 
+import styles from './SummaryCards.module.scss'
 import {
   FiBookOpen,
   FiAward,
@@ -14,85 +15,77 @@ import { gradients } from '@src/constants/gradients'
 
 export function SummaryCards() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {/* Card 1: Cursos em Andamento */}
+    <div className={styles.grid}>
       <SummaryCard
-        type="inProgress"
         title={{ line1: 'Cursos em', line2: 'Andamento' }}
         actionLabel="Continue estudando!"
-        actionIcon={<FiBookOpen className="h-4 w-4" style={{ color: '#1976d2' }} />}
-        icon={<FiBookOpen className="h-7 w-7" style={{ color: '#0d47a1' }} />}
+        actionIcon={<FiBookOpen style={{ width: '1rem', height: '1rem', color: '#1976d2' }} />}
+        icon={<FiBookOpen style={{ width: '1.75rem', height: '1.75rem', color: '#0d47a1' }} />}
         badge={{
           content: '3',
           color: 'green',
         }}
         decorativeColor="blue"
-        gradient={gradients.summaryInProgress}
-        iconBgColor="bg-blue-100"
-        textColor="text-[#0d47a1]"
-        actionColor="text-[#1976d2]"
+        background={gradients.summaryInProgress}
+        iconBg="blue"
+        titleColor="#0d47a1"
+        actionColor="#1976d2"
         actionOpacity={0.7}
       />
 
-      {/* Card 2: Cursos Concluídos */}
       <SummaryCard
-        type="completed"
         title="Cursos Concluídos"
         value="8"
         message="Parabéns, campeão!"
-        messageIcon={<FiGift className="h-4 w-4" style={{ color: '#00823e' }} />}
-        icon={<FiAward className="h-7 w-7" style={{ color: '#00823e' }} />}
+        messageIcon={<FiGift style={{ width: '1rem', height: '1rem', color: '#00823e' }} />}
+        icon={<FiAward style={{ width: '1.75rem', height: '1.75rem', color: '#00823e' }} />}
         badge={{
-          content: <FiStar className="h-3 w-3" />,
+          content: <FiStar style={{ width: '0.75rem', height: '0.75rem' }} />,
           color: 'orange',
         }}
         decorativeColor="green"
-        gradient={gradients.summaryCompleted}
-        iconBgColor="bg-green-100"
-        textColor="text-[#00823e]"
-        messageColor="text-[#00a63e]"
+        background={gradients.summaryCompleted}
+        iconBg="green"
+        titleColor="#00823e"
+        messageColor="#00a63e"
         messageOpacity={0.7}
-        valueGradient="bg-gradient-to-br from-[#00a63e] to-[#009966] bg-clip-text text-transparent"
+        valueGradientCss="linear-gradient(to bottom right, #00a63e, #009966)"
       />
 
-      {/* Card 3: Horas de Estudo */}
       <SummaryCard
-        type="studyHours"
         title="Horas de Estudo"
         value="45h"
         message="Tempo bem investido!"
-        icon={<FiClock className="h-7 w-7" style={{ color: '#ca3500' }} />}
+        icon={<FiClock style={{ width: '1.75rem', height: '1.75rem', color: '#ca3500' }} />}
         badge={{
-          content: <FiUser className="h-3 w-3" />,
+          content: <FiUser style={{ width: '0.75rem', height: '0.75rem' }} />,
           color: 'pink',
         }}
         decorativeColor="orange"
-        gradient={gradients.summaryStudyHours}
-        iconBgColor="bg-orange-100"
-        textColor="text-[#ca3500]"
-        messageColor="text-[#f54900]"
+        background={gradients.summaryStudyHours}
+        iconBg="orange"
+        titleColor="#ca3500"
+        messageColor="#f54900"
         messageOpacity={0.7}
-        valueGradient="bg-gradient-to-br from-[#f54900] to-[#e17100] bg-clip-text text-transparent"
+        valueGradientCss="linear-gradient(to bottom right, #f54900, #e17100)"
       />
 
-      {/* Card 4: Conquistas */}
       <SummaryCard
-        type="achievements"
         title="Conquistas"
         value="12"
         message="Você é incrível!"
-        icon={<FiTarget className="h-7 w-7" style={{ color: '#8200db' }} />}
+        icon={<FiTarget style={{ width: '1.75rem', height: '1.75rem', color: '#8200db' }} />}
         badge={{
-          content: <FiStar className="h-3 w-3" />,
+          content: <FiStar style={{ width: '0.75rem', height: '0.75rem' }} />,
           color: 'pink',
         }}
         decorativeColor="purple"
-        gradient={gradients.summaryAchievements}
-        iconBgColor="bg-purple-100"
-        textColor="text-[#8200db]"
-        messageColor="text-[#9810fa]"
+        background={gradients.summaryAchievements}
+        iconBg="purple"
+        titleColor="#8200db"
+        messageColor="#9810fa"
         messageOpacity={0.7}
-        valueGradient="bg-gradient-to-br from-[#9810fa] to-[#4f39f7] bg-clip-text text-transparent"
+        valueGradientCss="linear-gradient(to bottom right, #9810fa, #4f39f7)"
         showTitleDot={true}
       />
     </div>

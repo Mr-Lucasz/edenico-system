@@ -1,0 +1,144 @@
+@use 'styles/variables' as *;
+
+.section {
+  background: linear-gradient(to bottom, $edenicos-navy, $edenicos-navy-light);
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80rem;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  border-radius: 0.5rem;
+  background-color: rgb(255 255 255 / 0.1);
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.title {
+  margin-top: 1rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #fff;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+}
+
+.titleAccent {
+  color: #fb923c;
+}
+
+.subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 42rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.highlightOrange {
+  color: #f97316;
+}
+
+.mobileWrap {
+  margin-top: 2.5rem;
+}
+
+.mobileSlider {
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.panel {
+  padding: 2rem;
+}
+
+.iconOrange {
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 1rem;
+  background-color: rgb(249 115 22 / 0.1);
+  color: #f97316;
+}
+
+.iconPurple {
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 1rem;
+  background-color: rgb(168 85 247 / 0.1);
+  color: #a855f7;
+}
+
+.iconLg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.cardTitle {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.cardText {
+  margin-top: 0.75rem;
+  color: $gray-700;
+}
+
+.dots {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  height: 0.625rem;
+  width: 0.625rem;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: rgb(255 255 255 / 0.4);
+  transition: background 0.15s ease;
+}
+
+.dotActive {
+  background-color: #f97316;
+}
+
+.desktopGrid {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 2rem;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.desktopCard {
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: #fff;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}

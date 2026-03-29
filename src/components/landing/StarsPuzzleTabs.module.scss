@@ -1,0 +1,71 @@
+@use 'styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow: visible;
+}
+
+.tab {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  cursor: pointer;
+  height: 5rem;
+  width: 5rem;
+  border: none;
+  padding: 0;
+  background: none;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9ca3af;
+  }
+
+  @include sm {
+    height: 7rem;
+    width: 7rem;
+  }
+}
+
+.overlap {
+  margin-left: -1.5rem;
+
+  @include sm {
+    margin-left: -2.5rem;
+  }
+}
+
+.svg {
+  height: 100%;
+  width: 100%;
+}
+
+.letter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+}
+
+.letterActive {
+  color: #fff;
+}
+
+.letterInactive {
+  color: #9ca3af;
+}

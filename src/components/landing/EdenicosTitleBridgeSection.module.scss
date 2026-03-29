@@ -1,0 +1,41 @@
+@use 'styles/variables' as *;
+
+.section {
+  position: relative;
+  /* Abaixo da secção de app (z-index 3): evita o navy cobrir o divisor de nuvens */
+  z-index: 1;
+
+  min-height: 750px;
+
+  background-color: #fff;
+  padding: 3.5rem 1rem 2.5rem;
+
+  @include sm {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  @include lg {
+    padding: 4.5rem 2rem 3.25rem;
+  }
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 48rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.titleImg {
+  display: block;
+  width: min(100%, 24.625rem);
+  height: auto;
+  max-width: 100%;
+}

@@ -1,0 +1,31 @@
+@use 'styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+  background-color: var(--page-cream);
+}
+
+.main {
+  background-color: var(--page-cream);
+  padding-top: 100px;
+}
+
+.contactSection {
+  background-color: $edenicos-navy;
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.contactInner {
+  margin: 0 auto;
+  max-width: 72rem;
+}

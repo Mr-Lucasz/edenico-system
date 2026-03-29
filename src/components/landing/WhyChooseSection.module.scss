@@ -1,0 +1,231 @@
+@use 'styles/variables' as *;
+
+.section {
+  position: relative;
+  z-index: 20;
+  background-color: #fff;
+  padding: 4rem 0;
+
+  @include sm {
+    padding: 5rem 0;
+  }
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 1rem;
+
+  @include sm {
+    padding: 0 1.5rem;
+  }
+
+  @include lg {
+    padding: 0 2rem;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gray-900;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+}
+
+.grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.5rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  border: 1px solid $gray-100;
+  background-color: #fff;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+}
+
+.iconWrap {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.iconPurple {
+  background-color: $edenicos-purple;
+}
+
+.iconPink {
+  background-color: $edenicos-pink;
+}
+
+.iconGreen {
+  background-color: #22c55e;
+}
+
+.iconImg {
+  height: 1.75rem;
+  width: 1.75rem;
+  object-fit: contain;
+}
+
+.cardTitle {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $gray-900;
+
+  @include sm {
+    font-size: 1.125rem;
+  }
+}
+
+.cardDesc {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #4b5563;
+}
+
+.mascotRow {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mascotPill {
+  display: flex;
+  width: 100%;
+  max-width: 28rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  background-color: $gray-100;
+  padding: 0.75rem 1rem;
+
+  @include sm {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+.mascotImgWrap {
+  position: relative;
+  height: 1.75rem;
+  width: auto;
+  min-width: 120px;
+  flex-shrink: 0;
+
+  @include sm {
+    height: 2rem;
+  }
+}
+
+.mascotImg {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: left;
+}
+
+.mascotText {
+  text-align: center;
+  font-size: 1rem;
+  color: $gray-700;
+}
+
+.ctaRow {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cta {
+  border-radius: 0.75rem;
+  background: linear-gradient(to right, $blue-600, $blue-700);
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transition:
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.05);
+    background: linear-gradient(to right, $blue-700, #1e40af);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $blue-500;
+  }
+}
+
+.transition {
+  position: relative;
+  z-index: 25;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: none;
+  background: transparent;
+  line-height: 0;
+  margin-bottom: -7rem;
+
+  @include sm {
+    margin-top: 2.5rem;
+    margin-bottom: -10rem;
+  }
+
+  @include md {
+    margin-bottom: -12rem;
+  }
+}
+
+.transitionImg {
+  display: block;
+  height: clamp(6.5rem, 18vw, 14rem);
+  width: 100%;
+  max-width: none;
+  background: transparent;
+  object-fit: cover;
+  object-position: bottom;
+
+  @include sm {
+    height: clamp(7.5rem, 22vw, 17rem);
+  }
+
+  @include md {
+    height: clamp(8rem, 24vw, 19rem);
+  }
+}

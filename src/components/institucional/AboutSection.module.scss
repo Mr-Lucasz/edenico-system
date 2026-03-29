@@ -1,0 +1,108 @@
+@use 'styles/variables' as *;
+
+.section {
+  background-color: #fff;
+  padding: 4rem 1rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.anchor {
+  position: absolute;
+  top: -5rem;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.tag {
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  border-radius: 9999px;
+  background-color: $blue-100;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1d4ed8;
+}
+
+.title {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: $gray-900;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
+}
+
+.grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.article {
+  border-radius: 1rem;
+  border: 1px solid $gray-100;
+  background-color: #fff;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.iconBoxBlue {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: $blue-100;
+  color: #2563eb;
+}
+
+.iconBoxPurple {
+  display: flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: #f3e8ff;
+  color: #9333ea;
+}
+
+.icon {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.artTitle {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.artText {
+  margin-top: 0.75rem;
+  color: #4b5563;
+}

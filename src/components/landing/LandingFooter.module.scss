@@ -1,0 +1,468 @@
+@use 'styles/variables' as *;
+
+/* Alinhado ao protótipo footer */
+$footer-bg: #0b1120;
+$footer-line: rgb(255 255 255 / 0.07);
+$footer-muted: #94a3b8;
+$footer-muted-hover: #cbd5e1;
+$footer-select-bg: #1e293b;
+$footer-select-border: rgb(255 255 255 / 0.12);
+$footer-social-bg: rgb(255 255 255 / 0.08);
+$footer-social-bg-hover: rgb(255 255 255 / 0.14);
+$footer-social-icon: #c4ccd8;
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  background-color: $footer-bg;
+  color: #fff;
+}
+
+.decor {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: rgb(255 255 255 / 0.04);
+  font-size: 1px;
+}
+
+.decorStarLg {
+  position: absolute;
+  left: 4%;
+  top: 18%;
+  font-size: 4.5rem;
+  line-height: 1;
+  transform: rotate(-12deg);
+}
+
+.decorStarSm {
+  position: absolute;
+  left: 12%;
+  bottom: 38%;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.decorCluster {
+  position: absolute;
+  right: 8%;
+  top: 22%;
+  font-size: 2.75rem;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.decorFlower {
+  position: absolute;
+  right: 6%;
+  bottom: 12%;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.45;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 3rem 1rem 2.5rem;
+
+  @include sm {
+    padding: 3.25rem 1.5rem 2.75rem;
+  }
+
+  @include lg {
+    padding: 3.5rem 2rem 2.5rem;
+  }
+}
+
+.topRule {
+  height: 1px;
+  margin-bottom: 2.5rem;
+  background: $footer-line;
+
+  @include lg {
+    margin-bottom: 3rem;
+  }
+}
+
+.topGrid {
+  display: grid;
+  gap: 2.5rem 2rem;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include lg {
+    grid-template-columns: 1.15fr 0.85fr 0.85fr 1.15fr;
+    gap: 2rem 2.5rem;
+    align-items: start;
+  }
+}
+
+.brandCol {
+  @include sm {
+    grid-column: 1 / -1;
+  }
+
+  @include lg {
+    grid-column: auto;
+  }
+}
+
+.brandTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.3;
+
+  @include sm {
+    font-size: 1.25rem;
+  }
+}
+
+.brandText {
+  margin: 1rem 0 0;
+  max-width: 22rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: $footer-muted;
+
+  @include lg {
+    max-width: none;
+  }
+}
+
+.colHeading {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.linkList {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.link {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: $footer-muted;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $footer-muted-hover;
+  }
+
+  &:focus-visible {
+    outline: none;
+    color: $footer-muted-hover;
+    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
+    border-radius: 2px;
+  }
+}
+
+.midRow {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid $footer-line;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3.25rem;
+    padding-top: 2.75rem;
+  }
+}
+
+.localeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.localeRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.countryField {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.countryLegend {
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.countryBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
+.localeLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.88);
+  white-space: nowrap;
+}
+
+.selectWrap {
+  position: relative;
+  min-width: 11.5rem;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: 1px solid $footer-select-border;
+  background-color: $footer-select-bg;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.92);
+  line-height: 1.25;
+
+  &:hover {
+    border-color: rgb(255 255 255 / 0.18);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $edenicos-yellow;
+    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.selectChevron {
+  pointer-events: none;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  transform: translateY(-50%);
+  color: rgb(255 255 255 / 0.45);
+}
+
+.countryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $footer-muted;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    color: $footer-muted-hover;
+    background: rgb(255 255 255 / 0.06);
+  }
+
+  &[aria-pressed='true'] {
+    color: #fff;
+    background: #334155;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.countryFlag {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+.countryFlagSvg {
+  display: block;
+  width: 1.5rem;
+  height: auto;
+  min-height: 100%;
+  flex-shrink: 0;
+}
+
+.countryLabel {
+  line-height: 1.2;
+}
+
+.countryCode {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: inherit;
+}
+
+.socialBlock {
+  @include lg {
+    text-align: right;
+  }
+}
+
+.socialHeading {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.socialRow {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  @include lg {
+    justify-content: flex-end;
+  }
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background-color: $footer-social-bg;
+  color: $footer-social-icon;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background-color: $footer-social-bg-hover;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.bottomRow {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid $footer-line;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: $footer-muted;
+
+  @include lg {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2.75rem;
+    padding-top: 2.25rem;
+    text-align: initial;
+  }
+}
+
+.bottomLeft {
+  margin: 0;
+
+  @include lg {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+.bottomCenter {
+  margin: 0;
+
+  @include lg {
+    justify-self: center;
+    text-align: center;
+  }
+}
+
+.bottomNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+
+  @include lg {
+    justify-self: end;
+    justify-content: flex-end;
+  }
+}
+
+.legalLink {
+  color: $footer-muted;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $footer-muted-hover;
+  }
+
+  &:focus-visible {
+    outline: none;
+    color: $footer-muted-hover;
+    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
+    border-radius: 2px;
+  }
+}

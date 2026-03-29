@@ -1,0 +1,155 @@
+@use 'styles/variables' as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 1rem;
+
+  @include sm {
+    padding: 0 1.5rem;
+  }
+
+  @include lg {
+    padding: 0 2rem;
+  }
+}
+
+.row {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoMark {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+
+  @include md {
+    display: flex;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+  color: $gray-700;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+}
+
+.linkActive {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: linear-gradient(to right, #3b82f6, #9333ea);
+  color: #fff;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconBtn {
+  position: relative;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-900;
+  }
+}
+
+.notifyDot {
+  position: absolute;
+  right: -0.25rem;
+  top: -0.25rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+}
+
+.dotRed {
+  background-color: #ef4444;
+}
+
+.dotGreen {
+  background-color: #22c55e;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.userName {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $gray-700;
+
+  @include sm {
+    display: inline;
+  }
+}
