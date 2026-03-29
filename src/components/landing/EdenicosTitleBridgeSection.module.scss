@@ -2,10 +2,12 @@
 
 .section {
   position: relative;
-  /* Abaixo da secção de app (z-index 3): evita o navy cobrir o divisor de nuvens */
+  /* Abaixo do divisor de nuvens (z-index maior) para o SVG não ficar por baixo desta faixa */
   z-index: 1;
+  overflow: visible;
 
-  min-height: 750px;
+  /* Altura pelo conteúdo; evita caixa enorme (ex. 750px) que no inspector parece “vazar” sobre a seguinte quando há overlap */
+  min-height: 0;
 
   background-color: #fff;
   padding: 3.5rem 1rem 2.5rem;

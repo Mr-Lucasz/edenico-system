@@ -3,11 +3,14 @@
 .page {
   min-height: 100vh;
   background-color: var(--page-cream);
+  overflow: visible;
 }
 
 .main {
   background-color: var(--page-cream);
   padding-top: 100px;
+  /* Permite divisores (SVG) com z-index maior que secções adjacentes sem recorte */
+  overflow: visible;
 }
 
 .contactSection {

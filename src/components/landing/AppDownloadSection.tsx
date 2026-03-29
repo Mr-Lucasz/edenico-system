@@ -7,25 +7,12 @@ import styles from './AppDownloadSection.module.scss'
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.edenicos.academy'
 const APP_STORE_URL = 'https://apps.apple.com/app/edenicos-academy/id123456789'
 const UTM_PARAMS = 'utm_source=landing&utm_medium=web&utm_campaign=home'
-const CLOUDS_FOOTER_SRC = '/Clouds%20Footer.svg'
 
 export function AppDownloadSection() {
   const { app } = institutionalStats
 
   return (
     <section className={styles.section} aria-labelledby="app-heading">
-      <div className={`app-download-clouds ${styles.cloudsTransition}`} aria-hidden>
-        <div className={styles.cloudsImageWrap}>
-          <img
-            src={CLOUDS_FOOTER_SRC}
-            alt=""
-            className={styles.cloudsImg}
-            width={1585}
-            height={992}
-            decoding="async"
-          />
-        </div>
-      </div>
       <div className={styles.inner}>
 
 

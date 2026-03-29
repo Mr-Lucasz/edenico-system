@@ -6,6 +6,7 @@ import {
   PhilosophySection,
   StarsBelowPhilosophySection,
   EdenicosTitleBridgeSection,
+  AppDownloadCloudDivider,
   AppDownloadSection,
   ContactForm,
   LandingFooter,
@@ -23,6 +24,7 @@ export default function HomePage() {
         <PhilosophySection />
         <StarsBelowPhilosophySection />
         <EdenicosTitleBridgeSection />
+        <AppDownloadCloudDivider />
         <AppDownloadSection />
         <section className={styles.contactSection} aria-labelledby="contato">
           <div className={styles.contactInner}>

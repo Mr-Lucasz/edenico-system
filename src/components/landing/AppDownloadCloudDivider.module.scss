@@ -1,0 +1,35 @@
+@use 'styles/variables' as *;
+@use 'styles/appDownloadCloudBand' as cloud;
+
+.section {
+  position: relative;
+  /* Acima da bridge e da AppDownloadSection: o SVG pode invadir verticalmente sem ser tapado */
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  height: cloud.$band;
+  background: transparent;
+  line-height: 0;
+
+  @include sm {
+    height: cloud.$band-sm;
+  }
+
+  @include lg {
+    height: cloud.$band-lg;
+  }
+}
+
+.img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 79%;
+  background-color: transparent;
+  /* Reforço de stacking + ligeiro deslocamento para o desenho não “morrer” sob a secção branca */
+  transform: translateZ(0);
+}
