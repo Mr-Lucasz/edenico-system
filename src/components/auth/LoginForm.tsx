@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { FiCreditCard, FiEye, FiEyeOff, FiLock } from 'react-icons/fi'
 import { AUTH_MOCK_HINT, AUTH_MOCK_USER } from '@src/constants/authMockUser'
 import { LOGIN_COPY } from '@src/constants/authCopy'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import styles from './AuthForms.module.scss'
 
 function normalizeCpf(s: string) {
@@ -27,6 +28,7 @@ export function LoginForm() {
       setError('CPF ou senha incorretos. Use o utilizador demo indicado abaixo.')
       return
     }
+    startNavigationProgress()
     router.push('/dashboard')
   }
 

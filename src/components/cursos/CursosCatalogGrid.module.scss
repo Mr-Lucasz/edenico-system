@@ -1,0 +1,21 @@
+@use 'styles/variables' as *;
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.empty {
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: $gray-500;
+}

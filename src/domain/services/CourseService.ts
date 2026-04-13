@@ -1,5 +1,5 @@
 import type { ICourseRepository } from '../interfaces/ICourseRepository'
-import type { Course, CourseCategory } from '@src/types/course.types'
+import type { Course, CourseCategory, CourseLevel } from '@src/types/course.types'
 
 /**
  * Service para operações de domínio relacionadas a cursos
@@ -18,6 +18,10 @@ export class CourseService {
 
   async getCoursesByCategory(category: CourseCategory): Promise<Course[]> {
     return this.repository.findByCategory(category)
+  }
+
+  async getCoursesByCategoryAndLevel(category: CourseCategory | null, level: CourseLevel): Promise<Course[]> {
+    return this.repository.findByCategoryAndLevel(category, level)
   }
 
   async getInProgressCourses(): Promise<Course[]> {

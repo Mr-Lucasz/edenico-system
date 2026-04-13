@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import { FiCalendar } from 'react-icons/fi'
 import { EventService } from '@src/domain/services/EventService'
 import { EventRepository } from '@src/infrastructure/repositories/EventRepository'
@@ -8,6 +10,7 @@ import { EventCard } from './EventCard'
 import type { Event } from '@src/types/event.types'
 
 export function Events() {
+  const router = useRouter()
   const [events, setEvents] = useState<Event[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -137,7 +140,18 @@ export function Events() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {events.map((event) => (
-              <EventCard key={event.id} event={event} />
+              <EventCard
+                key={event.id}
+                event={event}
+                onEnroll={() => {
+                  startNavigationProgress()
+                  router.push(`/eventos/${event.id}?demo=inscricao`)
+                }}
+                onDetails={() => {
+                  startNavigationProgress()
+                  router.push(`/eventos/${event.id}`)
+                }}
+              />
             ))}
           </div>
         )}

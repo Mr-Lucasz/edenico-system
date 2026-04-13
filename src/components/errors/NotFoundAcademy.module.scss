@@ -1,0 +1,231 @@
+@use 'styles/variables' as *;
+
+.page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.25rem 3rem;
+  font-family: var(--font-montserrat, var(--font-inter, system-ui, sans-serif));
+  color: #fff;
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 40%,
+    #2a5fd4 0%,
+    #153a8a 40%,
+    #0a1526 82%,
+    #050a14 100%
+  );
+}
+
+.headerLogo {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.logoLink {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: inherit;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid rgb(96 165 250 / 0.8);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.logoImg {
+  height: auto;
+  width: 140px;
+  max-width: 100%;
+}
+
+.logoFallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.logoLine1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.logoLine2 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+}
+
+.code {
+  margin-bottom: 0.5rem;
+  font-size: clamp(4rem, 18vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: #94a3b8;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.divider {
+  height: 2px;
+  width: 8rem;
+  max-width: 70%;
+  margin: 0 auto 2rem;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    #f97316,
+    #8b5cf6,
+    #ef4444,
+    #10b981,
+    #ec4899
+  );
+}
+
+.card {
+  width: 100%;
+  max-width: 26rem;
+  margin-bottom: 1.75rem;
+  border-radius: 16px;
+  border: 1px solid rgb(147 197 253 / 0.25);
+  background: rgb(15 23 42 / 0.55);
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.2);
+  padding: 1.5rem 1.35rem;
+  text-align: center;
+}
+
+.label {
+  margin-bottom: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgb(255 255 255 / 0.95);
+}
+
+.starsIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.support {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: transparent;
+  cursor: default;
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 9999px;
+  background: #2563eb;
+  padding: 0.65rem 1.35rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgb(37 99 235 / 0.35);
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+  }
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(147 197 253 / 0.45);
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 0.35);
+  padding: 0.65rem 1.35rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgb(30 41 59 / 0.65);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+  }
+}
+
+.btnIcon {
+  height: 1.125rem;
+  width: 1.125rem;
+  flex-shrink: 0;
+}

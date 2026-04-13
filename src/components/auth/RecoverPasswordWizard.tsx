@@ -16,6 +16,7 @@ import {
 } from 'react-icons/fi'
 import { AUTH_MOCK_USER } from '@src/constants/authMockUser'
 import { RECOVER_COPY } from '@src/constants/authCopy'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import formStyles from './AuthForms.module.scss'
 import styles from './RecoverPassword.module.scss'
 
@@ -87,7 +88,10 @@ export function RecoverPasswordWizard() {
 
   useEffect(() => {
     if (showSuccess) {
-      const t = window.setTimeout(() => router.push('/login'), 8000)
+      const t = window.setTimeout(() => {
+        startNavigationProgress()
+        router.push('/login')
+      }, 8000)
       return () => window.clearTimeout(t)
     }
   }, [showSuccess, router])
@@ -295,6 +299,7 @@ export function RecoverPasswordWizard() {
               className={styles.modalClose}
               onClick={() => {
                 setShowSuccess(false)
+                startNavigationProgress()
                 router.push('/login')
               }}
               aria-label="Fechar"
@@ -321,7 +326,10 @@ export function RecoverPasswordWizard() {
             <button
               type="button"
               className={styles.btnGreen}
-              onClick={() => router.push('/login')}
+              onClick={() => {
+                startNavigationProgress()
+                router.push('/login')
+              }}
             >
               <FiLogIn aria-hidden />
               {RECOVER_COPY.step4.cta}

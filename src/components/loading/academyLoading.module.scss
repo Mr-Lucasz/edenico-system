@@ -1,0 +1,264 @@
+@mixin orb-base {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(64px);
+  opacity: 0.35;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 0.22;
+  }
+}
+
+/* Shell partilhado: gradiente radial + orbes */
+.shell {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1.5rem 1.25rem 6rem;
+  font-family: var(--font-montserrat, var(--font-inter, system-ui, sans-serif));
+  color: #fff;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 45%,
+    #2a5fd4 0%,
+    #153a8a 38%,
+    #0a1526 78%,
+    #050a14 100%
+  );
+}
+
+.montserrat {
+  font-family: var(--font-montserrat, var(--font-inter, system-ui, sans-serif));
+}
+
+.orb {
+  @include orb-base;
+}
+
+.orb1 {
+  @include orb-base;
+  left: -8%;
+  top: 5%;
+  width: min(48vw, 22rem);
+  height: min(48vw, 22rem);
+  background: rgb(99 102 241 / 0.45);
+}
+
+.orb2 {
+  @include orb-base;
+  right: -5%;
+  bottom: 18%;
+  width: min(60vw, 28rem);
+  height: min(60vw, 28rem);
+  background: rgb(59 130 246 / 0.35);
+}
+
+.orb3 {
+  @include orb-base;
+  left: 15%;
+  bottom: 25%;
+  width: min(35vw, 16rem);
+  height: min(35vw, 16rem);
+  background: rgb(168 85 247 / 0.3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .orbMotion {
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+
+  .orb2Motion {
+    animation-delay: -4s;
+  }
+
+  .orb3Motion {
+    animation-delay: -7s;
+  }
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(2%, -3%) scale(1.03);
+  }
+  66% {
+    transform: translate(-2%, 2%) scale(0.98);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  max-width: 26rem;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.greeting {
+  margin-bottom: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.logoBlock {
+  margin-bottom: 1.75rem;
+}
+
+.logoEdenicos {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.logoAcademy {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.percent {
+  margin-bottom: 1rem;
+  font-size: clamp(2.75rem, 10vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.trackWrap {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.track {
+  position: relative;
+  height: 0.65rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 0.55);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.25);
+}
+
+.trackGlow {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border-radius: 9999px;
+  opacity: 0.55;
+  filter: blur(2px);
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6, #ec4899);
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 0.35;
+  }
+}
+
+.fill {
+  position: relative;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #8b5cf6 0%, #3b82f6 50%, #f472b6 100%);
+  box-shadow:
+    0 0 12px rgb(96 165 250 / 0.55),
+    inset 0 1px 0 rgb(255 255 255 / 0.25);
+  transition: width 0.4s ease-out;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.starsBelow {
+  margin-top: 1.5rem;
+}
+
+.watermarkWrap {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  z-index: 1;
+  width: 120vw;
+  max-width: none;
+  opacity: 0.05;
+  transform: translateX(-50%);
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 0.06;
+  }
+}
+
+/* —— Navegação: barra indeterminada (só CSS) —— */
+.navTrack {
+  position: relative;
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 0.5);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.2);
+}
+
+.navShimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.2),
+    rgb(147 197 253 / 0.5),
+    rgb(255 255 255 / 0.15),
+    transparent
+  );
+  animation: navShimmerMove 1.25s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    left: 27%;
+    width: 46%;
+    opacity: 0.85;
+  }
+}
+
+@keyframes navShimmerMove {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+.navHint {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.navLogoMini {
+  margin-top: 1.25rem;
+  transform: scale(0.65);
+}
+
+.navCompact {
+  padding-bottom: 3rem;
+}

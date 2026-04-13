@@ -1,6 +1,9 @@
 'use client'
 
+import type { CSSProperties } from 'react'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import { FiAlertTriangle, FiInfo, FiCheck, FiAward } from 'react-icons/fi'
 import { NotificationItem } from './NotificationItem'
 import { AchievementCard } from './AchievementCard'
@@ -9,32 +12,88 @@ import { AchievementRepository } from '@src/infrastructure/repositories/Achievem
 import type { Notification } from '@src/types/notification.types'
 import type { Achievement } from '@src/types/achievement.types'
 
-const mockNotifications: Notification[] = [
+const NOTIFICATION_BASE: Omit<Notification, 'onAction'>[] = [
   {
     id: '1',
     icon: <FiInfo className="h-3 w-3" />,
-    message: 'Nova atividade disponível! Agora você pode gravar vídeos curtos para mostrar seus experimentos científicos!',
+    message:
+      'Nova atividade disponível! Agora você pode gravar vídeos curtos para mostrar seus experimentos científicos!',
     actionLabel: 'Ver Detalhes',
     variant: 'info',
   },
   {
     id: '2',
     icon: <FiCheck className="h-3 w-3" />,
-    message: 'Parabéns, pequeno cientista! Você ganhou a medalha "Explorador da Natureza" ao completar 5 experimentos!',
+    message:
+      'Parabéns, pequeno cientista! Você ganhou a medalha "Explorador da Natureza" ao completar 5 experimentos!',
     actionLabel: 'Ver Detalhes',
     variant: 'success',
   },
   {
     id: '3',
     icon: <FiAlertTriangle className="h-3 w-3" />,
-    message: 'Horário especial Lembrete: Nossa plataforma terá uma pausa rápida no domingo de manhã para melhorias.',
+    message:
+      'Horário especial Lembrete: Nossa plataforma terá uma pausa rápida no domingo de manhã para melhorias.',
     actionLabel: 'Ver Detalhes',
     variant: 'warning',
   },
 ]
 
+const NOTIFICATION_ACTION_HREF: Record<string, string> = {
+  '1': '/cursos',
+  '2': '/conquistas',
+  '3': '/notificacoes',
+}
+
+function tabButtonStyle(
+  tab: 'recent' | 'explore' | 'new',
+  active: boolean,
+): CSSProperties {
+  if (active) {
+    return {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '7px',
+      padding: '8px 16px',
+      borderRadius: tab === 'new' ? '9999px' : '8px',
+      backgroundColor: 'rgb(21, 93, 251)',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'rgb(255, 255, 255)',
+      fontSize: '14px',
+      fontWeight: 500,
+      lineHeight: '21px',
+    }
+  }
+  if (tab === 'new') {
+    return {
+      padding: '8px 16px',
+      borderRadius: '9999px',
+      backgroundColor: 'transparent',
+      border: '1px solid rgb(190, 219, 255)',
+      cursor: 'pointer',
+      color: 'rgb(21, 93, 251)',
+      fontSize: '14px',
+      fontWeight: 500,
+      lineHeight: '21px',
+    }
+  }
+  return {
+    padding: '8px 16px',
+    borderRadius: '9999px',
+    backgroundColor: 'rgb(255, 255, 255)',
+    border: 'none',
+    cursor: 'pointer',
+    color: 'rgb(113, 113, 130)',
+    fontSize: '14px',
+    fontWeight: 500,
+    lineHeight: '21px',
+  }
+}
+
 export function WelcomeCard() {
-  const [notifications, setNotifications] = useState<Notification[]>(mockNotifications)
+  const router = useRouter()
+  const [notifications, setNotifications] = useState<Omit<Notification, 'onAction'>[]>(NOTIFICATION_BASE)
   const [achievements, setAchievements] = useState<Achievement[]>([])
   const [isLoadingAchievements, setIsLoadingAchievements] = useState(true)
   const [activeTab, setActiveTab] = useState<'recent' | 'explore' | 'new'>('recent')
@@ -68,7 +127,6 @@ export function WelcomeCard() {
         gap: '11px',
       }}
     >
-      {/* Header Section - Azul Forte */}
       <div
         style={{
           borderRadius: '8.75px',
@@ -104,104 +162,124 @@ export function WelcomeCard() {
         </p>
       </div>
 
-      {/* Notifications */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
-        {notifications.map((notification) => (
-          <NotificationItem
-            key={notification.id}
-            notification={notification}
-            onClose={handleCloseNotification}
-          />
-        ))}
+        {notifications.map((notification) => {
+          const href = NOTIFICATION_ACTION_HREF[notification.id]
+          return (
+            <NotificationItem
+              key={notification.id}
+              notification={{
+                ...notification,
+                onAction: href
+                  ? () => {
+                      startNavigationProgress()
+                      router.push(href)
+                    }
+                  : undefined,
+              }}
+              onClose={handleCloseNotification}
+            />
+          )
+        })}
       </div>
 
-      {/* Achievements Navigation */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           gap: '7px',
           marginTop: '11px',
+          flexWrap: 'wrap',
         }}
       >
-        {/* Conquistas Recentes - Active */}
         <button
+          type="button"
           onClick={() => setActiveTab('recent')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '7px',
-            padding: '8px 16px',
-            borderRadius: '8px',
-            backgroundColor: 'rgb(21, 93, 251)',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'rgb(255, 255, 255)',
-            fontSize: '14px',
-            fontWeight: 500,
-            lineHeight: '21px',
-          }}
+          style={tabButtonStyle('recent', activeTab === 'recent')}
         >
           <FiAward style={{ width: '16px', height: '16px' }} />
           <span>Conquistas Recentes</span>
         </button>
 
-        {/* Explorar Agora - Inactive */}
         <button
+          type="button"
           onClick={() => setActiveTab('explore')}
-          style={{
-            padding: '8px 16px',
-            borderRadius: '9999px',
-            backgroundColor: 'rgb(255, 255, 255)',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'rgb(113, 113, 130)',
-            fontSize: '14px',
-            fontWeight: 500,
-            lineHeight: '21px',
-          }}
+          style={tabButtonStyle('explore', activeTab === 'explore')}
         >
           Explorar Agora
         </button>
 
-        {/* Novidade - Inactive */}
-        <button
-          onClick={() => setActiveTab('new')}
-          style={{
-            padding: '8px 16px',
-            borderRadius: '9999px',
-            backgroundColor: 'transparent',
-            border: '1px solid rgb(190, 219, 255)',
-            cursor: 'pointer',
-            color: 'rgb(21, 93, 251)',
-            fontSize: '14px',
-            fontWeight: 500,
-            lineHeight: '21px',
-          }}
-        >
+        <button type="button" onClick={() => setActiveTab('new')} style={tabButtonStyle('new', activeTab === 'new')}>
           Novidade
         </button>
       </div>
 
-      {/* Achievements List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '11px' }}>
-        {isLoadingAchievements ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                style={{
-                  height: '102.8px',
-                  borderRadius: '12.75px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                }}
-              />
-            ))}
+        {activeTab === 'recent' &&
+          (isLoadingAchievements ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: '102.8px',
+                    borderRadius: '12.75px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  }}
+                />
+              ))}
+            </div>
+          ) : (
+            achievements.map((achievement) => <AchievementCard key={achievement.id} achievement={achievement} />)
+          ))}
+
+        {activeTab === 'explore' && (
+          <div
+            style={{
+              borderRadius: '12.75px',
+              border: '1px solid rgb(190, 219, 255)',
+              padding: '16px',
+              backgroundColor: 'rgba(255, 255, 255, 0.6)',
+            }}
+          >
+            <p style={{ margin: '0 0 12px', fontSize: '14px', color: 'rgb(55, 65, 81)', lineHeight: '1.5' }}>
+              Explore trilhas, desafios e cursos para avançar na sua jornada.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                startNavigationProgress()
+                router.push('/cursos')
+              }}
+              style={{
+                padding: '8px 16px',
+                borderRadius: '8px',
+                backgroundColor: 'rgb(21, 93, 251)',
+                border: 'none',
+                cursor: 'pointer',
+                color: 'rgb(255, 255, 255)',
+                fontSize: '14px',
+                fontWeight: 500,
+              }}
+            >
+              Ver cursos
+            </button>
           </div>
-        ) : (
-          achievements.map((achievement) => (
-            <AchievementCard key={achievement.id} achievement={achievement} />
-          ))
+        )}
+
+        {activeTab === 'new' && (
+          <div
+            style={{
+              borderRadius: '12.75px',
+              border: '1px dashed rgb(190, 219, 255)',
+              padding: '16px',
+              backgroundColor: 'rgba(255, 255, 255, 0.35)',
+            }}
+          >
+            <p style={{ margin: 0, fontSize: '14px', color: 'rgb(107, 114, 128)', lineHeight: '1.5' }}>
+              Novidades da plataforma em breve. Fique de olho nas notificações!
+            </p>
+          </div>
         )}
       </div>
     </div>

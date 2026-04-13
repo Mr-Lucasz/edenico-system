@@ -1,0 +1,278 @@
+@use 'styles/variables' as *;
+
+$brown: #965a3e;
+$brown-deep: #7a4a33;
+$cta-green-ghost: rgba(0, 200, 117, 0.35);
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.cardLocked {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: visible;
+  background: #fff;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.08),
+    0 2px 4px -2px rgb(0 0 0 / 0.08);
+}
+
+.cardHero {
+  padding: 1.25rem 1.25rem 1rem;
+  background: linear-gradient(145deg, $brown 0%, $brown-deep 100%);
+  color: #fff;
+}
+
+.cardHeroMuted {
+  background: linear-gradient(145deg, #d4b8a8 0%, #c4a896 100%);
+  color: #3f2e26;
+}
+
+.cardHeroMutedLight {
+  background: linear-gradient(145deg, #e8ddd6 0%, #ddd0c8 100%);
+  color: #4a3d38;
+}
+
+.cardHeroTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.starBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.2);
+}
+
+.starIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: #fde047;
+  fill: #fde047;
+}
+
+.certBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: rgb(255 255 255 / 0.15);
+  color: #fff;
+}
+
+.certIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.progressHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $gray-600;
+}
+
+.progressPill {
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $brown;
+  background: rgb(150 90 62 / 0.12);
+}
+
+.progressTrack {
+  height: 8px;
+  border-radius: 9999px;
+  background: $gray-200;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 9999px;
+  background: $brown;
+  transition: width 0.3s ease;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.tag {
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: $gray-600;
+  background: $gray-100;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.statBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid $gray-200;
+  background: #fff;
+}
+
+.statNum {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: $gray-900;
+}
+
+.statLbl {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: $gray-500;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding: 0.875rem 1rem;
+  border-radius: 14px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(180deg, $brown 0%, $brown-deep 100%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.12);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.15);
+  }
+}
+
+.ctaIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  stroke-width: 2.5px;
+}
+
+.phaseIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: rgb(0 0 0 / 0.06);
+}
+
+.phaseIconInner {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.lockArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  margin: 0.5rem 0;
+}
+
+.lockIcon {
+  width: 3rem;
+  height: 3rem;
+  color: $gray-400;
+}
+
+.ctaGhost {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: not-allowed;
+  color: $gray-600;
+  background: $cta-green-ghost;
+}
+
+.unlockHint {
+  margin: 0 0 0.5rem;
+  padding: 0 1rem 1rem;
+  font-size: 0.6875rem;
+  text-align: center;
+  color: $gray-500;
+  line-height: 1.4;
+}

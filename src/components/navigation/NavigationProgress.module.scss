@@ -1,0 +1,78 @@
+@use 'styles/variables' as *;
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 3px;
+  pointer-events: none;
+  overflow: hidden;
+  background: rgb(21 93 252 / 0.12);
+}
+
+.barInner {
+  height: 100%;
+  width: 40%;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(90deg, #155dfc 0%, #7c3aed 50%, #155dfc 100%);
+  background-size: 200% 100%;
+  animation: navigationProgressSlide 1.1s ease-in-out infinite;
+  box-shadow: 0 0 12px rgb(21 93 252 / 0.45);
+}
+
+@keyframes navigationProgressSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.spinnerWrap {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.12),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  pointer-events: none;
+}
+
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid $gray-200;
+  border-top-color: #155dfc;
+  border-radius: 9999px;
+  animation: navigationSpin 0.7s linear infinite;
+}
+
+@keyframes navigationSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Inter, Montserrat } from 'next/font/google'
+import { NavigationProgress } from '@src/components/navigation/NavigationProgress'
 import '@src/styles/globals.scss'
 
 const inter = Inter({
@@ -25,7 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} ${montserrat.variable}`}>{children}</body>
+      <body className={`${inter.variable} ${montserrat.variable}`}>
+        <Suspense fallback={null}>
+          <NavigationProgress />
+        </Suspense>
+        {children}
+      </body>
     </html>
   )
 }

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import { FiBook } from 'react-icons/fi'
 import { CourseService } from '@src/domain/services/CourseService'
 import { CourseRepository } from '@src/infrastructure/repositories/CourseRepository'
@@ -8,7 +10,9 @@ import { AdventureCard } from './AdventureCard'
 import type { Course } from '@src/types/course.types'
 
 export function RecentAdventures() {
+  const router = useRouter()
   const [courses, setCourses] = useState<Course[]>([])
+  const [totalCourses, setTotalCourses] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -16,8 +20,12 @@ export function RecentAdventures() {
       setIsLoading(true)
       const repository = new CourseRepository()
       const service = new CourseService(repository)
-      const inProgressCourses = await service.getInProgressCourses()
+      const [inProgressCourses, allCourses] = await Promise.all([
+        service.getInProgressCourses(),
+        service.getAllCourses(),
+      ])
       setCourses(inProgressCourses)
+      setTotalCourses(allCourses.length)
       setIsLoading(false)
     }
 
@@ -69,12 +77,15 @@ export function RecentAdventures() {
           }}
         >
           <FiBook style={{ width: '16px', height: '16px' }} />
-          <span>26 cursos disponíveis</span>
+          <span>{totalCourses || '—'} cursos disponíveis</span>
         </div>
 
         {/* Right - Ver Todos Button */}
         <button
-          onClick={() => (window.location.href = '/cursos')}
+          onClick={() => {
+            startNavigationProgress()
+            router.push('/cursos')
+          }}
           style={{
             padding: '8px 16px',
             borderRadius: '8px',
@@ -109,7 +120,14 @@ export function RecentAdventures() {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {courses.map((course) => (
-            <AdventureCard key={course.id} course={course} />
+            <AdventureCard
+              key={course.id}
+              course={course}
+              onContinue={() => {
+                startNavigationProgress()
+                router.push(`/cursos/${course.id}`)
+              }}
+            />
           ))}
         </div>
       )}

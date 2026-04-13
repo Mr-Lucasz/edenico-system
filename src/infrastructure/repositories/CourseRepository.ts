@@ -1,5 +1,5 @@
 import type { ICourseRepository } from '@src/domain/interfaces/ICourseRepository'
-import type { Course } from '@src/types/course.types'
+import type { Course, CourseCategory, CourseLevel } from '@src/types/course.types'
 import { mockCourses } from '../data/mockCourses'
 
 /**
@@ -21,5 +21,14 @@ export class CourseRepository implements ICourseRepository {
   async findByCategory(category: Course['category']): Promise<Course[]> {
     await new Promise((resolve) => setTimeout(resolve, 50))
     return mockCourses.filter((course) => course.category === category)
+  }
+
+  async findByCategoryAndLevel(category: CourseCategory | null, level: CourseLevel): Promise<Course[]> {
+    await new Promise((resolve) => setTimeout(resolve, 50))
+    return mockCourses.filter((course) => {
+      if (course.level !== level) return false
+      if (category === null) return true
+      return course.category === category
+    })
   }
 }

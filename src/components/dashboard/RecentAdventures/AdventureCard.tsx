@@ -1,5 +1,4 @@
 import { FiPlay } from 'react-icons/fi'
-import { colors } from '@src/constants/colors'
 import { formatProgressText, formatTimeAgo } from '@src/utils'
 import type { Course } from '@src/types/course.types'
 
@@ -9,16 +8,20 @@ export interface AdventureCardProps {
 }
 
 export function AdventureCard({ course, onContinue }: AdventureCardProps) {
-  const categoryColors = {
-    sciences: 'rgb(234, 88, 12)', // Laranja para Ciências
-    technology: 'rgb(168, 85, 247)', // Roxo para Tecnologia
-    arts: 'rgb(234, 88, 12)', // Laranja para Artes
+  const categoryColors: Record<Course['category'], string> = {
+    sciences: 'rgb(234, 88, 12)',
+    technology: 'rgb(168, 85, 247)',
+    arts: 'rgb(234, 88, 12)',
+    relations: 'rgb(59, 130, 246)',
+    service: 'rgb(16, 185, 129)',
   }
 
-  const categoryLabels = {
+  const categoryLabels: Record<Course['category'], string> = {
     sciences: 'CIÊNCIAS',
     technology: 'TECNOLOGIA',
     arts: 'ARTES',
+    relations: 'RELAÇÕES',
+    service: 'SERVIÇO',
   }
 
   const progressPercentage = Math.round(course.progress)

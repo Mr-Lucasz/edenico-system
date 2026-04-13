@@ -1,0 +1,45 @@
+@use 'styles/variables' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @include md {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+}
+
+.tagline {
+  margin: 0;
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $gray-700;
+  line-height: 1.5;
+  max-width: 42rem;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: $gray-500;
+  white-space: nowrap;
+
+  @include md {
+    margin-left: auto;
+  }
+}
+
+.bookIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: $gray-400;
+}

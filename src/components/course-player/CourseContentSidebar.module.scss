@@ -1,0 +1,191 @@
+@use 'styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.head {
+  margin-bottom: 0.25rem;
+}
+
+.headTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.headSub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: $gray-500;
+  line-height: 1.35;
+}
+
+.unit {
+  border: 1px solid $gray-200;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.unitLocked {
+  opacity: 0.92;
+}
+
+.unitHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+
+  &:hover {
+    background: $gray-50;
+  }
+}
+
+.unitHeadTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $gray-800;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: $gray-500;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.unitBar {
+  height: 6px;
+  border-radius: 9999px;
+  background: $gray-200;
+  margin: 0 0.75rem 0.5rem;
+  overflow: hidden;
+}
+
+.unitBarFill {
+  height: 100%;
+  border-radius: inherit;
+  background: $blue-500;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.35rem 0.5rem;
+}
+
+.itemBtn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+
+  &:hover:not(:disabled) {
+    background: $gray-100;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.itemActive {
+  background: $blue-50;
+  outline: 1px solid $blue-100;
+}
+
+.iconCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gray-500;
+}
+
+.mid {
+  min-width: 0;
+}
+
+.row1 {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.itemTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $gray-800;
+}
+
+.tag {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+}
+
+.tagVideo {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.tagMaterial {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+.tagQuiz {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  color: $gray-500;
+}
+
+.done {
+  color: #059669;
+  font-weight: 600;
+}
+
+.rightCol {
+  display: flex;
+  align-items: center;
+  color: $blue-600;
+}
+
+.finalBlock {
+  margin-top: 0.25rem;
+}

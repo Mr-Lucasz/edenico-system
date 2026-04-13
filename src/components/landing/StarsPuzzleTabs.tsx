@@ -1,7 +1,7 @@
 'use client'
 
-import { starsCategories } from '@src/data/starsContent'
 import { getPuzzlePieceMeta } from '@src/components/stars/starsPuzzlePaths'
+import { starsCategories } from '@src/data/starsContent'
 import { cn } from '@src/utils/cn'
 import styles from './StarsPuzzleTabs.module.scss'
 

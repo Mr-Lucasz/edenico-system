@@ -1,0 +1,165 @@
+@use 'styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid $gray-200;
+  background: #fff;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.4rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $gray-900;
+  line-height: 1.35;
+}
+
+.desc {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: $gray-500;
+}
+
+.progressBlock {
+  margin-bottom: 1rem;
+}
+
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.375rem;
+}
+
+.progressLbl {
+  font-size: 0.75rem;
+  color: $gray-500;
+}
+
+.progressPct {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $gray-500;
+}
+
+.track {
+  height: 8px;
+  border-radius: 9999px;
+  background: $gray-200;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: #0070f3;
+  transition: width 0.3s ease;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: $gray-500;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.metaIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.btnContinue,
+.btnStart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  color: #fff;
+  transition: filter 0.15s ease;
+}
+
+.btnContinue {
+  background: #0070f3;
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+.btnStart {
+  background: #00c853;
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+.btnIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  stroke-width: 2.5px;
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0070f3;
+  border: 1px solid rgb(0 112 243 / 0.35);
+  background: #fff;
+
+  &:hover {
+    background: rgb(0 112 243 / 0.06);
+  }
+}

@@ -1,3 +1,5 @@
+'use client'
+
 import { Navbar } from '@src/components/layout/Navbar'
 import { Footer } from '@src/components/layout/Footer'
 import { Banner } from '@src/components/dashboard/Banner'

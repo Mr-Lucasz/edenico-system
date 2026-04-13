@@ -1,5 +1,7 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { startNavigationProgress } from '@src/lib/navigationProgress'
 import styles from './SummaryCards.module.scss'
 import {
   FiBookOpen,
@@ -14,11 +16,17 @@ import { SummaryCard } from './SummaryCard'
 import { gradients } from '@src/constants/gradients'
 
 export function SummaryCards() {
+  const router = useRouter()
+
   return (
     <div className={styles.grid}>
       <SummaryCard
         title={{ line1: 'Cursos em', line2: 'Andamento' }}
         actionLabel="Continue estudando!"
+        onAction={() => {
+          startNavigationProgress()
+          router.push('/cursos')
+        }}
         actionIcon={<FiBookOpen style={{ width: '1rem', height: '1rem', color: '#1976d2' }} />}
         icon={<FiBookOpen style={{ width: '1.75rem', height: '1.75rem', color: '#0d47a1' }} />}
         badge={{

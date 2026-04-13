@@ -1,0 +1,167 @@
+@use 'styles/variables' as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0 1.25rem;
+}
+
+.iconCircle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, $blue-500, #155dfc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.heroSub {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  color: $gray-500;
+}
+
+.score {
+  margin: 0.75rem 0 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #dc2626;
+  line-height: 1;
+}
+
+.badge {
+  margin-top: 0.65rem;
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.reviewTitle {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $gray-800;
+}
+
+.qBlock {
+  border: 1px solid $gray-200;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.65rem;
+  background: #fff;
+}
+
+.qHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.qNum {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: $gray-700;
+}
+
+.okIcon {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.badIcon {
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.line {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.userAns {
+  color: $gray-700;
+}
+
+.userOk {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.userBad {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.correctLabel {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.explain {
+  margin-top: 0.65rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  background: $gray-100;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: $gray-700;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $gray-200;
+}
+
+.btnOutline {
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid $gray-300;
+  background: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $gray-700;
+  cursor: pointer;
+
+  &:hover {
+    background: $gray-50;
+  }
+}
+
+.btnPrimary {
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  background: $blue-600;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: $blue-700;
+  }
+}

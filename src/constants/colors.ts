@@ -7,6 +7,8 @@ export const colors = {
     sciences: '#ef4444', // Vermelho - Ciências
     technology: '#a855f7', // Roxo - Tecnologia
     arts: '#f97316', // Laranja - Artes
+    relations: '#3b82f6', // Azul - Relações
+    service: '#10b981', // Verde - Serviço
   },
   // Cores dos summary cards - Pixel Perfect
   summary: {

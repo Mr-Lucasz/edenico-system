@@ -1,0 +1,61 @@
+@use 'styles/variables' as *;
+
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 1.75rem;
+  border-radius: 12px;
+  border: 1px solid $gray-200;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+  min-width: 0;
+  width: 100%;
+  padding: 0.625rem 0.35rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #fff;
+  color: $gray-700;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    background-color: $gray-50;
+  }
+}
+
+.tabActive {
+  color: #fff;
+
+  &:hover {
+    filter: brightness(0.92);
+  }
+}
+
+.letter {
+  font-size: 1.125rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  opacity: 0.95;
+  text-align: center;
+  word-break: break-word;
+}
