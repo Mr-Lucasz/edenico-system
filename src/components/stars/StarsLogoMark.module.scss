@@ -1,0 +1,42 @@
+@use 'styles/variables' as *;
+
+.mark {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.piece {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 12px rgb(0 0 0 / 0.15));
+
+  &:not(:first-child) {
+    margin-left: var(--stars-overlap, -1.25rem);
+  }
+
+  @include sm {
+    &:not(:first-child) {
+      margin-left: var(--stars-overlap-sm, -1.75rem);
+    }
+  }
+}
+
+.svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.watermark {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    filter: blur(2px);
+  }
+}

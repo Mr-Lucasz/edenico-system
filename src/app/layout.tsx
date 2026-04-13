@@ -1,10 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Montserrat } from 'next/font/google'
 import '@src/styles/globals.scss'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -19,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.variable}>{children}</body>
+      <body className={`${inter.variable} ${montserrat.variable}`}>{children}</body>
     </html>
   )
 }
