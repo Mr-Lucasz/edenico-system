@@ -1,0 +1,18 @@
+@use 'styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  padding-top: 6.75rem;
+
+  @include sm {
+    padding-top: 7rem;
+  }
+}

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import {
   FiChevronDown,
   FiFacebook,
+  FiHeart,
   FiInstagram,
   FiMail,
   FiTwitter,
@@ -21,11 +22,29 @@ const ABOUT_LINKS = [
   { label: 'Carreiras', href: '#contato' },
 ] as const
 
+const INSTIT_ABOUT_LINKS = [
+  { label: 'Institucional', href: '/institucional#inicio' },
+  { label: 'Jogo', href: '/institucional#ecossistema' },
+  { label: 'Doações', href: '/institucional#contato' },
+  { label: 'Entrar', href: '/login' },
+  { label: 'Registrar', href: '/register' },
+  { label: 'Nossa equipe', href: '/institucional#contato' },
+  { label: 'Nossos estagiários', href: '/institucional#contato' },
+  { label: 'Carreiras', href: '/institucional#contato' },
+] as const
+
 const CONTACT_LINKS = [
   { label: 'Central de ajuda', href: '#contato' },
   { label: 'Comunidade de apoio', href: '#contato' },
   { label: 'Compartilhe sua história', href: '#contato' },
   { label: 'Imprensa', href: '#contato' },
+] as const
+
+const INSTIT_CONTACT_LINKS = [
+  { label: 'Central de ajuda', href: '/institucional#contato' },
+  { label: 'Comunidade de apoio', href: '/institucional#contato' },
+  { label: 'Compartilhe sua história', href: '/institucional#contato' },
+  { label: 'Imprensa', href: '/institucional#contato' },
 ] as const
 
 const COURSE_LINKS = [
@@ -53,13 +72,19 @@ const COUNTRIES = [
   { code: 'ES' as const, label: 'Espanha' },
 ] as const
 
-export function LandingFooter() {
+export type LandingFooterProps = {
+  variant?: 'default' | 'institucional'
+}
+
+export function LandingFooter({ variant = 'default' }: LandingFooterProps) {
   const year = new Date().getFullYear()
+  const aboutLinks = variant === 'institucional' ? INSTIT_ABOUT_LINKS : ABOUT_LINKS
+  const contactLinks = variant === 'institucional' ? INSTIT_CONTACT_LINKS : CONTACT_LINKS
 
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.decor} aria-hidden>
-        <span className={styles.decorStarLg}>✦</span>
+        <span className={styles.decorSun}>☼</span>
         <span className={styles.decorStarSm}>✧</span>
         <span className={styles.decorCluster}>✦</span>
         <span className={styles.decorFlower}>❋</span>
@@ -80,7 +105,7 @@ export function LandingFooter() {
           <div>
             <h3 className={styles.colHeading}>Acerca de</h3>
             <ul className={styles.linkList}>
-              {ABOUT_LINKS.map((item) => (
+              {aboutLinks.map((item) => (
                 <li key={item.href + item.label}>
                   <Link href={item.href} className={styles.link}>
                     {item.label}
@@ -93,7 +118,7 @@ export function LandingFooter() {
           <div>
             <h3 className={styles.colHeading}>Contato</h3>
             <ul className={styles.linkList}>
-              {CONTACT_LINKS.map((item) => (
+              {contactLinks.map((item) => (
                 <li key={item.href + item.label}>
                   <Link href={item.href} className={styles.link}>
                     {item.label}
@@ -154,14 +179,14 @@ export function LandingFooter() {
                         className={styles.countryFlagSvg}
                       />
                     </span>
-                    <span className={styles.countryLabel}>
-                      <span className={styles.countryCode}>{c.code}</span>{' '}
-                      {c.label}
-                    </span>
+                    <span className={styles.countryLabel}>{c.label}</span>
                   </button>
                 ))}
               </div>
             </fieldset>
+            <span className={styles.decorHeadphones} aria-hidden>
+              🎧
+            </span>
           </div>
 
           <div className={styles.socialBlock}>
@@ -188,7 +213,11 @@ export function LandingFooter() {
         </div>
 
         <div className={styles.bottomRow}>
-          <p className={styles.bottomLeft}>Feito com ❤️ para educação</p>
+          <p className={styles.bottomLeft}>
+            <span className={styles.bottomLeftInner}>
+              Feito com <FiHeart className={styles.heartIcon} aria-hidden /> para educação
+            </span>
+          </p>
           <p className={styles.bottomCenter}>
             © {year} Edênicos Academy. Todos os direitos reservados.
           </p>

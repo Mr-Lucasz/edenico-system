@@ -1,20 +1,25 @@
+import type { CSSProperties } from 'react'
 import { institutionalCopy } from '@src/constants/institutionalCopy'
-import { FiAward, FiZap, FiUsers, FiCheckCircle, FiGrid, FiFolder } from 'react-icons/fi'
+import { FiAward, FiZap, FiUsers, FiCheckCircle, FiHeart, FiFileText } from 'react-icons/fi'
 import styles from './InstitucionalHero.module.scss'
 
-const DIFF_ICONS = [FiAward, FiZap, FiUsers, FiCheckCircle, FiGrid, FiFolder]
+const HERO_ICONS = [FiAward, FiZap, FiUsers, FiCheckCircle, FiHeart, FiFileText] as const
+
+/** Cores dos círculos de ícone (protótipo / SVG) */
+const HERO_ICON_ACCENTS = ['#f59e0b', '#a855f7', '#22c55e', '#6366f1', '#ec4899', '#14b8a6'] as const
 
 export function InstitucionalHero() {
   const { hero } = institutionalCopy
+
   return (
     <section id="inicio" className={styles.section} aria-labelledby="institucional-hero-heading">
       <div className={styles.inner}>
-        <div>
+        <div className={styles.copyCol}>
           <span className={styles.badge}>{hero.badge}</span>
           <h1 id="institucional-hero-heading" className={styles.title}>
             {hero.titleLine1}{' '}
             <span className={styles.accent}>{hero.titleLine2}</span>{' '}
-            {hero.titleLine3}
+            <span className={styles.titleLight}>{hero.titleLine3}</span>
           </h1>
           <p className={styles.subtitle}>{hero.subtitle}</p>
           <a href="#quem-somos" className={styles.cta}>
@@ -25,14 +30,24 @@ export function InstitucionalHero() {
           </a>
         </div>
         <div className={styles.grid}>
-          {hero.differentials.map((label, i) => {
-            const Icon = DIFF_ICONS[i]
+          {hero.differentials.map((item, i) => {
+            const Icon = HERO_ICONS[i]
+            const accent = HERO_ICON_ACCENTS[i]
+            const iconStyle = {
+              '--icon-accent': accent,
+              '--icon-bg': `${accent}22`,
+            } as CSSProperties
             return (
-              <div key={label} className={styles.card}>
-                <div className={styles.iconWrap}>
-                  <Icon className={styles.icon} aria-hidden />
+              <div key={`${item.title}-${item.subtitle}`} className={styles.card}>
+                <div className={styles.cardRow}>
+                  <div className={styles.iconWrap} style={iconStyle}>
+                    <Icon className={styles.icon} aria-hidden />
+                  </div>
+                  <div className={styles.cardTexts}>
+                    <span className={styles.cardTitle}>{item.title}</span>
+                    <span className={styles.cardSubtitle}>{item.subtitle}</span>
+                  </div>
                 </div>
-                <span className={styles.cardLabel}>{label}</span>
               </div>
             )
           })}

@@ -1,110 +1,217 @@
 @use 'styles/variables' as *;
 
 .section {
-  background: linear-gradient(to bottom, $edenicos-navy, $edenicos-navy-light);
-  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 1rem;
+  background-color: $hero-gradient-start;
+  background-image:
+    radial-gradient(ellipse 65% 50% at 12% 18%, rgb(55 117 228 / 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 88% 82%, rgb(147 51 234 / 0.14) 0%, transparent 52%),
+    linear-gradient(165deg, #07162b 0%, #0f2847 42%, #1e3a8a 88%);
 
   @include sm {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 5.5rem 1.5rem;
   }
 
   @include lg {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 6rem 2rem;
   }
 }
 
 .container {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
   max-width: 80rem;
   text-align: center;
 }
 
 .tag {
-  display: inline-block;
-  border-radius: 0.5rem;
-  background-color: rgb(255 255 255 / 0.1);
-  padding: 0.375rem 1rem;
-  font-size: 0.875rem;
-  color: rgb(255 255 255 / 0.8);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background-color: rgb(0 0 0 / 0.28);
+  padding: 0.4rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.95);
+  text-transform: uppercase;
+}
+
+.tagDot {
+  flex-shrink: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+}
+
+.tagDotYellow {
+  background: $principles-title-accent;
+  box-shadow: 0 0 8px rgb(251 191 36 / 0.5);
+}
+
+.tagDotPurple {
+  background: #a855f7;
+  box-shadow: 0 0 8px rgb(168 85 247 / 0.45);
 }
 
 .title {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   font-size: 1.875rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: #fff;
 
   @include sm {
     font-size: 2.25rem;
   }
+
+  @include lg {
+    font-size: 2.5rem;
+  }
 }
 
 .titleAccent {
-  color: #fb923c;
+  color: $principles-title-accent;
+}
+
+.titleRule {
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  margin: 0.875rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, $principles-accent-yellow, $principles-title-accent);
 }
 
 .subtitle {
-  margin: 0.5rem auto 0;
+  margin: 1rem auto 0;
   max-width: 42rem;
-  color: rgb(255 255 255 / 0.8);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgb(203 213 225 / 0.92);
 }
 
-.highlightOrange {
-  color: #f97316;
+.highlightVision {
+  color: $principles-accent-yellow;
+  font-weight: 700;
+}
+
+.highlightMission {
+  color: $principles-accent-purple;
+  font-weight: 700;
 }
 
 .mobileWrap {
-  margin-top: 2.5rem;
+  margin-top: 2.75rem;
 }
 
 .mobileSlider {
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.75rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
   background-color: #fff;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.2);
 }
 
 .panel {
-  padding: 2rem;
+  padding: 2rem 1.75rem 2.25rem;
+  text-align: center;
 }
 
-.iconOrange {
+.iconVision,
+.iconMission {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 9999px;
-  padding: 1rem;
-  background-color: rgb(249 115 22 / 0.1);
-  color: #f97316;
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
 }
 
-.iconPurple {
-  display: inline-flex;
-  border-radius: 9999px;
-  padding: 1rem;
-  background-color: rgb(168 85 247 / 0.1);
-  color: #a855f7;
+.iconVision {
+  background: linear-gradient(145deg, #fbbf24 0%, $principles-accent-yellow 100%);
+  box-shadow: 0 8px 24px rgb(245 158 11 / 0.35);
+}
+
+.iconMission {
+  background: linear-gradient(145deg, #a855f7 0%, $principles-accent-purple 100%);
+  box-shadow: 0 8px 24px rgb(147 51 234 / 0.35);
 }
 
 .iconLg {
   height: 2rem;
   width: 2rem;
+  stroke-width: 2;
 }
 
 .cardTitle {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   font-size: 1.25rem;
   font-weight: 700;
   color: $gray-900;
 }
 
 .cardText {
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
+  line-height: 1.65;
   color: $gray-700;
+  text-align: center;
+}
+
+.cardFooterDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.75rem;
+  padding-top: 0.25rem;
+
+  span {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+  }
+}
+
+.cardFooterDotsVision span {
+  background: #fbbf24;
+
+  &:nth-child(1) {
+    opacity: 0.42;
+  }
+
+  &:nth-child(2) {
+    opacity: 0.7;
+  }
+
+  &:nth-child(3) {
+    opacity: 1;
+  }
+}
+
+.cardFooterDotsMission span {
+  background: #a855f7;
+
+  &:nth-child(1) {
+    opacity: 0.42;
+  }
+
+  &:nth-child(2) {
+    opacity: 0.72;
+  }
+
+  &:nth-child(3) {
+    opacity: 1;
+  }
 }
 
 .dots {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
@@ -117,28 +224,45 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  background-color: rgb(255 255 255 / 0.4);
-  transition: background 0.15s ease;
+  background-color: rgb(255 255 255 / 0.25);
+  transition:
+    background 0.15s ease,
+    width 0.15s ease;
 }
 
-.dotActive {
-  background-color: #f97316;
+.dotActiveVision {
+  width: 1.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #fbbf24, $principles-accent-yellow);
+}
+
+.dotActiveMission {
+  width: 1.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #c084fc, $principles-accent-purple);
 }
 
 .desktopGrid {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
 
   @include md {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
 .desktopCard {
-  border-radius: 1rem;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1.75rem;
+  border: 1px solid rgb(255 255 255 / 0.35);
   background-color: #fff;
-  padding: 2rem;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  padding: 2.5rem 2rem 2.35rem;
+  box-shadow: 0 16px 44px rgb(0 0 0 / 0.18);
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 20px 50px rgb(0 0 0 / 0.22);
+  }
 }

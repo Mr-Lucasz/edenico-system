@@ -1,8 +1,8 @@
 @use 'styles/variables' as *;
 
 .section {
-  background-color: $gray-50;
-  padding: 4rem 1rem;
+  background: linear-gradient(165deg, $edenicos-navy-deep 0%, #0e1f3d 50%, $edenicos-navy-deep 100%);
+  padding: 5rem 1rem;
 
   @include sm {
     padding-left: 1.5rem;
@@ -10,8 +10,7 @@
   }
 
   @include lg {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 5.5rem 2rem;
   }
 }
 
@@ -24,29 +23,53 @@
   text-align: center;
   font-size: 1.875rem;
   font-weight: 700;
-  color: $gray-900;
+  letter-spacing: -0.02em;
+  color: #fff;
+
+  @include sm {
+    font-size: 2.25rem;
+  }
 }
 
 .grid {
   margin-top: 3rem;
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
 
   @include md {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
 .card {
-  border-radius: 1rem;
-  border: 1px solid $gray-100;
-  background-color: #fff;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background-color: rgb(15 30 55 / 0.85);
   padding: 2rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
-  transition: box-shadow 0.2s ease;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
 
   &:hover {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+.cardFeatured {
+  background-color: #fff;
+  border-color: rgb(255 255 255 / 0.95);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.2);
+
+  .cardTitle {
+    color: $gray-900;
+  }
+
+  .cardDesc {
+    color: $gray-600;
   }
 }
 
@@ -83,10 +106,23 @@
   margin-top: 1rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: $gray-900;
+  color: #fff;
 }
 
 .cardDesc {
   margin-top: 0.75rem;
-  color: #4b5563;
+  line-height: 1.6;
+  color: rgb(226 232 240 / 0.92);
+}
+
+.cardFeatured .iconBlue {
+  background-color: $blue-100;
+}
+
+.cardFeatured .iconOrange {
+  background-color: #ffedd5;
+}
+
+.cardFeatured .iconPurple {
+  background-color: #f3e8ff;
 }

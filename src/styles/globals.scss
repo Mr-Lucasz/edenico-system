@@ -3,18 +3,26 @@
 :root {
   --font-sans: system-ui, -apple-system, sans-serif;
   --edenicos-navy: #{$edenicos-navy};
+  --edenicos-navy-deep: #{$edenicos-navy-deep};
   --edenicos-header-float: #{$edenicos-header-float};
   --edenicos-purple: #{$edenicos-purple};
   --edenicos-yellow: #{$edenicos-yellow};
+  --edenicos-gold: #{$edenicos-gold};
+  --edenicos-gold-text: #{$edenicos-gold-text};
   --edenicos-royal-blue: #{$edenicos-royal-blue};
   --edenicos-cta-magenta: #{$edenicos-cta-magenta};
   --page-cream: #fffdf9;
+  --institucional-header-height: 4.25rem;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  scroll-padding-top: 5rem;
 }
 
 html,

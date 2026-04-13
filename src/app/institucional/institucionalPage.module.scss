@@ -3,28 +3,19 @@
 .page {
   min-height: 100vh;
   background-color: #fff;
-}
-
-.main {
-  padding-top: 100px;
-}
-
-.contactSection {
-  background-color: $edenicos-navy;
-  padding: 4rem 1rem;
+  /* Altura útil do header fixo (faixa + pílula) para seções sticky ex.: STARS */
+  --institucional-header-height: 6.75rem;
 
   @include sm {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @include lg {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    --institucional-header-height: 7rem;
   }
 }
 
-.contactInner {
-  margin: 0 auto;
-  max-width: 56rem;
+/* Header default: faixa superior (~2.25rem) + barra em pílula (~4rem) ≈ 6.75rem */
+.main {
+  padding-top: 6.75rem;
+
+  @include sm {
+    padding-top: 7rem;
+  }
 }

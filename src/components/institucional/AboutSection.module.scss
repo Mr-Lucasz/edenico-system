@@ -1,8 +1,9 @@
 @use 'styles/variables' as *;
 
 .section {
-  background-color: #fff;
-  padding: 4rem 1rem;
+  position: relative;
+  background-color: $gray-100;
+  padding: 4.5rem 1rem;
 
   @include sm {
     padding-left: 1.5rem;
@@ -10,8 +11,7 @@
   }
 
   @include lg {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 5rem 2rem;
   }
 }
 
@@ -26,23 +26,27 @@
   max-width: 80rem;
 }
 
+.head {
+  text-align: center;
+}
+
 .tag {
   margin: 0 auto;
-  display: block;
-  width: fit-content;
+  display: inline-block;
   border-radius: 9999px;
-  background-color: $blue-100;
-  padding: 0.375rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #1d4ed8;
+  background-color: $blue-600;
+  padding: 0.4rem 1.125rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
 }
 
 .title {
   margin-top: 1rem;
-  text-align: center;
   font-size: 1.875rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   color: $gray-900;
 
   @include sm {
@@ -50,59 +54,205 @@
   }
 }
 
-.grid {
-  margin-top: 3rem;
+.titleRule {
+  display: block;
+  width: 3rem;
+  height: 0.25rem;
+  margin: 0.875rem auto 0;
+  border-radius: 9999px;
+  background-color: $blue-600;
+}
+
+.layout {
+  margin-top: 2.75rem;
   display: grid;
   gap: 2rem;
 
-  @include md {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  @include lg {
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 2.5rem;
+    align-items: start;
   }
 }
 
-.article {
-  border-radius: 1rem;
-  border: 1px solid $gray-100;
+.colLeft {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.storyCard {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(0 0 0 / 0.04);
   background-color: #fff;
-  padding: 2rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 14px 36px rgb(0 0 0 / 0.08);
+  }
+}
+
+.cardRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.cardBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.iconBoxBlue,
+.iconBoxPurple,
+.iconBoxOrange,
+.iconBoxInnovation {
+  display: flex;
+  flex-shrink: 0;
+  height: 3.25rem;
+  width: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.65rem;
 }
 
 .iconBoxBlue {
-  display: flex;
-  height: 3.5rem;
-  width: 3.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.75rem;
   background-color: $blue-100;
   color: #2563eb;
 }
 
 .iconBoxPurple {
-  display: flex;
-  height: 3.5rem;
-  width: 3.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.75rem;
   background-color: #f3e8ff;
   color: #9333ea;
 }
 
+.iconBoxOrange {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.iconBoxInnovation {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
 .icon {
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.65rem;
+  width: 1.65rem;
 }
 
 .artTitle {
-  margin-top: 1rem;
-  font-size: 1.25rem;
+  margin: 0;
+  font-size: 1.125rem;
   font-weight: 700;
+  line-height: 1.35;
   color: $gray-900;
+
+  @include sm {
+    font-size: 1.1875rem;
+  }
 }
 
 .artText {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $gray-600;
+}
+
+.artTextMuted {
+  margin: 0.4rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: $gray-600;
+}
+
+/* Coluna direita */
+.colRight {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mediaPlaceholder {
+  min-height: 12rem;
+  border-radius: 1.25rem;
+  border: 1px dashed rgb(0 0 0 / 0.08);
+  background: linear-gradient(145deg, #fff 0%, $gray-50 100%);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.06);
+
+  @include sm {
+    min-height: 14rem;
+  }
+
+  @include lg {
+    min-height: 16rem;
+  }
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.statCardBlue,
+.statCardPurple {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 1.25rem 1.1rem 1.35rem;
+  color: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+}
+
+.statCardBlue {
+  background: linear-gradient(160deg, $blue-600 0%, $blue-700 100%);
+}
+
+.statCardPurple {
+  background: linear-gradient(160deg, #7c3aed 0%, #6d28d9 100%);
+}
+
+.statValue {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.statLabel {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.statRule {
+  display: block;
+  width: 2rem;
+  height: 2px;
   margin-top: 0.75rem;
-  color: #4b5563;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.55);
+}
+
+.innovationCard {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(0 0 0 / 0.05);
+  background-color: #fff;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+}
+
+.innovationRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
 }

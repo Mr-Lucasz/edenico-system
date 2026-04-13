@@ -1,14 +1,15 @@
-import Link from 'next/link'
-import styles from '../authPage.module.scss'
+import type { Metadata } from 'next'
+import { AuthRouteShell, RegisterForm } from '@src/components/auth'
+
+export const metadata: Metadata = {
+  title: 'Cadastrar-se | Edênicos Academy',
+  description: 'Crie sua conta na Edênicos Academy.',
+}
 
 export default function RegisterPage() {
   return (
-    <div className={styles.page}>
-      <h1 className={styles.title}>Inscreva-se</h1>
-      <p className={styles.sub}>Fluxo de cadastro / onboarding (a implementar).</p>
-      <Link href="/" className={styles.link}>
-        Voltar à home
-      </Link>
-    </div>
+    <AuthRouteShell>
+      <RegisterForm />
+    </AuthRouteShell>
   )
 }

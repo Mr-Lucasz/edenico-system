@@ -1,22 +1,12 @@
-'use client'
-
 import { institutionalCopy } from '@src/constants/institutionalCopy'
-import { useCallback } from 'react'
+import { FiMessageCircle } from 'react-icons/fi'
 import styles from './InstitutionalCtaSection.module.scss'
 
 export function InstitutionalCtaSection() {
   const { cta } = institutionalCopy
 
-  const scrollToContact = useCallback(() => {
-    const url = new URL(window.location.href)
-    url.searchParams.set('assunto', 'parceria')
-    window.history.replaceState({}, '', url.toString())
-    const el = document.getElementById('contato')
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-  }, [])
-
   return (
-    <section className={styles.section} aria-labelledby="cta-heading">
+    <section id="planos" className={styles.section} aria-labelledby="cta-heading">
       <div className={styles.container}>
         <div className={styles.card}>
           <h2 id="cta-heading" className={styles.title}>
@@ -30,9 +20,10 @@ export function InstitutionalCtaSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <button type="button" onClick={scrollToContact} className={styles.btnSecondary}>
+            <a href="#contato" className={styles.btnSecondary}>
               {cta.secondary}
-            </button>
+              <FiMessageCircle className={styles.btnIcon} aria-hidden />
+            </a>
           </div>
         </div>
       </div>

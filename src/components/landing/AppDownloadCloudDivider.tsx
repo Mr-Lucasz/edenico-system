@@ -1,6 +1,6 @@
 import styles from './AppDownloadCloudDivider.module.scss'
 
-const CLOUDS_FOOTER_SRC = '/Clouds%20Footer.svg'
+const CLOUDS_FOOTER_SRC = '/clouds-footer.svg'
 
 /**
  * Secção só com o divisor de nuvens (SVG), antes da AppDownloadSection.

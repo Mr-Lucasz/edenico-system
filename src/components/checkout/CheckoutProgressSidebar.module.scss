@@ -1,0 +1,88 @@
+@use 'styles/variables' as *;
+
+.sidebarTitle {
+  margin: 0 0 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.connector {
+  position: absolute;
+  left: 1.125rem;
+  top: 2.5rem;
+  bottom: 0;
+  width: 1px;
+  background: $gray-200;
+  transform: translateX(-50%);
+}
+
+.item:last-child .connector {
+  display: none;
+}
+
+.bubble {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+.bubbleDone {
+  background: #10b981;
+  color: #fff;
+}
+
+.bubbleActive {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.bubblePending {
+  background: #fff;
+  border: 1px solid $gray-300;
+  color: $gray-300;
+}
+
+.text {
+  padding-top: 0.15rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.textDone {
+  color: $gray-500;
+}
+
+.textActive {
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.textPending {
+  color: $gray-400;
+}

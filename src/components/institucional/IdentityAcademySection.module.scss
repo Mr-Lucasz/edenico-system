@@ -1,0 +1,1166 @@
+@use 'styles/variables' as *;
+
+.section {
+  position: relative;
+  z-index: 20;
+  background-color: #f9fafb;
+  padding: 4.5rem 1rem 5rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding: 5rem 2rem 5.5rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 2.125rem;
+  }
+}
+
+.titleRuleBlue {
+  display: block;
+  width: 3.25rem;
+  height: 0.3rem;
+  margin: 0.9rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #60a5fa, $blue-600);
+}
+
+.intro {
+  margin: 1.25rem auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: #718096;
+}
+
+.topGrid {
+  margin-top: 2.75rem;
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.cardPhilosophy {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.75rem;
+  border: 1px solid #bfdbfe;
+  background-color: #f0f7ff;
+  padding: 1.75rem 1.5rem 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+
+  @include sm {
+    padding: 2.25rem 2.5rem;
+    border-radius: 2rem;
+  }
+}
+
+.cardMission {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.75rem;
+  border: 1px solid #e9d5ff;
+  background-color: #f5f3ff;
+  padding: 1.75rem 1.5rem 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08);
+
+  @include sm {
+    padding: 2.25rem 2.5rem;
+    border-radius: 2rem;
+  }
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconCircleBlue {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background-color: #2563eb;
+  box-shadow: 0 4px 14px rgb(37 99 235 / 0.35);
+}
+
+.iconCirclePurple {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background-color: #8b5cf6;
+  box-shadow: 0 4px 14px rgb(139 92 246 / 0.35);
+}
+
+.cardHeadIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.philosophyList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.philosophyItem {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+}
+
+.philosophyDot {
+  flex-shrink: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-top: 0.45rem;
+  border-radius: 9999px;
+
+  &[data-variant='green'] {
+    background-color: #10b981;
+  }
+
+  &[data-variant='blue'] {
+    background-color: #2563eb;
+  }
+
+  &[data-variant='orange'] {
+    background-color: #f97316;
+  }
+}
+
+.philosophyItemTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.philosophyItemText {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #718096;
+}
+
+.missionIntro {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #718096;
+}
+
+.missionQuoteBox {
+  margin: 0;
+  margin-top: auto;
+  padding: 1.35rem 1.25rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.06);
+}
+
+.missionQuote {
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.55;
+  color: #1a202c;
+}
+
+.missionAttr {
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.valuesBlock {
+  margin-top: 3.5rem;
+}
+
+.valuesTitle {
+  margin: 0 0 2rem;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 2rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+.valuesGrid {
+  display: grid;
+  gap: 2rem;
+
+  @include sm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.valueCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.valueIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.12);
+}
+
+.valueIconSvg {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #fff;
+}
+
+.valueItemTitle {
+  margin: 1.15rem 0 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.valueItemDesc {
+  margin: 0.5rem 0 0;
+  max-width: 16rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #718096;
+}
+
+.logosBlock {
+  margin-top: 3.75rem;
+  scroll-margin-top: 6rem;
+}
+
+.logosSectionHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.logosIconSquare {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #2563eb;
+  box-shadow: 0 4px 14px rgb(37 99 235 / 0.28);
+}
+
+.logosIconSquareSvg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+}
+
+.logosSectionHeadText {
+  min-width: 0;
+}
+
+.logosSectionTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.logosSectionSubtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #718096;
+}
+
+.logosIntro {
+  margin-top: 2.25rem;
+  text-align: center;
+}
+
+.logosVersionsTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.logosVersionsDesc {
+  margin: 0.75rem auto 0;
+  max-width: 40rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #718096;
+}
+
+.logosGrid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  /* Cartões com altura ao conteúdo — evita faixa branca vazia quando a imagem cresce só num dos lados */
+  align-items: start;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.logoCard[data-full='true'] {
+  @include md {
+    grid-column: 1 / -1;
+  }
+}
+
+.logoCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 1.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  /* Padding mais apertado para a imagem ganhar área útil sem aumentar o cartão desnecessariamente */
+  padding: 1.35rem 1.1rem 1.15rem;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  @include sm {
+    padding: 1.5rem 1.35rem 1.35rem;
+    border-radius: 1.5rem;
+  }
+}
+
+.logoCardTop {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.logoCardHeadLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.logoCardIconPurple {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #8b5cf6;
+}
+
+.logoCardIconBlue {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #2563eb;
+}
+
+.logoCardIconMagenta {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #d100d1;
+  box-shadow: 0 4px 12px rgb(209 0 209 / 0.35);
+}
+
+.logoCardIconNavy {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #0f172a;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 0.35);
+}
+
+.logoCardIconSlate {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #4b5563;
+  box-shadow: 0 4px 12px rgb(75 85 99 / 0.3);
+}
+
+.logoCardIconSvg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #fff;
+}
+
+.logoCardTitle {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.logoCardSubtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.logoBadge {
+  flex-shrink: 0;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2563eb;
+
+  &[data-variant='lavender'] {
+    background-color: #ede9fe;
+  }
+
+  &[data-variant='sky'] {
+    background-color: #dbeafe;
+  }
+
+  &[data-variant='pink'] {
+    background-color: #fce7f3;
+    color: #c026d3;
+  }
+
+  &[data-variant='slate'] {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+}
+
+/* Logotipo: largura fluida — evitar width:auto no <img> (Next/Image fixa intrínseco e a marca ficava pequena) */
+.logoPreview {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  align-self: stretch;
+  width: 100%;
+  margin-top: 0.65rem;
+  padding: 0;
+  min-height: 0;
+}
+
+.logoPreviewMedia {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoPreviewImg {
+  display: block;
+  width: 100% !important;
+  max-width: 96%;
+  height: auto !important;
+  max-height: min(28rem, 78vh);
+  margin-inline: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.logoCard[data-full='true'] .logoPreviewImg {
+  max-width: min(100%, 98%);
+  max-height: min(22rem, 52vh);
+
+  @include md {
+    max-height: min(24rem, 48vh);
+  }
+}
+
+.logoMonoCaption {
+  flex-shrink: 0;
+  margin: 0.65rem 0 0;
+  max-width: 44rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #718096;
+}
+
+/* —— Cores da Marca + Paleta STARS —— */
+.brandColorsWrap {
+  margin-top: 3.75rem;
+  scroll-margin-top: 6rem;
+}
+
+.brandColorsHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.brandColorsHeadIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #2563eb;
+  box-shadow: 0 4px 14px rgb(37 99 235 / 0.28);
+}
+
+.brandColorsHeadIconSvg {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: #fff;
+}
+
+.brandColorsHeadText {
+  min-width: 0;
+}
+
+.brandColorsTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.brandColorsSubtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #718096;
+}
+
+.brandColorsLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include lg {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+.brandColorsGrid {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.brandColorsSidebar {
+  flex-shrink: 0;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 1.35rem 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+
+  @include lg {
+    width: 20rem;
+    max-width: 100%;
+  }
+}
+
+.sidebarInnerTitle {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.sidebarIntro {
+  margin: 0.65rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #718096;
+}
+
+.sidebarSteps {
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebarStep {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.sidebarStepPill {
+  flex-shrink: 0;
+  width: 0.35rem;
+  min-height: 3rem;
+  margin-top: 0.15rem;
+  border-radius: 9999px;
+
+  &[data-light='true'] {
+    border: 1px solid #d1d5db;
+  }
+}
+
+.sidebarStepName {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.sidebarStepText {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #718096;
+}
+
+.sidebarStars {
+  margin-top: 1.35rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sidebarStarsTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.sidebarStarsText {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #718096;
+}
+
+.colorSpecCard {
+  overflow: hidden;
+  border-radius: 0.875rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  box-shadow: 0 4px 14px -4px rgb(0 0 0 / 0.1);
+}
+
+.colorSpecSwatch {
+  position: relative;
+  height: 6.5rem;
+  border-radius: 0.875rem 0.875rem 0 0;
+
+  &[data-light='true'] {
+    border: 1px solid #e5e7eb;
+    border-bottom: none;
+  }
+}
+
+.colorSpecIndex {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4b5563;
+  background-color: #e5e7eb;
+}
+
+.colorSpecBody {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.colorSpecName {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.colorSpecDl {
+  margin: 0;
+}
+
+.colorSpecRow {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  dt {
+    margin: 0;
+    font-weight: 600;
+    color: #9ca3af;
+  }
+
+  dd {
+    margin: 0;
+    color: #374151;
+  }
+}
+
+.starsPaletteSectionTitle {
+  margin: 2.75rem 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.35rem;
+  }
+}
+
+.starsPaletteGrid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include lg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tipografia */
+.typographyWrap {
+  margin-top: 3.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.typographyHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.typographyHeadIcon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.65rem;
+  background: linear-gradient(145deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 4px 14px rgb(139 92 246 / 0.35);
+}
+
+.typographyHeadIconSvg {
+  width: 1.45rem;
+  height: 1.45rem;
+  color: #fff;
+}
+
+.typographyTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+}
+
+.typographySubtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  color: #718096;
+}
+
+.typographyGrid {
+  display: grid;
+  gap: 1.5rem;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.typographyCard {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  padding: 1.5rem 1.35rem 1.65rem;
+  box-shadow: 0 4px 14px -4px rgb(0 0 0 / 0.08);
+}
+
+.typographyCardTitle {
+  margin: 0 0 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.typographyFontName {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.typeBlock {
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.typeBlockLabel {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+}
+
+.typeSampleRegular,
+.typeSampleBold {
+  margin: 0 0 0.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #1a202c;
+  word-break: break-word;
+}
+
+.typeSampleBold {
+  font-weight: 700;
+}
+
+.hierarchyList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hierarchyItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #f3f4f6;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+/* Amostras da hierarquia (Nunito): tamanho e peso conforme manual da marca */
+.hierarchyName {
+  margin: 0;
+  color: #1a202c;
+}
+
+.hierarchyItem:nth-child(1) .hierarchyName {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hierarchyItem:nth-child(2) .hierarchyName {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hierarchyItem:nth-child(3) .hierarchyName {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.hierarchyItem:nth-child(4) .hierarchyName {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.hierarchyItem:nth-child(5) .hierarchyName {
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: normal;
+}
+
+.hierarchyItem:nth-child(6) .hierarchyName {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.hierarchyMeta {
+  color: #718096;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* Exemplos de Uso (Tipografia) */
+.usageExamplesWrap {
+  margin-top: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  padding: 1.5rem 1.25rem 1.75rem;
+  box-shadow: 0 4px 14px -4px rgb(0 0 0 / 0.08);
+
+  @include sm {
+    padding: 1.65rem 1.5rem 2rem;
+  }
+}
+
+.usageExamplesTitle {
+  margin: 0 0 1.35rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.usageExamplesGrid {
+  display: grid;
+  gap: 1.75rem;
+
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.usageExampleColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+}
+
+.usageDemoCard {
+  border-radius: 0.875rem;
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  padding: 1.35rem 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.05);
+}
+
+.usageDemoCardHeading {
+  margin: 0 0 0.65rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a202c;
+}
+
+.usageDemoCardBody {
+  margin: 0 0 1.1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #718096;
+}
+
+.usageDemoCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 0.55rem 1.35rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #2563eb;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(37 99 235 / 0.35);
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}
+
+.usageDemoHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 11.5rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: 0.875rem;
+  background: linear-gradient(105deg, #2563eb 0%, #4f46e5 42%, #7c3aed 100%);
+  box-shadow: 0 8px 24px -6px rgb(37 99 235 / 0.45);
+}
+
+.usageDemoWordmark {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.usageDemoAcademy {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: rgb(255 255 255 / 0.95);
+}
+
+.usageDemoSlogan {
+  margin: 1.15rem 0 0;
+  max-width: 22rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.usageDemoCaption {
+  margin: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #9ca3af;
+}

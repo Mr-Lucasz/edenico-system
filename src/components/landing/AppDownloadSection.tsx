@@ -14,8 +14,7 @@ export function AppDownloadSection() {
   return (
     <section className={styles.section} aria-labelledby="app-heading">
       <div className={styles.inner}>
-
-
+        <div className={styles.contentStack}>
         <p className={styles.sub}>Baixe o app e estude onde estiver</p>
 
         <div className={styles.statsCard}>
@@ -85,6 +84,7 @@ export function AppDownloadSection() {
               <span className={styles.badgeTitle}>App Store</span>
             </span>
           </a>
+        </div>
         </div>
       </div>
     </section>

@@ -5,11 +5,11 @@ import { InstitucionalHero } from '@src/components/institucional/InstitucionalHe
 import { AboutSection } from '@src/components/institucional/AboutSection'
 import { PrinciplesSection } from '@src/components/institucional/PrinciplesSection'
 import { DifferentiatorsImpactSection } from '@src/components/institucional/DifferentiatorsImpactSection'
-import { ServicesSection } from '@src/components/institucional/ServicesSection'
 import { InstitutionalCtaSection } from '@src/components/institucional/InstitutionalCtaSection'
 import { StarsMethodologySection } from '@src/components/institucional/StarsMethodologySection'
 import { Philosophy50Section } from '@src/components/institucional/Philosophy50Section'
-import { ContactForm } from '@src/components/landing/ContactForm'
+import { IdentityAcademySection } from '@src/components/institucional/IdentityAcademySection'
+import { InstitutionalPreFooterCta } from '@src/components/institucional/InstitutionalPreFooterCta'
 import styles from './institucionalPage.module.scss'
 
 export const metadata: Metadata = {
@@ -65,16 +65,12 @@ export default function InstitucionalPage() {
         <AboutSection />
         <PrinciplesSection />
         <DifferentiatorsImpactSection />
-        <ServicesSection />
         <InstitutionalCtaSection />
         <StarsMethodologySection />
         <Philosophy50Section />
-        <section id="contato" className={styles.contactSection} aria-labelledby="contato">
-          <div className={styles.contactInner}>
-            <ContactForm />
-          </div>
-        </section>
-        <LandingFooter />
+        <IdentityAcademySection />
+        <InstitutionalPreFooterCta />
+        <LandingFooter variant="institucional" />
       </main>
     </div>
   )

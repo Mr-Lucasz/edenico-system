@@ -24,6 +24,13 @@ export interface StarsPuzzleTabsProps {
   onSelectLetter: (index: number) => void
   id?: string
   className?: string
+  /** `planos`: peças inativas e foco harmonizam com fundo claro (#f8f9fa) e azul da página Planos */
+  variant?: 'default' | 'planos'
+}
+
+function letterClassName(isActive: boolean, isPlanos: boolean) {
+  if (isActive) return styles.letterActive
+  return isPlanos ? styles.letterInactivePlanos : styles.letterInactive
 }
 
 export function StarsPuzzleTabs({
@@ -31,13 +38,23 @@ export function StarsPuzzleTabs({
   onSelectLetter,
   id = 'stars-heading',
   className = '',
+  variant = 'default',
 }: Readonly<StarsPuzzleTabsProps>) {
+  const isPlanos = variant === 'planos'
+  const inactiveFill = isPlanos ? '#ffffff' : '#f9fafb'
+  const inactiveStroke = isPlanos ? '#cbd5e1' : '#e5e7eb'
+
   return (
-    <div role="tablist" aria-label="STARS" id={id} className={cn(styles.root, className)}>
+    <div
+      role="tablist"
+      aria-label="STARS"
+      id={id}
+      className={cn(styles.root, isPlanos && styles.rootPlanos, className)}
+    >
       {starsCategories.map((tab, index) => {
         const isActive = index === activeIndex
         const colorHex = tab.colorHex ?? '#A66B46'
-        const fillColor = isActive ? colorHex : '#f9fafb'
+        const fillColor = isActive ? colorHex : inactiveFill
         const { path, viewBox } = getPecaEncaixe(index)
 
         return (
@@ -62,18 +79,21 @@ export function StarsPuzzleTabs({
                 )
               }
             }}
-            className={cn(styles.tab, index > 0 && styles.overlap)}
+            className={cn(styles.tab, isPlanos && styles.tabPlanos, index > 0 && styles.overlap)}
             style={{
               transform: isActive ? 'scale(1.05)' : undefined,
               zIndex: isActive ? 50 + index : 10 + index,
             }}
           >
             <svg viewBox={viewBox} className={styles.svg} aria-hidden>
-              <path d={path} fill={fillColor} stroke={isActive ? colorHex : '#e5e7eb'} strokeWidth="1.5" />
+              <path
+                d={path}
+                fill={fillColor}
+                stroke={isActive ? colorHex : inactiveStroke}
+                strokeWidth="1.5"
+              />
             </svg>
-            <span
-              className={cn(styles.letter, isActive ? styles.letterActive : styles.letterInactive)}
-            >
+            <span className={cn(styles.letter, letterClassName(isActive, isPlanos))}>
               {tab.letter}
             </span>
           </button>

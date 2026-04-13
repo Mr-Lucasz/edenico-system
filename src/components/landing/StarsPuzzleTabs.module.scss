@@ -7,6 +7,10 @@
   overflow: visible;
 }
 
+.rootPlanos {
+  filter: drop-shadow(0 4px 14px rgb(15 23 42 / 0.08));
+}
+
 .tab {
   position: relative;
   z-index: 10;
@@ -33,6 +37,10 @@
     height: 7rem;
     width: 7rem;
   }
+}
+
+.tabPlanos:focus-visible {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgb(59 130 246 / 0.55);
 }
 
 .overlap {
@@ -68,4 +76,8 @@
 
 .letterInactive {
   color: #9ca3af;
+}
+
+.letterInactivePlanos {
+  color: #64748b;
 }

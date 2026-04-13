@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -8,11 +8,119 @@ import { FiHeadphones, FiMessageCircle, FiGlobe, FiChevronDown } from 'react-ico
 import { cn } from '@src/utils/cn'
 import styles from './LandingHeader.module.scss'
 
-export function LandingHeader() {
+export type LandingHeaderProps = {
+  variant?: 'default' | 'institucional'
+}
+
+const INSTIT_NAV = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'Ecossistema', href: '#ecossistema' },
+  { label: 'STARS', href: '#metodologia-stars' },
+  { label: 'Planos', href: '#planos' },
+  { label: 'FAQ', href: '#faq' },
+] as const
+
+export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const [logoError, setLogoError] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (variant !== 'institucional') return
+    const onScroll = () => setScrolled(window.scrollY > 16)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [variant])
+
+  if (variant === 'institucional') {
+    return (
+      <header
+        className={cn(styles.headerInst, scrolled && styles.headerInstScrolled)}
+        role="banner"
+      >
+        <div className={styles.barInst}>
+          <Link href="/" className={styles.logoLeft} aria-label="Edênicos Academy — início">
+            {logoError ? (
+              <span className={styles.logoTextInst}>
+                <span className={styles.logoLine1}>edênicos</span>
+                <span className={styles.logoLine2}>ACADEMY</span>
+              </span>
+            ) : (
+              <Image
+                src="/LogoEdenicos.png"
+                alt="Edênicos Academy"
+                width={140}
+                height={42}
+                className={styles.logoImgInst}
+                priority
+                onError={() => setLogoError(true)}
+              />
+            )}
+          </Link>
+
+          <nav className={styles.navInst} aria-label="Navegação principal">
+            {INSTIT_NAV.map((item) => (
+              <a key={item.href} href={item.href} className={styles.navInstLink}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className={styles.actionsInst}>
+            <Link href="/login" className={styles.linkEntrar}>
+              Entrar
+            </Link>
+            <Link href="/register" className={styles.btnComecar}>
+              Começar Agora
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={styles.menuBtnInst}
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            >
+              {mobileMenuOpen ? (
+                <svg className={styles.menuIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className={styles.menuIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {mobileMenuOpen && (
+          <div className={styles.mobileMenuInst} role="dialog" aria-label="Menu de navegação">
+            <nav className={styles.mobileNavInst} aria-label="Menu principal (mobile)">
+              {INSTIT_NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={styles.mobileLinkInst}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLinkSoftInst}>
+                Entrar
+              </Link>
+              <Link href="/register" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCtaInst}>
+                Começar Agora
+              </Link>
+            </nav>
+          </div>
+        )}
+      </header>
+    )
+  }
 
   return (
     <>
@@ -76,11 +184,14 @@ export function LandingHeader() {
             <nav className={styles.nav} aria-label="Navegação">
               <Link
                 href="/institucional"
-                className={styles.navLink}
+                className={cn(styles.navLink, pathname === '/institucional' && styles.navLinkActive)}
               >
                 Institucional
               </Link>
-              <Link href="/#cursos" className={styles.navLink}>
+              <Link
+                href="/game"
+                className={cn(styles.navLink, pathname === '/game' && styles.navLinkActive)}
+              >
                 Game
               </Link>
             </nav>
@@ -106,7 +217,10 @@ export function LandingHeader() {
           </Link>
 
           <div className={styles.right}>
-            <Link href="/#cursos" className={styles.linkMuted}>
+            <Link
+              href="/planos"
+              className={cn(styles.linkMuted, pathname === '/planos' && styles.navLinkActive)}
+            >
               Planos
             </Link>
             <Link href="/login" className={styles.linkMuted}>
@@ -142,13 +256,25 @@ export function LandingHeader() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLink}>
                 Explorar
               </Link>
-              <Link href="/institucional" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLink}>
+              <Link
+                href="/institucional"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(styles.mobileLink, pathname === '/institucional' && styles.mobileLinkActive)}
+              >
                 Institucional
               </Link>
-              <Link href="/#cursos" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLink}>
+              <Link
+                href="/game"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(styles.mobileLink, pathname === '/game' && styles.mobileLinkActive)}
+              >
                 Game
               </Link>
-              <Link href="/#cursos" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLink}>
+              <Link
+                href="/planos"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(styles.mobileLink, pathname === '/planos' && styles.mobileLinkActive)}
+              >
                 Planos
               </Link>
               <Link href="/login" onClick={() => setMobileMenuOpen(false)} className={styles.mobileLinkSoft}>

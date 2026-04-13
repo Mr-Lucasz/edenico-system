@@ -21,14 +21,14 @@
 }
 
 .card {
-  border-radius: 1rem;
+  border-radius: 1.75rem;
   border: 1px solid $gray-100;
   background-color: #fff;
   padding: 2rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.12);
 
   @include sm {
-    padding: 3rem;
+    padding: 2.75rem 3rem;
   }
 }
 
@@ -63,21 +63,21 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #16a34a;
-  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: #10b981;
+  padding: 0.8rem 1.65rem;
   font-weight: 500;
   color: #fff;
   text-decoration: none;
   transition: background 0.15s ease;
 
   &:hover {
-    background-color: #15803d;
+    background-color: #059669;
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #22c55e;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #10b981;
   }
 }
 
@@ -85,12 +85,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid $gray-300;
+  border-radius: 9999px;
+  border: 1px solid $gray-200;
   background-color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.65rem;
   font-weight: 500;
   color: $gray-700;
+  text-decoration: none;
   cursor: pointer;
   font: inherit;
   transition: background 0.15s ease;
@@ -108,4 +109,10 @@
 .icon {
   height: 1.25rem;
   width: 1.25rem;
+}
+
+.btnIcon {
+  height: 1.2rem;
+  width: 1.2rem;
+  flex-shrink: 0;
 }

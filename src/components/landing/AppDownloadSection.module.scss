@@ -8,6 +8,7 @@
   background-color: $edenicos-navy;
   overflow: visible;
   padding: 1.75rem 1rem 4rem;
+  
 
   @include sm {
     padding: 2rem 1.5rem 4.5rem;
@@ -26,8 +27,22 @@
   padding-top: 0;
 }
 
+/* Bloco sub + cartão + badges: margin-top negativo puxa o grupo para cima (padding negativo é inválido em CSS) */
+.contentStack {
+  margin-top: -12rem;
+
+  @include sm {
+    margin-top: calc(-1 * clamp(1.5rem, 3.5vw, 3rem));
+  }
+
+  @include lg {
+    margin-top: calc(-1 * clamp(1.75rem, 3vw, 3.25rem));
+  }
+}
+
 .title {
   text-align: center;
+  margin-top: -12rem;
   font-size: 1.875rem;
   font-weight: 700;
   letter-spacing: -0.025em;

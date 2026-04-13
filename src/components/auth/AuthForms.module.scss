@@ -1,0 +1,213 @@
+@use 'styles/variables' as *;
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.iconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  background: $blue-600;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.iconBoxPurple {
+  background: #7c3aed;
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $gray-900;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: $gray-500;
+  line-height: 1.45;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $gray-700;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.875rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: $gray-400;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 0.875rem 0 2.75rem;
+  border: 1px solid $gray-200;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  color: $gray-900;
+  background: #fff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $blue-600;
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+  }
+}
+
+.inputWithToggle {
+  padding-right: 2.75rem;
+}
+
+.toggleEye {
+  position: absolute;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: $gray-400;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-600;
+  }
+}
+
+.row2 {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+
+  @include sm {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.25rem;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    filter 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.btnMuted {
+  background: $gray-100;
+  color: $gray-800;
+
+  &:hover {
+    background: $gray-200;
+  }
+}
+
+.btnPrimary {
+  background: $blue-600;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.footerLink {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: $gray-500;
+}
+
+.footerLinkA {
+  color: $blue-600;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.forgot {
+  margin: -0.5rem 0 1rem;
+}
+
+.forgotLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $blue-600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.mockHint {
+  margin-top: 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  background: $gray-100;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: $gray-600;
+}

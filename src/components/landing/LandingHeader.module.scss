@@ -216,6 +216,16 @@
   }
 }
 
+.navLinkActive {
+  background-color: $edenicos-royal-blue;
+  color: #fff;
+
+  &:hover {
+    background-color: #2563eb;
+    color: #fff;
+  }
+}
+
 .logoCenter {
   position: absolute;
   left: 50%;
@@ -380,6 +390,10 @@
   }
 }
 
+.mobileLinkActive {
+  background-color: $edenicos-royal-blue;
+}
+
 .mobileLinkSoft {
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
@@ -417,5 +431,260 @@
 
   &:active {
     transform: scale(0.98);
+  }
+}
+
+/* Variante institucional: sem top bar, nav central, CTA ouro */
+.headerInst {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    backdrop-filter 0.2s ease;
+}
+
+.headerInstScrolled {
+  background: rgb(10 21 38 / 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.2);
+}
+
+.barInst {
+  margin: 0 auto;
+  display: flex;
+  max-width: 80rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+
+  @include sm {
+    padding: 0.75rem 1.5rem;
+  }
+
+  @include lg {
+    padding: 0.875rem 2rem;
+    position: relative;
+  }
+}
+
+.logoLeft {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 2;
+  text-decoration: none;
+}
+
+.logoImgInst {
+  height: 2.25rem;
+  width: auto;
+  object-fit: contain;
+
+  @include sm {
+    height: 2.5rem;
+  }
+}
+
+.logoTextInst {
+  text-align: left;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navInst {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  gap: 0.125rem;
+  z-index: 1;
+
+  @include lg {
+    display: flex;
+  }
+}
+
+.navInstLink {
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.88);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 0.08);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-navy-deep, 0 0 0 4px $edenicos-gold;
+    border-radius: 0.5rem;
+  }
+}
+
+.actionsInst {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.linkEntrar {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-navy-deep, 0 0 0 4px $edenicos-gold;
+    border-radius: 0.25rem;
+  }
+
+  @include sm {
+    display: inline-block;
+  }
+}
+
+.btnComecar {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: $edenicos-gold-text;
+  background-color: $edenicos-gold;
+  text-decoration: none;
+  transition:
+    filter 0.15s ease,
+    transform 0.15s ease;
+
+  @include sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-navy-deep, 0 0 0 4px #fff;
+  }
+}
+
+.menuBtnInst {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: none;
+  background: rgb(255 255 255 / 0.08);
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgb(255 255 255 / 0.14);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $edenicos-navy-deep, 0 0 0 4px $edenicos-gold;
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+.mobileMenuInst {
+  margin: 0 1rem 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(10 21 38 / 0.98);
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+
+  @include lg {
+    display: none;
+  }
+}
+
+.mobileNavInst {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileLinkInst {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgb(255 255 255 / 0.08);
+  }
+}
+
+.mobileLinkSoftInst {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: rgb(255 255 255 / 0.75);
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: rgb(255 255 255 / 0.08);
+    color: #fff;
+  }
+}
+
+.mobileCtaInst {
+  margin-top: 0.5rem;
+  display: block;
+  border-radius: 9999px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: $edenicos-gold-text;
+  background: $edenicos-gold;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.05);
   }
 }

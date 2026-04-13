@@ -1,0 +1,107 @@
+@use 'styles/variables' as *;
+
+.roleRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.roleBtn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 3.75rem;
+  padding: 0.5rem 0.35rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: $gray-100;
+  color: $gray-600;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: $gray-200;
+  }
+}
+
+.roleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.roleActiveEstudante {
+  background: $blue-600;
+  color: #fff;
+}
+
+.roleActiveProfessor {
+  background: #9333ea;
+  color: #fff;
+}
+
+.roleActivePai {
+  background: #ec4899;
+  color: #fff;
+}
+
+.section {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid $gray-200;
+}
+
+.sectionEstudantePersonal {
+  background: rgb(239 246 255 / 0.6);
+  border-color: rgb(191 219 254 / 0.8);
+}
+
+.sectionEstudanteGuardian {
+  background: rgb(253 242 248 / 0.7);
+  border-color: rgb(251 207 232 / 0.9);
+}
+
+.sectionEstudanteAccount {
+  background: rgb(239 246 255 / 0.5);
+  border-color: rgb(191 219 254 / 0.6);
+}
+
+.sectionDefaultPersonal {
+  background: rgb(250 245 255 / 0.5);
+  border-color: rgb(233 213 255 / 0.8);
+}
+
+.sectionDefaultAccount {
+  background: rgb(239 246 255 / 0.45);
+  border-color: rgb(191 219 254 / 0.7);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $gray-800;
+}
+
+.sectionTitleBlue {
+  color: $blue-600;
+}
+
+.sectionTitlePink {
+  color: #db2777;
+}
+
+.sectionTitlePurple {
+  color: #9333ea;
+}

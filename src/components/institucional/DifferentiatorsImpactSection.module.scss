@@ -1,7 +1,7 @@
 @use 'styles/variables' as *;
 
 .section {
-  background-color: #fff;
+  background-color: #fafafa;
   padding: 4rem 1rem;
 
   @include sm {
@@ -10,8 +10,7 @@
   }
 
   @include lg {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 5rem 2rem;
   }
 }
 
@@ -20,165 +19,389 @@
   max-width: 80rem;
 }
 
+.sectionHead {
+  text-align: center;
+}
+
+.titleBlock {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.titleLine {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $gray-900;
+
+  @include sm {
+    font-size: 2.125rem;
+  }
+}
+
+.titleLineAccent {
+  font-size: 2.125rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: $edenicos-yellow;
+
+  @include sm {
+    font-size: 2.5rem;
+  }
+}
+
+.titleLineMuted {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: $gray-500;
+
+  @include sm {
+    font-size: 1.375rem;
+  }
+}
+
+.titleRule {
+  display: block;
+  width: 3.25rem;
+  height: 0.3rem;
+  margin: 1rem auto 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, $blue-500, $blue-600);
+}
+
+.intro {
+  margin: 1.25rem auto 0;
+  max-width: 40rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: $gray-600;
+}
+
 .topGrid {
+  margin-top: 2.75rem;
   display: grid;
-  gap: 3rem;
+  gap: 2.5rem;
 
   @include lg {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
   }
 }
 
 .mainCol {
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.25rem;
 
   @include lg {
     grid-column: span 2;
   }
 }
 
-.title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: $gray-900;
-}
-
-.accent {
-  color: $edenicos-yellow;
-}
-
 .cards2 {
-  display: grid;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 
-  @include sm {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.approachCard {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(0 0 0 / 0.06);
+  background-color: #fff;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 10px 32px rgb(0 0 0 / 0.07);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 14px 40px rgb(0 0 0 / 0.09);
   }
 }
 
-.artGreen {
-  border-radius: 1rem;
-  border: 1px solid $gray-100;
-  background-color: rgb(240 253 244 / 0.5);
-  padding: 1.5rem;
-}
-
-.artOrange {
-  border-radius: 1rem;
-  border: 1px solid $gray-100;
-  background-color: rgb(255 247 237 / 0.5);
-  padding: 1.5rem;
-}
-
-.iconGreen {
+.cardRow {
   display: flex;
-  height: 3rem;
-  width: 3rem;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.cardBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.iconSolidGreen,
+.iconSolidOrange {
+  display: flex;
+  flex-shrink: 0;
+  height: 3.25rem;
+  width: 3.25rem;
   align-items: center;
   justify-content: center;
   border-radius: 0.75rem;
-  background-color: #dcfce7;
-  color: #16a34a;
+  color: #fff;
 }
 
-.iconOrange {
-  display: flex;
-  height: 3rem;
-  width: 3rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.75rem;
-  background-color: #ffedd5;
-  color: #ea580c;
+.iconSolidGreen {
+  background: linear-gradient(145deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 6px 16px rgb(22 163 74 / 0.35);
+}
+
+.iconSolidOrange {
+  background: linear-gradient(145deg, #fb923c 0%, #ea580c 100%);
+  box-shadow: 0 6px 16px rgb(234 88 12 / 0.35);
 }
 
 .iconSm {
   height: 1.5rem;
   width: 1.5rem;
+  stroke-width: 2.25;
 }
 
 .artHead {
-  margin-top: 1rem;
+  margin: 0;
+  font-size: 1.125rem;
   font-weight: 700;
+  line-height: 1.35;
   color: $gray-900;
+
+  @include sm {
+    font-size: 1.1875rem;
+  }
 }
 
 .artBody {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: $gray-700;
+  margin: 0.45rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $gray-600;
 }
 
-.statsCol {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* Serviços embutidos */
+.servicesEmbed {
+  scroll-margin-top: 5rem;
 }
 
-.statsTitle {
+.servicesHeading {
+  margin: 0 0 1.25rem;
+  text-align: center;
   font-size: 1.25rem;
+  font-weight: 700;
+  color: $gray-900;
+
+  @include sm {
+    font-size: 1.375rem;
+  }
+}
+
+.servicesGrid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include sm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.serviceCard {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  border-radius: 1.125rem;
+  border: 1px solid rgb(0 0 0 / 0.06);
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+.serviceTopGreen,
+.serviceTopOrange,
+.serviceTopPurple {
+  display: flex;
+  min-height: 5.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceTopGreen {
+  background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+.serviceTopOrange {
+  background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
+}
+
+.serviceTopPurple {
+  background: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 100%);
+}
+
+.serviceIcon {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.serviceBody {
+  flex: 1;
+  padding: 1.1rem 1rem 1.25rem;
+  text-align: center;
+}
+
+.serviceTitle {
+  margin: 0;
+  font-size: 1.0625rem;
   font-weight: 700;
   color: $gray-900;
 }
 
-.statsSub {
-  margin-top: 0.25rem;
+.serviceDesc {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: $gray-600;
+}
+
+.serviceBarGreen,
+.serviceBarOrange,
+.serviceBarPurple {
+  height: 3px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.serviceBarGreen {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.serviceBarOrange {
+  background: linear-gradient(90deg, #fb923c, #ea580c);
+}
+
+.serviceBarPurple {
+  background: linear-gradient(90deg, #a855f7, #9333ea);
+}
+
+/* Coluna direita: Impacto (hero) → KPIs → Presença */
+$presence-card-bg: #1d3b8a;
+
+.statsCol {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* Impacto Real — cartão branco com “stack” amarelo (padding revela camada) */
+.impactHeroWrap {
+  border-radius: 1.45rem;
+  background: linear-gradient(145deg, #fef9c3 0%, #fde047 45%, #facc15 100%);
+  padding: 7px 7px 0 0;
+  box-shadow: 0 12px 32px rgb(250 204 21 / 0.22);
+}
+
+.impactHero {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.2rem;
+  border: 1px solid rgb(0 0 0 / 0.06);
+  background-color: #fff;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.07);
+}
+
+.impactHeroVisual {
+  min-height: 11rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.impactHeroVisualInner {
+  display: flex;
+  height: 100%;
+  min-height: 11rem;
+  align-items: center;
+  justify-content: center;
   font-size: 0.875rem;
-  color: #4b5563;
+  color: $gray-400;
+}
+
+.impactHeroText {
+  padding: 1.25rem 1.35rem 1.4rem;
+  text-align: left;
+}
+
+.impactHeroTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.impactHeroSub {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: $gray-600;
+}
+
+/* KPIs — bloco separado */
+.kpiBlock {
+  width: 100%;
 }
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .statCard {
-  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 0.9rem;
   border: 1px solid $gray-100;
-  background-color: $gray-50;
-  padding: 1rem;
+  background-color: #fff;
+  padding: 1.1rem 0.85rem 1rem;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.05);
 }
 
 .statValue {
   font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.statBar {
-  margin-top: 0.25rem;
-  height: 2px;
-  width: 3rem;
-  border-radius: 2px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .statLabel {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
+  margin: 0.4rem 0 0;
+  max-width: 100%;
+  font-size: 0.8125rem;
   font-weight: 500;
+  line-height: 1.35;
   color: $gray-700;
 }
 
+.statBar {
+  margin-top: 0.7rem;
+  height: 4px;
+  width: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+}
+
 .presence {
-  margin-top: 3rem;
-  border-radius: 1rem;
-  background-color: $edenicos-navy;
-  padding: 2rem;
+  border-radius: 1.75rem;
+  background-color: $presence-card-bg;
+  padding: 1.75rem 1.5rem;
   color: #fff;
+  box-shadow: 0 16px 40px rgb(29 59 138 / 0.35);
 }
 
 .presenceInner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
-  @include md {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  width: 100%;
 }
 
 .presenceRow {
@@ -187,71 +410,88 @@
   gap: 1rem;
 }
 
-.pinWrap {
+.presenceContent {
+  min-width: 0;
+  flex: 1;
+}
+
+.networkWrap {
   display: flex;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3.25rem;
+  width: 3.25rem;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 9999px;
-  background-color: rgb(255 255 255 / 0.1);
+  border-radius: 0.65rem;
+  background-color: rgb(255 255 255 / 0.14);
+  border: 1px solid rgb(255 255 255 / 0.12);
 }
 
-.pinIcon {
+.networkIcon {
   height: 1.75rem;
   width: 1.75rem;
-  color: $edenicos-yellow;
+  color: #fff;
 }
 
 .presenceTitle {
+  margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .presenceSub {
   margin-top: 0.25rem;
-  color: rgb(255 255 255 / 0.8);
+  font-size: 0.9375rem;
+  color: rgb(255 255 255 / 0.78);
 }
 
 .presenceDesc {
-  margin-top: 1rem;
-  color: rgb(255 255 255 / 0.9);
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.92);
 }
 
 .badgeRow {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: $edenicos-yellow;
+  gap: 0.65rem;
 }
 
-.badgeDot {
+.badgeCircles {
   display: flex;
-  height: 0.5rem;
-  width: 0.5rem;
+  align-items: center;
+  padding-left: 0.35rem;
+}
+
+.badgeCircleYellow,
+.badgeCircleGreen,
+.badgeCirclePurple {
+  height: 0.8rem;
+  width: 0.8rem;
+  margin-left: -0.38rem;
   border-radius: 9999px;
-  background-color: $edenicos-yellow;
+  border: 2px solid $presence-card-bg;
 }
 
-.mapPlaceholder {
-  height: 10rem;
-  width: 100%;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  background-color: rgb(255 255 255 / 0.05);
-
-  @include md {
-    width: 16rem;
-  }
+.badgeCircleYellow {
+  z-index: 3;
+  background: $edenicos-yellow;
 }
 
-.mapInner {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  color: rgb(255 255 255 / 0.4);
+.badgeCircleGreen {
+  z-index: 2;
+  background: #22c55e;
+}
+
+.badgeCirclePurple {
+  z-index: 1;
+  background: #a855f7;
+}
+
+.badgeText {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
 }

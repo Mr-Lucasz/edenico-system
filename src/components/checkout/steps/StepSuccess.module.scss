@@ -1,0 +1,37 @@
+@use 'styles/variables' as *;
+
+.successInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 9999px;
+  background: rgb(16 185 129 / 0.15);
+  color: #059669;
+  font-size: 2.5rem;
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.25rem, 2.8vw, 1.5rem);
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.subtitle {
+  margin: 0 0 2rem;
+  max-width: 22rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: $gray-600;
+}

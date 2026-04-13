@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import type { IconBaseProps } from 'react-icons/lib'
-import { FiActivity, FiCpu, FiMusic, FiHeart, FiHelpCircle } from 'react-icons/fi'
+import { FaHandHoldingHeart } from 'react-icons/fa6'
+import { FiCpu, FiUsers } from 'react-icons/fi'
+import { MdOutlineScience, MdPalette } from 'react-icons/md'
 
 type IconType = (props: IconBaseProps) => ReactNode
 
@@ -10,6 +12,8 @@ export interface StarsCard {
   title: string
   description: string
   icon?: string
+  /** Ícone à direita como emoji (ex.: Projetos de Impacto no Service) */
+  emoji?: string
 }
 
 export interface StarsCategory {
@@ -32,6 +36,12 @@ export interface StarsCategory {
   areas?: string[]
   /** Caminho da imagem do mascote na landing (public) */
   image?: string
+  /** Fundo em gradiente no quadrado do ícone do título (ex.: Service no protótipo) */
+  headerIconGradient?: string
+  /**
+   * Coluna esquerda «Áreas»: ícones em círculo no centro (tiles) ou ícone à esquerda em linha (rows), como Arts/Relationship.
+   */
+  leftColumnLayout?: 'tiles' | 'rows'
 }
 
 export const starsCategories: StarsCategory[] = [
@@ -42,8 +52,8 @@ export const starsCategories: StarsCategory[] = [
     subtitle: 'Descobrindo o mundo através da investigação científica',
     leftColumnTitle: 'Áreas de Estudo',
     rightColumnTitle: 'Atividades Práticas',
-    icon: FiActivity,
-    colorHex: '#A66B46',
+    icon: MdOutlineScience as IconType,
+    colorHex: '#AC6C42',
     description:
       'Na Edênicos Academy, a ciência é o caminho para despertar a curiosidade e compreender o funcionamento da vida e do universo. Por meio da observação, da investigação e da experimentação, os alunos desenvolvem uma mente analítica e crítica, aprendendo a valorizar a verdade e a buscar respostas fundamentadas. Acreditamos que a ciência abre portas para o conhecimento e inspira o desejo de explorar e transformar o mundo em um lugar melhor.',
     areas: ['Biologia Aplicada', 'Física Experimental', 'Química Sustentável', 'Ciências da Terra'],
@@ -55,10 +65,26 @@ export const starsCategories: StarsCategory[] = [
       { title: 'Sustentabilidade', description: 'Preservação do meio ambiente' },
     ],
     rightCards: [
-      { title: 'Experimentos Laboratoriais', description: 'Experiências práticas com materiais seguros para compreender conceitos científicos fundamentais' },
-      { title: 'Projeto de Jardim Científico', description: 'Cultivo de plantas para estudar fotossíntese, ciclos de vida e ecossistemas' },
-      { title: 'Feira de Ciências Interativa', description: 'Apresentação de projetos científicos com demonstrações práticas e explicações' },
-      { title: 'Investigação de Fenômenos', description: 'Análise de eventos naturais usando método científico e registro de observações' },
+      {
+        title: 'Experimentos Laboratoriais',
+        emoji: '🔬',
+        description: 'Experiências práticas com materiais seguros para compreender conceitos científicos fundamentais',
+      },
+      {
+        title: 'Projeto de Jardim Científico',
+        emoji: '🌱',
+        description: 'Cultivo de plantas para estudar fotossíntese, ciclos de vida e ecossistemas',
+      },
+      {
+        title: 'Feira de Ciências Interativa',
+        emoji: '⚡',
+        description: 'Apresentação de projetos científicos com demonstrações práticas e explicações',
+      },
+      {
+        title: 'Investigação de Fenômenos',
+        emoji: '📐',
+        description: 'Análise de eventos naturais usando método científico e registro de observações',
+      },
     ],
   },
   {
@@ -68,6 +94,7 @@ export const starsCategories: StarsCategory[] = [
     subtitle: 'Inovação tecnológica para solucionar problemas reais',
     leftColumnTitle: 'Áreas de Desenvolvimento',
     rightColumnTitle: 'Projetos Tecnológicos',
+    leftColumnLayout: 'rows',
     icon: FiCpu,
     colorHex: '#A855F7',
     description:
@@ -80,10 +107,26 @@ export const starsCategories: StarsCategory[] = [
       { title: 'Engenharia Maker', description: 'Construção de protótipos e invenções usando tecnologia e criatividade' },
     ],
     rightCards: [
-      { title: 'Desenvolvimento de Apps', description: 'Criação de aplicações móveis para resolver problemas da comunidade escolar' },
-      { title: 'Robótica Educativa', description: 'Montagem e programação de robôs para competições e projetos colaborativos' },
-      { title: 'Game Design', description: 'Desenho e desenvolvimento de jogos educativos com propósito social' },
-      { title: 'Laboratório Maker', description: 'Uso de impressoras 3D e ferramentas digitais para materializar ideias' },
+      {
+        title: 'Desenvolvimento de Apps',
+        emoji: '💻',
+        description: 'Criação de aplicações móveis para resolver problemas da comunidade escolar',
+      },
+      {
+        title: 'Robótica Educativa',
+        emoji: '🤖',
+        description: 'Montagem e programação de robôs para competições e projetos colaborativos',
+      },
+      {
+        title: 'Game Design',
+        emoji: '🎮',
+        description: 'Desenho e desenvolvimento de jogos educativos com propósito social',
+      },
+      {
+        title: 'Laboratório Maker',
+        emoji: '🔧',
+        description: 'Uso de impressoras 3D e ferramentas digitais para materializar ideias',
+      },
     ],
   },
   {
@@ -93,24 +136,41 @@ export const starsCategories: StarsCategory[] = [
     subtitle: 'Expressão criativa e comunicação através das artes',
     leftColumnTitle: 'Modalidades Artísticas',
     rightColumnTitle: 'Projetos Artísticos',
-    icon: FiMusic,
+    leftColumnLayout: 'rows',
+    icon: MdPalette as IconType,
     colorHex: '#F97316',
     description:
       'Na Edênicos Academy, a arte é uma linguagem viva que desperta criatividade, sensibilidade e expressão individual. Por meio da música, desenho, pintura, teatro e outras formas artísticas, os alunos desenvolvem não apenas habilidades técnicas, mas também a capacidade de comunicar valores, emoções e ideias de forma autêntica. Acreditamos que a arte educa o olhar, amplia o pensamento e conecta o ser humano com o belo e o transcendente.',
     areas: ['Pintura Digital', 'Música Moderna', 'Teatro Criativo', 'Literatura'],
     image: '/A%20Zorro%201.png',
     leftCards: [
-      { title: 'Oratória e Teatro', description: 'Desenvolvimento da comunicação oral e expressão corporal' },
+      { title: 'Oratória & Teatro', description: 'Desenvolvimento da comunicação oral e expressão corporal' },
       { title: 'Escrita Criativa', description: 'Produção literária, poesia e narrativas autorais' },
       { title: 'Artes Visuais', description: 'Pintura, desenho, escultura e artes digitais' },
-      { title: 'Música e Som', description: 'Composição, performance e produção musical' },
+      { title: 'Música & Som', description: 'Composição, performance e produção musical' },
       { title: 'Idiomas Vivos', description: 'Comunicação multicultural e expressão linguística' },
     ],
     rightCards: [
-      { title: 'Festival Multicultural', description: 'Evento anual com apresentações teatrais, musicais e exposições artísticas dos estudantes' },
-      { title: 'Revista Literária Edênica', description: 'Publicação estudantil com contos, poemas, artigos e ilustrações autorais' },
-      { title: 'Murais Colaborativos', description: 'Criação de obras de arte coletivas que decoram e transformam os espaços escolares' },
-      { title: 'TED Talks Estudantis', description: 'Apresentações inspiradoras onde estudantes compartilham suas paixões e descobertas' },
+      {
+        title: 'Festival Multicultural',
+        emoji: '🎪',
+        description: 'Evento anual com apresentações teatrais, musicais e exposições artísticas dos estudantes',
+      },
+      {
+        title: 'Revista Literária Edênica',
+        emoji: '📚',
+        description: 'Publicação estudantil com contos, poemas, artigos e ilustrações autorais',
+      },
+      {
+        title: 'Murais Colaborativos',
+        emoji: '🎨',
+        description: 'Criação de obras de arte coletivas que decoram e transformam os espaços escolares',
+      },
+      {
+        title: 'TED Talks Estudantis',
+        emoji: '🎤',
+        description: 'Apresentações inspiradoras onde estudantes compartilham suas paixões e descobertas',
+      },
     ],
   },
   {
@@ -121,7 +181,8 @@ export const starsCategories: StarsCategory[] = [
     subtitle: 'Construindo conexões significativas e inteligência emocional',
     leftColumnTitle: 'Dimensões Relacionais',
     rightColumnTitle: 'Atividades Relacionais',
-    icon: FiHeart,
+    leftColumnLayout: 'rows',
+    icon: FiUsers,
     colorHex: '#22C55E',
     description:
       'Na Edênicos Academy, as relações humanas são o coração da formação integral. Acreditamos que aprender a conviver, dialogar e respeitar a diversidade é essencial para a vida em sociedade. Por meio de experiências de cooperação, liderança e empatia, os alunos constroem vínculos saudáveis e desenvolvem habilidades socioemocionais que fortalecem o caráter e a convivência comunitária. O ser humano cresce quando aprende a viver em relação.',
@@ -129,16 +190,32 @@ export const starsCategories: StarsCategory[] = [
     image: '/Relations%20(Panda).png',
     leftCards: [
       { title: 'Autoconhecimento', description: 'Desenvolvimento da consciência sobre si mesmo e suas emoções' },
-      { title: 'Família e Casa', description: 'Fortalecimento dos vínculos familiares e responsabilidades domésticas' },
+      { title: 'Família & Casa', description: 'Fortalecimento dos vínculos familiares e responsabilidades domésticas' },
       { title: 'Comunidade Escolar', description: 'Colaboração, liderança e trabalho em equipe no ambiente educativo' },
-      { title: 'Sociedade e Cidadania', description: 'Participação ativa na comunidade e consciência social' },
-      { title: 'Natureza e Planeta', description: 'Conexão com o meio ambiente e sustentabilidade global' },
+      { title: 'Sociedade & Cidadania', description: 'Participação ativa na comunidade e consciência social' },
+      { title: 'Natureza & Planeta', description: 'Conexão com o meio ambiente e sustentabilidade global' },
     ],
     rightCards: [
-      { title: 'Círculos de Diálogo', description: 'Conversas estruturadas sobre emoções, conflitos e experiências pessoais' },
-      { title: 'Projeto Família Edênica', description: 'Atividades que envolvem famílias na jornada educativa dos estudantes' },
-      { title: 'Mentoria Entre Pares', description: 'Estudantes mais experientes orientam novatos em desenvolvimento pessoal' },
-      { title: 'Grupos de Apoio Emocional', description: 'Espaços seguros para compartilhar desafios e celebrar conquistas' },
+      {
+        title: 'Círculos de Diálogo',
+        emoji: '🤲',
+        description: 'Conversas estruturadas sobre emoções, conflitos e experiências pessoais',
+      },
+      {
+        title: 'Projeto Família Edênica',
+        emoji: '👨‍👩‍👧',
+        description: 'Atividades que envolvem famílias na jornada educativa dos estudantes',
+      },
+      {
+        title: 'Mentoria Entre Pares',
+        emoji: '🌱',
+        description: 'Estudantes mais experientes orientam novatos em desenvolvimento pessoal',
+      },
+      {
+        title: 'Grupos de Apoio Emocional',
+        emoji: '💚',
+        description: 'Espaços seguros para compartilhar desafios e celebrar conquistas',
+      },
     ],
   },
   {
@@ -148,7 +225,8 @@ export const starsCategories: StarsCategory[] = [
     subtitle: 'Serviço à comunidade e desenvolvimento de habilidades para a vida',
     leftColumnTitle: 'Áreas de Serviço',
     rightColumnTitle: 'Projetos de Impacto',
-    icon: FiHelpCircle,
+    icon: FaHandHoldingHeart,
+    headerIconGradient: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
     colorHex: '#EF4444',
     description:
       'Na Edênicos Academy, o serviço é a expressão prática do amor ao próximo. Incentivamos os alunos a se engajar em projetos sociais, ambientais e comunitários, colocando seus talentos a favor de causas maiores. O serviço desperta a solidariedade, a humildade e a responsabilidade cidadã, formando indivíduos comprometidos em transformar a realidade ao seu redor com gestos concretos de bondade e justiça.',
@@ -159,13 +237,32 @@ export const starsCategories: StarsCategory[] = [
       { title: 'Ação Comunitária', description: 'Projetos sociais, voluntariado e impacto positivo na comunidade' },
       { title: 'Empreendedorismo Social', description: 'Criação de negócios com propósito e impacto social positivo' },
       { title: 'Educação Financeira', description: 'Gestão de recursos, planejamento e economia consciente' },
-      { title: 'Liderança Colaborativa', description: 'Formação de líderes que inspiram e trabalham em equipe' },
+      {
+        title: 'Liderança Colaborativa',
+        description: 'Desenvolvimento de habilidades de liderança ética e inspiradora',
+      },
     ],
     rightCards: [
-      { title: 'Adote uma Família', description: "Estudantes 'adotam' famílias da comunidade para prestar auxílio e apoio contínuo" },
-      { title: 'StartUp Estudantil', description: 'Incubadora de negócios gerenciada por estudantes com mentoria profissional' },
-      { title: 'Banco Escolar Edênico', description: 'Sistema financeiro simulado para ensinar gestão de dinheiro e investimentos' },
-      { title: 'Líderes do Amanhã', description: 'Programa de formação de líderes com projetos reais de transformação social' },
+      {
+        title: 'Adote uma Família',
+        emoji: '🌟',
+        description: "Estudantes 'adotam' famílias da comunidade para prestar auxílio e apoio contínuo",
+      },
+      {
+        title: 'StartUp Estudantil',
+        emoji: '🚀',
+        description: 'Incubadora de negócios gerenciada por estudantes com mentoria profissional',
+      },
+      {
+        title: 'Banco Escolar Edênico',
+        emoji: '📊',
+        description: 'Sistema financeiro simulado para ensinar gestão de dinheiro e investimentos',
+      },
+      {
+        title: 'Líderes do Amanhã',
+        emoji: '🎯',
+        description: 'Programa de formação de líderes com projetos reais de transformação social',
+      },
     ],
   },
 ]

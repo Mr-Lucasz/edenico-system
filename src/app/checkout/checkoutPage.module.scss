@@ -1,0 +1,30 @@
+@use 'styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  padding-top: 6.75rem;
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+
+  @include sm {
+    padding-top: 7rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 75rem;
+  padding: 0 1.25rem;
+
+  @include lg {
+    padding: 0 2rem;
+  }
+}

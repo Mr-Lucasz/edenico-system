@@ -1,0 +1,222 @@
+@use 'styles/variables' as *;
+
+/* Faixa do rasgo — altura suficiente para o dentado aparecer; overflow corta o “lençol” branco */
+$torn-height: clamp(60px, 8vw, 120px);
+
+.wrap {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(90deg, #a654f6 0%, #7d3bed 100%);
+  overflow: hidden;
+  padding-top: clamp(10rem, 18.75vw, 15rem);
+  padding-bottom: clamp(18.75rem, 30vw, 23.75rem);
+}
+
+.tornTop {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: $torn-height;
+  line-height: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tornTopImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+.cloudSection {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.bgDecor {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.decorCircle {
+  position: absolute;
+  border-radius: 50%;
+
+  &[data-pos='tr'] {
+    width: min(26rem, 72vw);
+    height: min(26rem, 72vw);
+    top: -10%;
+    right: -10%;
+    background: radial-gradient(
+      circle at 40% 40%,
+      rgb(255 255 255 / 0.15) 0%,
+      transparent 72%
+    );
+  }
+
+  &[data-pos='bl'] {
+    width: min(18rem, 48vw);
+    height: min(18rem, 48vw);
+    bottom: 0%;
+    left: -5%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgb(255 255 255 / 0.12) 0%,
+      transparent 75%
+    );
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  @include sm {
+    max-width: 52rem;
+  }
+
+  @include lg {
+    max-width: 58rem;
+  }
+}
+
+.badgeNovo {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 11;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(180deg, #fbbf24 0%, #f97316 100%);
+  box-shadow: 0 2px 8px rgb(249 115 22 / 0.45);
+}
+
+.title {
+  margin: 0;
+  max-width: 85%;
+  font-size: clamp(1.5rem, 4.2vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  color: #fff;
+}
+
+.subtitle {
+  margin: 1.125rem 0 0;
+  max-width: 38rem;
+  font-size: clamp(0.9375rem, 2.1vw, 1.0625rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.95);
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(180deg, #fdba74 0%, #fb923c 48%, #ea580c 100%);
+  box-shadow: 0 4px 14px rgb(251 146 60 / 0.42);
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px #fb923c;
+  }
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #7d3bed;
+  text-decoration: none;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.1);
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.03);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #7d3bed,
+      0 0 0 4px #fff;
+  }
+}
+
+.features {
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @include sm {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.featureItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: #4ade80;
+  stroke-width: 2.25;
+}
