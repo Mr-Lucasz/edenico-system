@@ -211,3 +211,7 @@
   line-height: 1.4;
   color: $gray-600;
 }
+
+.mockHint + .mockHint {
+  margin-top: 0.5rem;
+}

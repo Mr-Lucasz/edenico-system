@@ -5,13 +5,12 @@ import { FaApple } from 'react-icons/fa'
 import { SiGoogleplay } from 'react-icons/si'
 
 import { AppDownloadCloudDivider } from '@src/components/landing/AppDownloadCloudDivider'
+import { GAME_APP_STORE_URL, GAME_GOOGLE_PLAY_URL, gamePromoUtm } from '@src/components/game/gamePromoUrls'
 import styles from './GameHero.module.scss'
 
 const TITLE_SRC = '/Title.svg'
 
-const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.edenicos.academy'
-const APP_STORE_URL = 'https://apps.apple.com/app/edenicos-academy/id123456789'
-const UTM_PARAMS = 'utm_source=site&utm_medium=web&utm_campaign=game-hero'
+const utm = gamePromoUtm('game-hero')
 
 const STATS = [
   { value: '50K+', label: 'Estudantes Ativos', valueClass: styles.statIndigo },
@@ -72,7 +71,7 @@ export function GameHero() {
         <div className={styles.inner}>
           <div className={styles.ctas}>
             <a
-              href={`${GOOGLE_PLAY_URL}?${UTM_PARAMS}`}
+              href={`${GAME_GOOGLE_PLAY_URL}?${utm}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.badge}
@@ -88,7 +87,7 @@ export function GameHero() {
             </a>
 
             <Link
-              href={`${GOOGLE_PLAY_URL}?${UTM_PARAMS}`}
+              href={`${GAME_GOOGLE_PLAY_URL}?${utm}`}
               className={styles.playCta}
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +103,7 @@ export function GameHero() {
             </Link>
 
             <a
-              href={`${APP_STORE_URL}?${UTM_PARAMS}`}
+              href={`${GAME_APP_STORE_URL}?${utm}`}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.badge}

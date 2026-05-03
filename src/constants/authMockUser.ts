@@ -12,6 +12,21 @@ export const AUTH_MOCK_USER = {
   nome: 'Usuário Demo',
 } as const
 
-/** Mensagem exibida na UI (dev) para lembrar o utilizador mock */
-export const AUTH_MOCK_HINT =
-  'Demo: CPF 123.456.789-09 · senha Teste@123 · email demo@edenicos.academy'
+/** Painel administrativo (demo) — redireciona para `/admin`. */
+export const AUTH_MOCK_ADMIN = {
+  cpf: '529.982.247-25',
+  cpfNormalized: '52998224725',
+  email: 'admin@edenicos.com',
+  password: 'Admin@123',
+  nome: 'Administrador',
+} as const
+
+export type AuthMockRole = 'student' | 'admin'
+
+/** Mensagem exibida na UI (dev) para lembrar o usuário mock estudante */
+export const AUTH_MOCK_HINT_STUDENT =
+  'Demo estudante: CPF 123.456.789-09 · senha Teste@123 · e-mail demo@edenicos.academy'
+
+/** Demo painel admin */
+export const AUTH_MOCK_HINT_ADMIN =
+  'Demo admin: CPF 529.982.247-25 · senha Admin@123 · e-mail admin@edenicos.com'

@@ -1,0 +1,134 @@
+@use 'styles/variables' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  @include lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.statCard {
+  border-radius: 8px;
+  border: 1px solid $game-card-border;
+  background-color: $game-card-bg;
+  padding: 1rem;
+}
+
+.statTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $game-text-muted;
+}
+
+.statValue {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.statSub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #4ade80;
+}
+
+.statIcon {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.progressFoot {
+  margin-top: 0.625rem;
+}
+
+.track {
+  height: 6px;
+  border-radius: 9999px;
+  background-color: $game-progress-track;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background-color: $game-progress-fill;
+}
+
+.bigCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @include md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.bigCard {
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.bigPurple {
+  background: linear-gradient(145deg, #6d28d9, #4c1d95);
+}
+
+.bigGreen {
+  background: linear-gradient(145deg, #15803d, #166534);
+}
+
+.bigBlue {
+  background: linear-gradient(145deg, #1d4ed8, #1e40af);
+}
+
+.bigTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bigDesc {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgb(255 255 255 / 0.85);
+  line-height: 1.4;
+}
+
+.bigIcon {
+  margin-bottom: auto;
+  opacity: 0.95;
+}
+

@@ -5,6 +5,8 @@ $brown-deep: #7a4a33;
 $cta-green-ghost: rgba(0, 200, 117, 0.35);
 
 .grid {
+  --level-accent: #{$brown};
+  --level-accent-deep: #{$brown-deep};
   display: grid;
   gap: 1.25rem;
 
@@ -38,7 +40,7 @@ $cta-green-ghost: rgba(0, 200, 117, 0.35);
 
 .cardHero {
   padding: 1.25rem 1.25rem 1rem;
-  background: linear-gradient(145deg, $brown 0%, $brown-deep 100%);
+  background: linear-gradient(145deg, var(--level-accent) 0%, var(--level-accent-deep) 100%);
   color: #fff;
 }
 
@@ -135,8 +137,8 @@ $cta-green-ghost: rgba(0, 200, 117, 0.35);
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: $brown;
-  background: rgb(150 90 62 / 0.12);
+  color: var(--level-accent);
+  background: color-mix(in srgb, var(--level-accent) 14%, transparent);
 }
 
 .progressTrack {
@@ -149,7 +151,7 @@ $cta-green-ghost: rgba(0, 200, 117, 0.35);
 .progressFill {
   height: 100%;
   border-radius: 9999px;
-  background: $brown;
+  background: var(--level-accent);
   transition: width 0.3s ease;
 }
 
@@ -208,7 +210,7 @@ $cta-green-ghost: rgba(0, 200, 117, 0.35);
   font-weight: 700;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(180deg, $brown 0%, $brown-deep 100%);
+  background: linear-gradient(180deg, var(--level-accent) 0%, var(--level-accent-deep) 100%);
   box-shadow: 0 2px 4px rgb(0 0 0 / 0.12);
   transition:
     transform 0.15s ease,

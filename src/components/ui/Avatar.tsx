@@ -6,6 +6,8 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   name: string
   size?: 'sm' | 'md' | 'lg'
   imageUrl?: string
+  /** Azul sólido (#0047ff) — alinhado ao protótipo Academy (logo / avatar) */
+  tone?: 'gradient' | 'brandBlue'
 }
 
 const sizeClass = {
@@ -14,8 +16,13 @@ const sizeClass = {
   lg: styles.sizeLg,
 } as const
 
+const toneClass = {
+  gradient: styles.toneGradient,
+  brandBlue: styles.toneBrandBlue,
+} as const
+
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
-  ({ className, name, size = 'md', imageUrl, ...props }, ref) => {
+  ({ className, name, size = 'md', imageUrl, tone = 'gradient', ...props }, ref) => {
     const getInitials = (n: string): string => {
       return n
         .split(' ')
@@ -26,7 +33,11 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     }
 
     return (
-      <div ref={ref} className={cn(styles.root, sizeClass[size], className)} {...props}>
+      <div
+        ref={ref}
+        className={cn(styles.root, sizeClass[size], imageUrl ? undefined : toneClass[tone], className)}
+        {...props}
+      >
         {imageUrl ? (
           <img src={imageUrl} alt={name} className={styles.img} />
         ) : (

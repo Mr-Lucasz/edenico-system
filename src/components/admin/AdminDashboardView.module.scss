@@ -1,0 +1,602 @@
+$admin-primary: #0056d2;
+$admin-success: #28a745;
+$admin-border: #e8eaed;
+$admin-card-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+$admin-track-blue: #e8f1fc;
+
+.dashboardRoot {
+  font-family: var(--font-inter, system-ui, -apple-system, 'Segoe UI', sans-serif);
+  color: #1a1a1a;
+  max-width: 100%;
+}
+
+.pageTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+  margin: 0 0 0.35rem;
+}
+
+.pageSubtitle {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #616161;
+  font-weight: 500;
+}
+
+.grid4 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rowTight {
+  margin-bottom: 1rem;
+}
+
+.rowLoose {
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid $admin-border;
+  border-radius: 10px;
+  box-shadow: $admin-card-shadow;
+  padding: 1.25rem 1.35rem;
+  position: relative;
+}
+
+.cardStat {
+  min-height: 6.5rem;
+}
+
+.cardStatLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #616161;
+  margin: 0 0 0.5rem;
+  padding-right: 2.75rem;
+}
+
+.cardStatValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111;
+  margin: 0 0 0.35rem;
+  line-height: 1.1;
+}
+
+.cardStatTrend {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $admin-success;
+  letter-spacing: 0.01em;
+}
+
+.trendIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+.statIcon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.statIconBlue {
+  background: $admin-primary;
+}
+
+.statIconPurple {
+  background: #7b2cbf;
+}
+
+.statIconOrange {
+  background: #fb8c00;
+}
+
+.statIconGreen {
+  background: $admin-success;
+}
+
+.cardSimpleTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #616161;
+  margin: 0 0 0.5rem;
+}
+
+.cardSimpleValue {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.35;
+}
+
+.chartsRow {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.35fr 1fr;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardTitle {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.cardSubtitle {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #757575;
+  font-weight: 500;
+}
+
+.chartInteractiveWrap {
+  position: relative;
+  margin-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.chartHitBand {
+  fill: transparent;
+  cursor: crosshair;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $admin-primary;
+    outline-offset: 1px;
+  }
+}
+
+.chartCrosshair {
+  stroke: rgb(0 86 210 / 0.2);
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.chartTooltip {
+  position: absolute;
+  bottom: 100%;
+  min-width: 10.5rem;
+  padding: 0.65rem 0.75rem;
+  background: #fff;
+  border: 1px solid $admin-border;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.1);
+  pointer-events: none;
+  z-index: 2;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #424242;
+}
+
+.chartTooltipTitle {
+  margin: 0 0 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #616161;
+}
+
+.chartTooltipLine {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.35rem;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #111;
+  }
+}
+
+.chartTooltipSwatch {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.chartTooltipSwatchDiamond {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+.pieSliceGroup {
+  transition: transform 0.2s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.pieChartInteractive {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pieSvg {
+  display: block;
+  overflow: visible;
+}
+
+.pieSlice {
+  cursor: pointer;
+  transition:
+    stroke-width 0.15s ease,
+    filter 0.15s ease;
+  outline: none;
+
+  &:hover {
+    filter: brightness(1.04);
+  }
+
+  &:focus-visible {
+    filter: brightness(1.06);
+    stroke-width: 2px;
+  }
+}
+
+.pieTooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  background: #fff;
+  border: 1px solid $admin-border;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.pieTooltipName {
+  color: #424242;
+  font-weight: 600;
+}
+
+.pieTooltipPct {
+  font-weight: 700;
+  color: $admin-primary;
+}
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pieRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pieLegend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 10rem;
+}
+
+.pieLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #424242;
+}
+
+.pieDot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.piePct {
+  margin-left: auto;
+  font-weight: 700;
+  color: #111;
+}
+
+.bottomRow {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.planRow {
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.planHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.planName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.planCount {
+  font-size: 0.8125rem;
+  color: #616161;
+}
+
+.planTrack {
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: $admin-track-blue;
+  overflow: hidden;
+}
+
+.planFill {
+  height: 100%;
+  border-radius: 9999px;
+  background: $admin-primary;
+  transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planFill,
+  .courseBarFill {
+    transition: none;
+  }
+}
+
+.planFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid $admin-border;
+  font-size: 0.875rem;
+}
+
+.planFooterLabel {
+  font-weight: 700;
+  color: #111;
+}
+
+.planFooterValue {
+  font-weight: 700;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.courseRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 0.35rem;
+  margin: 0 -0.35rem;
+  border-radius: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgb(0 86 210 / 0.04);
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.courseLeft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.courseRank {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $admin-primary;
+  flex-shrink: 0;
+}
+
+.courseName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.courseAlunos {
+  font-size: 0.8125rem;
+  color: #757575;
+  font-weight: 500;
+}
+
+.courseRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 1 12rem;
+  min-width: min(100%, 12rem);
+}
+
+.courseBarTrack {
+  flex: 1;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: $admin-track-blue;
+  overflow: hidden;
+  min-width: 4rem;
+}
+
+.courseBarFill {
+  height: 100%;
+  border-radius: 9999px;
+  background: $admin-primary;
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.coursePct {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #111;
+  width: 2.5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.lineLegend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lineLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #616161;
+}
+
+.lineLegendSwatch {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.lineLegendSwatchDiamond {
+  transform: rotate(45deg);
+}
+
+.axisLabel {
+  font-size: 0.625rem;
+  fill: #9e9e9e;
+  font-weight: 500;
+}
+
+.axisTitle {
+  font-size: 0.5625rem;
+  fill: #757575;
+  font-weight: 600;
+}
+
+.monthLabel {
+  font-size: 0.625rem;
+  fill: #616161;
+  font-weight: 500;
+}
+
+.gridLine {
+  stroke: #e0e0e0;
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.lineStudents {
+  fill: none;
+  stroke: $admin-primary;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lineRevenue {
+  fill: none;
+  stroke: $admin-success;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dotStudents {
+  fill: #fff;
+  stroke: $admin-primary;
+  stroke-width: 2;
+}
+
+.dotRevenue {
+  fill: #fff;
+  stroke: $admin-success;
+  stroke-width: 2;
+}

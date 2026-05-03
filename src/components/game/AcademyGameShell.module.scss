@@ -1,0 +1,24 @@
+@use 'styles/variables' as *;
+
+.shell {
+  min-height: 100vh;
+  background-color: $game-bg-page;
+  padding-top: 4rem;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 1rem 1rem 3rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.25rem;
+  }
+}

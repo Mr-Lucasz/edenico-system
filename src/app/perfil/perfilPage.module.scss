@@ -1,0 +1,23 @@
+@use 'styles/variables' as *;
+
+.page {
+  min-height: 100vh;
+  background-color: $gray-50;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 0 1rem 2rem;
+  padding-top: 6rem;
+
+  @include sm {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

@@ -1,10 +1,5 @@
-import { AcademyStubShell } from '@src/components/layout/AcademyStubShell'
+import { GameDashboardClient } from '@src/components/game/GameDashboardClient'
 
 export default function ComunidadePage() {
-  return (
-    <AcademyStubShell
-      title="Comunidade"
-      subtitle="Página de teste: fórum e interação entre alunos."
-    />
-  )
+  return <GameDashboardClient />
 }

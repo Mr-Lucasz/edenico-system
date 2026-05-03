@@ -4,13 +4,26 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FiCreditCard, FiEye, FiEyeOff, FiLock } from 'react-icons/fi'
-import { AUTH_MOCK_HINT, AUTH_MOCK_USER } from '@src/constants/authMockUser'
+import {
+  AUTH_MOCK_ADMIN,
+  AUTH_MOCK_HINT_ADMIN,
+  AUTH_MOCK_HINT_STUDENT,
+  AUTH_MOCK_USER,
+  type AuthMockRole,
+} from '@src/constants/authMockUser'
 import { LOGIN_COPY } from '@src/constants/authCopy'
 import { startNavigationProgress } from '@src/lib/navigationProgress'
 import styles from './AuthForms.module.scss'
 
 function normalizeCpf(s: string) {
   return s.replace(/\D/g, '')
+}
+
+function resolveMockRole(cpf: string, password: string): AuthMockRole | null {
+  const n = normalizeCpf(cpf)
+  if (n === AUTH_MOCK_USER.cpfNormalized && password === AUTH_MOCK_USER.password) return 'student'
+  if (n === AUTH_MOCK_ADMIN.cpfNormalized && password === AUTH_MOCK_ADMIN.password) return 'admin'
+  return null
 }
 
 export function LoginForm() {
@@ -23,13 +36,13 @@ export function LoginForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setError(null)
-    const n = normalizeCpf(cpf)
-    if (n !== AUTH_MOCK_USER.cpfNormalized || password !== AUTH_MOCK_USER.password) {
-      setError('CPF ou senha incorretos. Use o utilizador demo indicado abaixo.')
+    const role = resolveMockRole(cpf, password)
+    if (!role) {
+      setError('CPF ou senha incorretos. Use um dos acessos demo indicados abaixo.')
       return
     }
     startNavigationProgress()
-    router.push('/dashboard')
+    router.push(role === 'admin' ? '/admin' : '/dashboard')
   }
 
   return (
@@ -107,7 +120,8 @@ export function LoginForm() {
           {LOGIN_COPY.footerLink}
         </Link>
       </p>
-      <p className={styles.mockHint}>{AUTH_MOCK_HINT}</p>
+      <p className={styles.mockHint}>{AUTH_MOCK_HINT_STUDENT}</p>
+      <p className={styles.mockHint}>{AUTH_MOCK_HINT_ADMIN}</p>
       {error ? <p className={styles.mockHint} role="alert">{error}</p> : null}
     </div>
   )

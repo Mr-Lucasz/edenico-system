@@ -1,0 +1,249 @@
+@use 'styles/variables' as *;
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 52rem;
+  text-align: center;
+}
+
+.titleImg {
+  display: block;
+  width: min(100%, 24rem);
+  height: auto;
+  margin: 0 auto;
+}
+
+.tagline {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.125rem, 2.8vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.statsCard {
+  margin-top: 1.75rem;
+  border-radius: 1.5rem;
+  background-color: #fff;
+  padding: 1.75rem 1.25rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.12),
+    0 20px 40px -12px rgb(0 0 0 / 0.35);
+
+  @include sm {
+    margin-top: 2rem;
+    padding: 2rem 1.75rem;
+    border-radius: 1.875rem;
+  }
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include sm {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    align-items: start;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+
+  @include sm {
+    &:not(:last-child) {
+      border-right: 1px solid #e2e8f0;
+    }
+  }
+}
+
+.statValueRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  flex-wrap: wrap;
+}
+
+.statValue {
+  font-size: clamp(1.625rem, 3.8vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.statIndigo {
+  color: #4f46e5;
+}
+
+.statViolet {
+  color: #7c3aed;
+}
+
+.statPink {
+  color: #db2777;
+}
+
+.statStar {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #db2777;
+}
+
+.statLabel {
+  margin-top: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.35;
+  max-width: 11rem;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2rem;
+
+  @include sm {
+    gap: 1.25rem 1.5rem;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3.375rem;
+  border-radius: 0.4375rem;
+  background-color: #000;
+  padding: 0.45rem 1rem 0.45rem 0.55rem;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.35);
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px $game-bg-page,
+      0 0 0 4px $edenicos-yellow,
+      0 2px 8px rgb(0 0 0 / 0.35);
+  }
+}
+
+.badgeIconWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.badgeSvgIcon {
+  width: 2rem;
+  height: 2rem;
+  color: #fff;
+}
+
+.badgeCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.1rem;
+  line-height: 1.15;
+  padding-right: 0.15rem;
+}
+
+.badgeKicker {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.badgeTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.playCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.875rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ffb800 0%, #ff4dad 100%);
+  box-shadow: 0 8px 24px rgb(236 72 153 / 0.35);
+  transition:
+    filter 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px $game-bg-page,
+      0 0 0 4px #ff4dad,
+      0 8px 24px rgb(236 72 153 / 0.35);
+  }
+}
+
+.playIcon {
+  flex-shrink: 0;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.sparkle {
+  font-size: 0.875rem;
+  opacity: 0.95;
+}

@@ -1,0 +1,330 @@
+@use 'styles/variables' as *;
+
+$page-bg: #121926;
+$card-bg: #1e293b;
+$accent: #22c55e;
+$gold: #f59e0b;
+$silver: #94a3b8;
+$bronze: #f97316;
+$you-bg: #064e3b;
+$you-border: #10b981;
+$muted: #94a3b8;
+
+.root {
+  color: #fff;
+  background: $page-bg;
+  border-radius: 1rem;
+  padding: 1.125rem 1.25rem 1.75rem;
+  border: 1px solid rgb(255 255 255 / 0.05);
+}
+
+.headRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.seasonPill {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $accent;
+  border: 1px solid $accent;
+  background: rgb(34 197 94 / 0.1);
+}
+
+.toggleRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(30 41 59 / 0.8);
+  color: $muted;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: #e2e8f0;
+    border-color: rgb(255 255 255 / 0.2);
+  }
+}
+
+.toggleActive {
+  background: $accent;
+  border-color: $accent;
+  color: #0f172a;
+}
+
+.scopeHint {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  color: $muted;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.card {
+  background: $card-bg;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  padding: 1.25rem 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.2);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.5rem, 3vw, 1.25rem);
+  padding: 0.5rem 0.25rem 0.25rem;
+  min-height: 13rem;
+}
+
+.podiumCol {
+  flex: 1;
+  max-width: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rankLabel {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: rgb(255 255 255 / 0.85);
+  margin-bottom: 0.375rem;
+  min-height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crownWrap {
+  margin-bottom: 0.25rem;
+  color: $gold;
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.35));
+}
+
+.bar {
+  width: 100%;
+  border-radius: 0.5rem 0.5rem 0.125rem 0.125rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  box-shadow: inset 0 -4px 12px rgb(0 0 0 / 0.15);
+}
+
+.barGold {
+  height: 7.25rem;
+  background: linear-gradient(180deg, #fbbf24 0%, $gold 35%, #b45309 100%);
+}
+
+.barSilver {
+  height: 5.25rem;
+  background: linear-gradient(180deg, #cbd5e1 0%, $silver 40%, #64748b 100%);
+}
+
+.barBronze {
+  height: 4rem;
+  background: linear-gradient(180deg, #fdba74 0%, $bronze 40%, #c2410c 100%);
+}
+
+.podiumAvatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 0.375rem;
+  border: 2px solid rgb(255 255 255 / 0.2);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+}
+
+.podiumName {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.podiumScore {
+  margin: 0.125rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fef3c7;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.listHeaderIcon {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.625rem;
+  background: rgb(15 23 42 / 0.35);
+  border: 1px solid transparent;
+}
+
+.rowWide {
+  grid-template-columns: auto auto 1fr auto auto;
+}
+
+.rowYou {
+  background: $you-bg;
+  border-color: $you-border;
+  box-shadow: 0 0 0 1px rgb(16 185 129 / 0.25);
+}
+
+.rankCircle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.rank1 {
+  background: linear-gradient(145deg, #fbbf24, $gold);
+  color: #422006;
+}
+
+.rank2 {
+  background: linear-gradient(145deg, #e2e8f0, $silver);
+  color: #1e293b;
+}
+
+.rank3 {
+  background: linear-gradient(145deg, #fdba74, $bronze);
+  color: #431407;
+}
+
+.rankN {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.rowAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.rowText {
+  min-width: 0;
+}
+
+.rowName {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.rowLevel {
+  margin: 0.125rem 0 0;
+  font-size: 0.75rem;
+  color: $muted;
+}
+
+.flagCell {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 1.75rem;
+  text-align: center;
+}
+
+.scoreCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.trophy {
+  color: #eab308;
+  flex-shrink: 0;
+}
+
+@include md {
+  .podium {
+    gap: 1.5rem;
+  }
+
+  .podiumCol {
+    max-width: 8.5rem;
+  }
+}

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { FiBarChart2, FiBook, FiAward, FiUsers, FiUser, FiBell, FiHome, FiMessageCircle, FiSettings } from 'react-icons/fi'
+import { FiBook, FiAward, FiUsers, FiUser, FiBell, FiHome, FiMessageCircle, FiSettings, FiSearch, FiLogOut } from 'react-icons/fi'
 import { Avatar } from '@src/components/ui'
 import { cn } from '@src/utils/cn'
 import { startNavigationProgress } from '@src/lib/navigationProgress'
@@ -41,12 +41,17 @@ export function Navbar() {
   const router = useRouter()
   const activeNavId = navIdFromPath(pathname || '/')
   const isCursosArea = pathname.startsWith('/cursos')
+  const isConquistasPage = pathname.startsWith('/conquistas')
+  const isComunidadePage = pathname.startsWith('/comunidade')
+  const isPerfilPage = pathname.startsWith('/perfil')
+  /** Badges + Conectado: Cursos, Conquistas e Comunidade (Game) */
+  const showRichHeader = isCursosArea || isConquistasPage || isComunidadePage
   const showCourseSettings = isCoursePlayerPath(pathname || '')
 
   const navLinks: NavLink[] = [
     {
       label: 'Dashboard',
-      icon: isCursosArea ? <FiHome style={{ width: '1rem', height: '1rem' }} /> : <FiBarChart2 style={{ width: '1rem', height: '1rem' }} />,
+      icon: <FiHome style={{ width: '1rem', height: '1rem' }} />,
       href: '/dashboard',
       id: 'dashboard',
     },
@@ -59,13 +64,16 @@ export function Navbar() {
   const linkClass = (linkId: string, isActive: boolean) => {
     if (!isActive) return styles.link
     if (linkId === 'cursos' && isCursosArea) return styles.linkActiveGreen
+    if (linkId === 'conquistas' && isConquistasPage) return styles.linkActiveConquistas
+    if (linkId === 'comunidade' && isComunidadePage) return styles.linkActiveComunidade
+    if (linkId === 'perfil' && isPerfilPage) return styles.linkActivePerfil
     return styles.linkActive
   }
 
   return (
     <nav className={styles.nav}>
       <div className={styles.inner}>
-        <div className={cn(styles.row, isCursosArea && styles.rowCursos)}>
+        <div className={cn(styles.row, (showRichHeader || isPerfilPage) && styles.rowCursos)}>
           <Link href="/dashboard" className={styles.logoRow}>
             <div className={styles.logoMark}>E</div>
             <span className={styles.logoText}>Edênicos Academy</span>
@@ -83,37 +91,36 @@ export function Navbar() {
             })}
           </div>
 
-          <div className={cn(styles.right, isCursosArea && styles.rightCursos)}>
-            {isCursosArea ? (
+          <div className={cn(styles.right, (showRichHeader || isPerfilPage) && styles.rightCursos)}>
+            {showRichHeader || isPerfilPage ? (
               <>
-                <button
-                  type="button"
+                {isPerfilPage ? (
+                  <button type="button" className={styles.iconBtn} aria-label="Pesquisar">
+                    <FiSearch style={{ width: '1.25rem', height: '1.25rem' }} />
+                  </button>
+                ) : null}
+                <Link
+                  href="/comunidade/social"
                   className={styles.iconBtn}
-                  aria-label="Comunidade, 2 notificações"
-                  onClick={() => {
-                    startNavigationProgress()
-                    router.push('/comunidade')
-                  }}
+                  aria-label="Social e amigos, 2 pendentes"
+                  onClick={() => startNavigationProgress()}
                 >
-                  <FiUsers style={{ width: '1.25rem', height: '1.25rem' }} />
+                  <FiUsers style={{ width: '1.25rem', height: '1.25rem' }} aria-hidden />
                   <span className={cn(styles.notifyBadge, styles.badgeGreen)} aria-hidden>
                     2
                   </span>
-                </button>
-                <button
-                  type="button"
+                </Link>
+                <Link
+                  href="/notificacoes"
                   className={styles.iconBtn}
                   aria-label="Notificações, 3 novas"
-                  onClick={() => {
-                    startNavigationProgress()
-                    router.push('/notificacoes')
-                  }}
+                  onClick={() => startNavigationProgress()}
                 >
-                  <FiBell style={{ width: '1.25rem', height: '1.25rem' }} />
+                  <FiBell style={{ width: '1.25rem', height: '1.25rem' }} aria-hidden />
                   <span className={cn(styles.notifyBadge, styles.badgeRed)} aria-hidden>
                     3
                   </span>
-                </button>
+                </Link>
                 {showCourseSettings ? (
                   <button
                     type="button"
@@ -127,15 +134,32 @@ export function Navbar() {
                     <FiSettings style={{ width: '1.1rem', height: '1.1rem' }} />
                   </button>
                 ) : null}
-                <Link href="/perfil" className={styles.userCol}>
-                  <Avatar name="Sofia" size="sm" />
-                  <div className={styles.userTexts}>
-                    <span className={styles.userNameCursos}>Sofia</span>
-                    <span className={styles.connected}>
-                      <span className={styles.connectedDot} aria-hidden />
-                      Conectado
-                    </span>
-                  </div>
+                <Link
+                  href="/perfil"
+                  className={isPerfilPage ? styles.userRow : styles.userCol}
+                  onClick={() => startNavigationProgress()}
+                >
+                  <Avatar name="Sofia" size="sm" tone={showRichHeader || isPerfilPage ? 'brandBlue' : undefined} />
+                  {isPerfilPage ? (
+                    <span className={styles.userName}>Sofia</span>
+                  ) : (
+                    <div className={styles.userTexts}>
+                      <span className={styles.userNameCursos}>Sofia</span>
+                      <span className={styles.connected}>
+                        <span className={styles.connectedDot} aria-hidden />
+                        Conectado
+                      </span>
+                    </div>
+                  )}
+                </Link>
+                <Link
+                  href="/login"
+                  className={cn(styles.iconBtn, styles.logoutBtn)}
+                  aria-label="Sair da conta"
+                  title="Sair"
+                  onClick={() => startNavigationProgress()}
+                >
+                  <FiLogOut style={{ width: '1.25rem', height: '1.25rem' }} aria-hidden />
                 </Link>
               </>
             ) : (
@@ -164,9 +188,18 @@ export function Navbar() {
                   <FiMessageCircle style={{ width: '1.25rem', height: '1.25rem' }} />
                   <span className={cn(styles.notifyDot, styles.dotGreen)} aria-hidden />
                 </button>
-                <Link href="/perfil" className={styles.userRow}>
+                <Link href="/perfil" className={styles.userRow} onClick={() => startNavigationProgress()}>
                   <Avatar name="Sofia" size="sm" />
                   <span className={styles.userName}>Sofia</span>
+                </Link>
+                <Link
+                  href="/login"
+                  className={cn(styles.iconBtn, styles.logoutBtn)}
+                  aria-label="Sair da conta"
+                  title="Sair"
+                  onClick={() => startNavigationProgress()}
+                >
+                  <FiLogOut style={{ width: '1.25rem', height: '1.25rem' }} aria-hidden />
                 </Link>
               </>
             )}

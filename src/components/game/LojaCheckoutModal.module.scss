@@ -1,0 +1,430 @@
+@use 'styles/variables' as *;
+
+$checkout-bg: #1f2937;
+$checkout-inset: #0f172a;
+$checkout-green: #10b981;
+$checkout-blue-tint: rgb(29 97 255 / 0.12);
+$checkout-blue-border: rgb(59 130 246 / 0.35);
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgb(0 0 0 / 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  margin: auto;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: 12px;
+  background-color: $checkout-bg;
+  box-shadow:
+    0 25px 50px -12px rgb(0 0 0 / 0.5),
+    0 0 0 1px rgb(255 255 255 / 0.06);
+
+  @include md {
+    padding: 2rem 2rem 1.75rem;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    color: #e2e8f0;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding-right: 2.5rem;
+}
+
+.headIcon {
+  flex-shrink: 0;
+  color: $checkout-green;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $game-text-muted;
+}
+
+.summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.125rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  background-color: $checkout-inset;
+  border: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.summaryText {
+  flex: 1;
+  min-width: 0;
+}
+
+.summaryTitle {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.summarySub {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: $game-text-muted;
+  line-height: 1.4;
+}
+
+.summaryPrice {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $checkout-green;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.columnTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.columnTitleIcon {
+  color: #94a3b8;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.savedCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: rgb(15 23 42 / 0.45);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    background: rgb(15 23 42 / 0.65);
+  }
+}
+
+.savedCardSelected {
+  border-color: $checkout-green;
+  box-shadow: 0 0 0 1px rgb(16 185 129 / 0.25);
+}
+
+.savedCardIcon {
+  flex-shrink: 0;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+.savedCardBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.savedCardName {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.125rem;
+}
+
+.savedCardMeta {
+  font-size: 0.8125rem;
+  color: $game-text-muted;
+}
+
+.badgePadrao {
+  display: inline-block;
+  margin-top: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: rgb(16 185 129 / 0.2);
+  color: #34d399;
+}
+
+.btnAddCard {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    background: #f1f5f9;
+  }
+}
+
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 2.75rem;
+  padding: 0 0.875rem;
+  border-radius: 8px;
+  border: 1px solid $parental-input-border;
+  background-color: $parental-input-bg;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  outline: none;
+
+  &::placeholder {
+    color: #64748b;
+  }
+
+  &:focus {
+    border-color: $checkout-green;
+    box-shadow: 0 0 0 1px rgb(16 185 129 / 0.35);
+  }
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.row3Cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.selectField {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.chevron {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #94a3b8;
+}
+
+.newCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.newCardTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.btnIconClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.btnSaveCard {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: $checkout-green;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    filter: brightness(1.06);
+  }
+}
+
+.legalBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.125rem;
+  margin-bottom: 1.25rem;
+  border-radius: 8px;
+  background: $checkout-blue-tint;
+  border: 1px solid $checkout-blue-border;
+}
+
+.checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.legalText {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btnGhost {
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    background: #f1f5f9;
+  }
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: $checkout-green;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}

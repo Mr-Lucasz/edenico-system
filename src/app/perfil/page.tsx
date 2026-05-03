@@ -1,10 +1,18 @@
-import { AcademyStubShell } from '@src/components/layout/AcademyStubShell'
+'use client'
+
+import { Footer } from '@src/components/layout/Footer'
+import { Navbar } from '@src/components/layout/Navbar'
+import { MeuPerfilClient } from '@src/components/profile/MeuPerfilClient'
+import styles from './perfilPage.module.scss'
 
 export default function PerfilPage() {
   return (
-    <AcademyStubShell
-      title="Perfil"
-      subtitle="Página de teste: dados da conta e preferências."
-    />
+    <div className={styles.page}>
+      <Navbar />
+      <main className={styles.main}>
+        <MeuPerfilClient />
+      </main>
+      <Footer />
+    </div>
   )
 }

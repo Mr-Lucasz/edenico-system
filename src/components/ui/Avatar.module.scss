@@ -3,9 +3,16 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
   color: #fff;
   font-weight: 600;
+}
+
+.toneGradient {
+  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+}
+
+.toneBrandBlue {
+  background-color: #0047ff;
 }
 
 .img {

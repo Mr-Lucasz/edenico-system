@@ -1,10 +1,10 @@
 import { AcademyStubShell } from '@src/components/layout/AcademyStubShell'
+import { ConquistasAchievementsView } from '@src/components/conquistas/ConquistasAchievementsView'
 
 export default function ConquistasPage() {
   return (
-    <AcademyStubShell
-      title="Conquistas"
-      subtitle="Página de teste: vitrine de medalhas e progresso."
-    />
+    <AcademyStubShell surface="white">
+      <ConquistasAchievementsView />
+    </AcademyStubShell>
   )
 }
