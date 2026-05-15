@@ -25,7 +25,7 @@ export function StarsBelowPhilosophySection() {
           <div className={styles.content}>
             <div className={styles.inner}>
               <h2 id="stars-below-philosophy-heading" className={styles.srOnly}>
-                Jornada STARS com os mascotes
+                Jornada STARS
               </h2>
               <div className={styles.stars} aria-hidden>
                 {STAR_ROW.map(({ key, sizeClass }) => (

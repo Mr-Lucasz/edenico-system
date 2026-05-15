@@ -1,12 +1,18 @@
-import type { CSSProperties } from 'react'
-import { cn } from '@src/utils/cn'
+'use client'
+
+import { useEffect, type CSSProperties } from 'react'
 import { institutionalCopy } from '@src/constants/institutionalCopy'
+import {
+  PHILOSOPHY_50_SELECT_EVENT,
+  type Philosophy50SelectDetail,
+} from '@src/constants/philosophy50Nav'
 import { philosophy50Dimensions } from '@src/data/philosophy50Content'
 import {
   getPhilosophyActivityIcon,
   getPhilosophyHowCareIcon,
   philosophy50HeaderIcons,
 } from '@src/data/philosophy50Icons'
+import { cn } from '@src/utils/cn'
 import styles from './Philosophy50Section.module.scss'
 
 const DEFAULT_HOW = 'Como Cuidamos'
@@ -14,6 +20,19 @@ const DEFAULT_ACTIVITIES = 'Atividades e Práticas'
 
 export function Philosophy50Section() {
   const { philosophy50: copy } = institutionalCopy
+
+  useEffect(() => {
+    const onSelect = (e: Event) => {
+      const ce = e as CustomEvent<Philosophy50SelectDetail>
+      const id = ce.detail?.id
+      if (id && philosophy50Dimensions.some((d) => d.id === id)) {
+        document.getElementById(`filosofia-dim-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+    globalThis.addEventListener(PHILOSOPHY_50_SELECT_EVENT, onSelect)
+    return () => globalThis.removeEventListener(PHILOSOPHY_50_SELECT_EVENT, onSelect)
+  }, [])
+
   return (
     <section id="filosofia-5" className={styles.section} aria-labelledby="philosophy50-heading">
       <div className={styles.container}>
@@ -24,20 +43,23 @@ export function Philosophy50Section() {
         <p className={styles.intro}>{copy.intro}</p>
 
         <div className={styles.list}>
-          {philosophy50Dimensions.map((dim) => {
+          {philosophy50Dimensions.map((dim, stackIndex) => {
             const HeaderIcon = philosophy50HeaderIcons[dim.id] ?? philosophy50HeaderIcons.fisica
             const howTitle = dim.howWeCareColumnTitle ?? DEFAULT_HOW
             const actTitle = dim.activitiesColumnTitle ?? DEFAULT_ACTIVITIES
+            const isLast = stackIndex === philosophy50Dimensions.length - 1
             return (
               <article
                 key={dim.id}
                 id={`filosofia-dim-${dim.id}`}
-                className={styles.article}
+                className={cn(styles.article, styles.articleStackItem)}
+                data-stack-last={isLast ? 'true' : undefined}
                 style={
                   {
                     backgroundColor: dim.cardSurface,
                     '--phil-card-border': dim.cardBorderColor,
                     '--phil-item-border': dim.itemBorderColor,
+                    '--stack-index': stackIndex,
                   } as CSSProperties
                 }
               >
@@ -121,7 +143,6 @@ export function Philosophy50Section() {
             )
           })}
         </div>
-
       </div>
     </section>
   )

@@ -94,6 +94,14 @@ a {
   background: transparent;
 }
 
+@media (max-width: 639.98px) {
+  .filosofia-section {
+    overflow-x: hidden;
+    overflow-y: visible;
+    min-height: 0;
+  }
+}
+
 @include sm {
   .filosofia-section {
     padding-top: calc(var(--filosofia-overlap) + 5rem + 3px);

@@ -39,12 +39,12 @@ export function PhilosophyCards() {
       whileInView="show"
       viewport={{ once: true, margin: '-48px' }}
     >
-      <div className={styles.grid}>
+      <div className={styles.stack}>
         {PILLARS.map((pillar, index) => (
           <motion.div
             key={pillar.id}
             variants={itemVariants}
-            className={cn(index === 4 ? styles.cellCenter : styles.cell)}
+            className={cn(styles.stackItem, index === 4 && styles.stackItemLast)}
           >
             <div
               className={styles.cardWrap}

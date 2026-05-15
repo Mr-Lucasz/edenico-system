@@ -3,7 +3,7 @@ import styles from './AppDownloadCloudDivider.module.scss'
 const CLOUDS_FOOTER_SRC = '/clouds-footer.svg'
 
 /**
- * Secção só com o divisor de nuvens (SVG), antes da AppDownloadSection.
+ * Secção só com o divisor de nuvens (SVG), após o bloco Edênicos / métricas na landing.
  */
 export function AppDownloadCloudDivider() {
   return (

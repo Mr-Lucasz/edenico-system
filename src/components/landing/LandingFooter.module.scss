@@ -111,28 +111,11 @@ $footer-social-icon: #c4ccd8;
 
 .topGrid {
   display: grid;
-  gap: 2.75rem 1.75rem;
-
-  @include sm {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.75rem 2rem;
-  }
-
-  @include lg {
-    grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
-    gap: 2.5rem 2.25rem;
-    align-items: start;
-  }
+  gap: 0;
 }
 
 .brandCol {
-  @include sm {
-    grid-column: 1 / -1;
-  }
-
-  @include lg {
-    grid-column: auto;
-  }
+  min-width: 0;
 }
 
 .brandTitle {
@@ -150,50 +133,13 @@ $footer-social-icon: #c4ccd8;
 
 .brandText {
   margin: 1.125rem 0 0;
-  max-width: min(22rem, 100%);
+  max-width: min(40rem, 100%);
   font-size: 0.875rem;
   line-height: 1.7;
   color: $footer-muted;
 
   @include lg {
-    max-width: 26rem;
-  }
-}
-
-.colHeading {
-  margin: 0;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #fff;
-  line-height: 1.3;
-}
-
-.linkList {
-  margin: 1.125rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6875rem;
-}
-
-.link {
-  font-size: 0.875rem;
-  line-height: 1.45;
-  color: $footer-muted;
-  text-decoration: none;
-  transition: color 0.15s ease;
-
-  &:hover {
-    color: $footer-muted-hover;
-  }
-
-  &:focus-visible {
-    outline: none;
-    color: $footer-muted-hover;
-    box-shadow: 0 0 0 2px $footer-bg, 0 0 0 4px $edenicos-yellow;
-    border-radius: 2px;
+    max-width: 44rem;
   }
 }
 
@@ -470,6 +416,24 @@ $footer-social-icon: #c4ccd8;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.25rem;
+}
+
+.bottomTaglineMobile {
+  display: inline;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.bottomTaglineDesktop {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+
+  @include lg {
+    display: inline-flex;
+  }
 }
 
 .heartIcon {

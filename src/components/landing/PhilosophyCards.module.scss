@@ -7,27 +7,77 @@
   max-width: 642px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  column-gap: 18px;
-  row-gap: 24px;
-  justify-items: center;
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  gap: 0;
+
+  @media (max-width: 639.98px) {
+    /* margin-bottom nos itens cria o espaço de scroll do empilhamento sticky */
+    padding-bottom: 0.5rem;
+  }
 
   @include sm {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    column-gap: 18px;
+    row-gap: 24px;
+    justify-items: center;
+    padding-bottom: 0;
   }
 }
 
-.cell {
-  /* default */
-}
-
-.cellCenter {
+.stackItem {
+  width: 100%;
+  max-width: 309px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 639.98px) {
+    position: sticky;
+    /* Cabeçalho fixo (~2.25rem suporte + ~3.5rem pill) + respiro */
+    margin-bottom: clamp(2.75rem, 10vw, 3.5rem);
+    /* Cada card “trava” um pouco mais abaixo: mostra o topo do empilhamento */
+    &:nth-child(1) {
+      top: calc(5rem + env(safe-area-inset-top, 0px));
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      top: calc(5.5rem + env(safe-area-inset-top, 0px));
+      z-index: 2;
+    }
+    &:nth-child(3) {
+      top: calc(6rem + env(safe-area-inset-top, 0px));
+      z-index: 3;
+    }
+    &:nth-child(4) {
+      top: calc(6.5rem + env(safe-area-inset-top, 0px));
+      z-index: 4;
+    }
+    &:nth-child(5) {
+      top: calc(7rem + env(safe-area-inset-top, 0px));
+      z-index: 5;
+    }
+  }
+
+  @include sm {
+    position: static;
+    margin-top: 0;
+    z-index: auto;
+
+    &:not(:first-child) {
+      margin-top: 0;
+    }
+  }
+}
+
+.stackItemLast {
+  @media (max-width: 639.98px) {
+    margin-bottom: 3.5rem;
+  }
 
   @include sm {
     grid-column: span 2;
@@ -42,9 +92,11 @@
   width: 100%;
   max-width: 309px;
   flex-shrink: 0;
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.2));
 
   @include sm {
     width: 309px;
+    filter: none;
   }
 }
 

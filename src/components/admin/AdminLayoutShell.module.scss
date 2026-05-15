@@ -151,6 +151,24 @@ $admin-nav-active-bg: #e3f2e6;
   }
 }
 
+.navItemActiveSettings {
+  background: #ecfdf5;
+  color: #007a55;
+
+  svg {
+    color: #007a55;
+  }
+
+  &:hover {
+    background: #ecfdf5;
+    color: #007a55;
+
+    svg {
+      color: #007a55;
+    }
+  }
+}
+
 .navItemMuted {
   cursor: default;
   opacity: 0.85;

@@ -11,53 +11,6 @@ import {
 import { FooterCountryFlag } from './FooterCountryFlag'
 import styles from './LandingFooter.module.scss'
 
-const ABOUT_LINKS = [
-  { label: 'Institucional', href: '/institucional' },
-  { label: 'Jogo', href: '#sobre' },
-  { label: 'Doações', href: '#contato' },
-  { label: 'Entrar', href: '/login' },
-  { label: 'Registrar', href: '/register' },
-  { label: 'Nossa equipe', href: '#contato' },
-  { label: 'Nossos estagiários', href: '#contato' },
-  { label: 'Carreiras', href: '#contato' },
-] as const
-
-const INSTIT_ABOUT_LINKS = [
-  { label: 'Institucional', href: '/institucional#inicio' },
-  { label: 'Jogo', href: '/institucional#ecossistema' },
-  { label: 'Doações', href: '/institucional#contato' },
-  { label: 'Entrar', href: '/login' },
-  { label: 'Registrar', href: '/register' },
-  { label: 'Nossa equipe', href: '/institucional#contato' },
-  { label: 'Nossos estagiários', href: '/institucional#contato' },
-  { label: 'Carreiras', href: '/institucional#contato' },
-] as const
-
-const CONTACT_LINKS = [
-  { label: 'Central de ajuda', href: '#contato' },
-  { label: 'Comunidade de apoio', href: '#contato' },
-  { label: 'Compartilhe sua história', href: '#contato' },
-  { label: 'Imprensa', href: '#contato' },
-] as const
-
-const INSTIT_CONTACT_LINKS = [
-  { label: 'Central de ajuda', href: '/institucional#contato' },
-  { label: 'Comunidade de apoio', href: '/institucional#contato' },
-  { label: 'Compartilhe sua história', href: '/institucional#contato' },
-  { label: 'Imprensa', href: '/institucional#contato' },
-] as const
-
-const COURSE_LINKS = [
-  { label: 'Matemática Ensino Fundamental', href: '#cursos' },
-  { label: 'Matemática Ensino Médio', href: '#cursos' },
-  { label: 'Ciências Ensino Fundamental', href: '#cursos' },
-  { label: 'Ciências Ensino Médio', href: '#cursos' },
-  { label: 'Biblioteca de Matemática', href: '#cursos' },
-  { label: 'Ciências Humanas', href: '#cursos' },
-  { label: 'Habilidades para a vida', href: '#cursos' },
-  { label: 'Ciências e Engenharia', href: '#cursos' },
-] as const
-
 const SOCIAL = [
   { icon: FiFacebook, label: 'Facebook', href: 'https://facebook.com' },
   { icon: FiInstagram, label: 'Instagram', href: 'https://instagram.com' },
@@ -72,14 +25,8 @@ const COUNTRIES = [
   { code: 'ES' as const, label: 'Espanha' },
 ] as const
 
-export type LandingFooterProps = {
-  variant?: 'default' | 'institucional'
-}
-
-export function LandingFooter({ variant = 'default' }: LandingFooterProps) {
+export function LandingFooter() {
   const year = new Date().getFullYear()
-  const aboutLinks = variant === 'institucional' ? INSTIT_ABOUT_LINKS : ABOUT_LINKS
-  const contactLinks = variant === 'institucional' ? INSTIT_CONTACT_LINKS : CONTACT_LINKS
 
   return (
     <footer className={styles.footer} role="contentinfo">
@@ -95,50 +42,11 @@ export function LandingFooter({ variant = 'default' }: LandingFooterProps) {
 
         <div className={styles.topGrid}>
           <div className={styles.brandCol}>
-            <h2 className={styles.brandTitle}>Edênicos Academy</h2>
+            <h2 className={styles.brandTitle}>Edênicos</h2>
             <p className={styles.brandText}>
-              Transformando a educação através da filosofia STARS com nossos adoráveis mascotes
-              animais. Uma plataforma onde aprender é uma aventura divertida e significativa.
+              Plataforma de educação com a metodologia STARS — Ciência, Tecnologia, Artes, Relações
+              Humanas e Serviço — para uma formação integral, colaborativa e com propósito.
             </p>
-          </div>
-
-          <div>
-            <h3 className={styles.colHeading}>Acerca de</h3>
-            <ul className={styles.linkList}>
-              {aboutLinks.map((item) => (
-                <li key={item.href + item.label}>
-                  <Link href={item.href} className={styles.link}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className={styles.colHeading}>Contato</h3>
-            <ul className={styles.linkList}>
-              {contactLinks.map((item) => (
-                <li key={item.href + item.label}>
-                  <Link href={item.href} className={styles.link}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className={styles.colHeading}>Cursos</h3>
-            <ul className={styles.linkList}>
-              {COURSE_LINKS.map((item) => (
-                <li key={item.href + item.label}>
-                  <Link href={item.href} className={styles.link}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
@@ -215,7 +123,12 @@ export function LandingFooter({ variant = 'default' }: LandingFooterProps) {
         <div className={styles.bottomRow}>
           <p className={styles.bottomLeft}>
             <span className={styles.bottomLeftInner}>
-              Feito com <FiHeart className={styles.heartIcon} aria-hidden /> para educação
+              <span className={styles.bottomTaglineMobile}>
+                Feito por pessoas para a educação de pessoas!
+              </span>
+              <span className={styles.bottomTaglineDesktop}>
+                Feito com <FiHeart className={styles.heartIcon} aria-hidden /> para educação
+              </span>
             </span>
           </p>
           <p className={styles.bottomCenter}>

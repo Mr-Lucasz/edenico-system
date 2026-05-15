@@ -2,31 +2,53 @@
 
 .section {
   position: relative;
-  /* Abaixo do divisor de nuvens (z-index maior) para o SVG não ficar por baixo desta faixa */
-  z-index: 1;
+  /* Por cima da nuvem (appPromoCloudWrap); conteúdo + lojas continuam clicáveis */
+  z-index: 50;
   overflow: visible;
-
-  /* Altura pelo conteúdo; evita caixa enorme (ex. 750px) que no inspector parece “vazar” sobre a seguinte quando há overlap */
   min-height: 0;
-
   background-color: #fff;
-  padding: 3.5rem 1rem 2.5rem;
+  /* Desce o bloco em relação à secção anterior; mínimo padding em baixo junto à nuvem */
+  margin-top: clamp(2.25rem, 6vw, 4.5rem);
+  /* Topo leve: o respiro maior fica no .inner (padding-top) para empurrar tudo para junto da nuvem */
+  padding: 1rem 1rem 0;
+  /* Puxa nuvens (+~80% em relação ao valor já forte) */
+  margin-bottom: clamp(-28rem, -55vw, -11rem);
 
   @include sm {
-    padding: 4rem 1.5rem 3rem;
+    margin-top: clamp(2.5rem, 5.5vw, 5rem);
+    padding: 1.25rem 1.5rem 0;
+    margin-bottom: clamp(-30rem, -48vw, -12rem);
   }
 
   @include lg {
-    padding: 4.5rem 2rem 3.25rem;
+    margin-top: clamp(2.75rem, 5vw, 5.5rem);
+    padding: 1.5rem 2rem 0;
+    margin-bottom: clamp(-32rem, -42vw, -14rem);
   }
 }
 
 .inner {
   margin: 0 auto;
-  max-width: 48rem;
+  max-width: 52rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  /* Empurra o bloco inteiro para baixo → lojas mais perto da nuvem (quase colado ao combinar com margin da secção) */
+  padding-top: clamp(5rem, 18vw, 16rem);
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include sm {
+    padding-top: clamp(5.5rem, 16vw, 15rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @include lg {
+    padding-top: clamp(6rem, 14vw, 14rem);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .titleWrap {
@@ -42,66 +64,36 @@
   max-width: 100%;
 }
 
-
-/* Bloco sub + cartão + badges: margin-top negativo puxa o grupo para cima (padding negativo é inválido em CSS) */
-.contentStack {
-  margin-top: 1em!important;
-
-  @include sm {
-    margin-top: calc(-1 * clamp(1.5rem, 3.5vw, 3rem));
-  }
-
-  @include lg {
-    margin-top: calc(-1 * clamp(1.75rem, 3vw, 3.25rem));
-  }
-}
-
-.title {
-  text-align: center;
-  margin-top: -12rem;
-  font-size: 1.875rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: $edenicos-yellow;
-  text-shadow: 2px 2px 0 #0f172a;
-
-  @include sm {
-    font-size: 2.25rem;
-  }
-}
-
 .sub {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 1rem 0 0;
   text-align: center;
   font-size: 0.875rem;
-  color: rgb(255 255 255 / 0.8);
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.4;
+  max-width: 28rem;
 }
 
-/* Cartão branco com métricas (protótipo ~30px radius) */
 .statsCard {
   position: relative;
-  z-index: 2;
-  margin-top: 0.75rem;
-
-  @include sm {
-    margin-top: 1rem;
-  }
-
+  z-index: 1;
+  width: 100%;
+  margin-top: 1.25rem;
   border-radius: 1.875rem;
   background-color: #fff;
-  padding: 2rem 1.25rem;
+  padding: 1.75rem 1.25rem;
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.08),
-    0 20px 40px -12px rgb(15 23 42 / 0.18);
+    0 20px 40px -12px rgb(15 23 42 / 0.15);
 
   @include sm {
-    padding: 2.25rem 2rem;
+    margin-top: 1.5rem;
+    padding: 2rem 1.75rem;
   }
 
   @include lg {
-    margin-top: 1.125rem;
-    padding: 2.5rem 2.5rem;
+    margin-top: 1.5rem;
+    padding: 2.25rem 2rem;
   }
 }
 
@@ -110,7 +102,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
-  gap: 1.75rem 1rem;
+  gap: 1.5rem 1rem;
 }
 
 .stat {
@@ -122,7 +114,7 @@
 }
 
 .statValue {
-  font-size: clamp(1.75rem, 4vw, 2.125rem);
+  font-size: clamp(1.625rem, 3.8vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -148,13 +140,13 @@
 }
 
 .statStar {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   line-height: 1;
   color: #db2777;
 }
 
 .statLabel {
-  margin-top: 0.5rem;
+  margin-top: 0.45rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: #64748b;
@@ -162,18 +154,29 @@
   max-width: 11rem;
 }
 
-/* Badges pretos com ícones PNG (Play Store / Apple) */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .badgesRow {
-  margin-top: 2.5rem;
+  width: 100%;
+  margin-top: clamp(1.25rem, 3.25vw, 2rem);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem 1.5rem;
+  gap: 1rem 1.25rem;
 
   @include sm {
-    margin-top: 3rem;
-    gap: 1.5rem 2rem;
+    gap: 1.25rem 1.5rem;
   }
 }
 
@@ -200,7 +203,7 @@
   &:focus-visible {
     outline: none;
     box-shadow:
-      0 0 0 2px $edenicos-navy,
+      0 0 0 2px #fff,
       0 0 0 4px $edenicos-yellow,
       0 2px 8px rgb(0 0 0 / 0.25);
   }
@@ -223,7 +226,6 @@
   object-fit: contain;
 }
 
-/* Logo Apple preta → branca no badge escuro */
 .badgeIconApple {
   display: block;
   width: 1.85rem;

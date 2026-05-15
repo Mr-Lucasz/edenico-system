@@ -1,0 +1,1170 @@
+// Valores alinhados ao frame Figma "Configurações do Sistema" (737:123095)
+
+$textTitle: #0f172b;
+$textBody: #0a0a0a;
+$textMuted: #45556c;
+$textSoft: #717182;
+$textPlaceholder: #62748e;
+$borderCard: rgb(0 0 0 / 0.1);
+$bgPage: #f8fafc;
+$bgInput: #f3f3f5;
+$bgRow: #f8fafc;
+$primary: #155dfc;
+$required: #fb2c36;
+$badgeOkBg: #dcfce7;
+$badgeOkText: #008236;
+$tabRail: #ececf0;
+$toggleOff: #cbced4;
+$toggleOn: #1976d2;
+
+.root {
+  font-family: var(--font-inter, system-ui, -apple-system, 'Segoe UI', sans-serif);
+  color: $textBody;
+  margin: -1.5rem;
+  padding: 1.3125rem 1.3125rem 1.5rem;
+  min-height: calc(100vh - 4rem);
+  background: $bgPage;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.3125rem;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.21875rem;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 1.640625rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: $textTitle;
+}
+
+.pageSubtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $textMuted;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.09375rem 0.4375rem 0.09375rem 0.4375rem;
+  border-radius: 0.421875rem;
+  background: $badgeOkBg;
+  border: 0.8px solid transparent;
+  font-size: 0.65625rem;
+  line-height: 1.33;
+  color: $badgeOkText;
+  font-weight: 500;
+  white-space: nowrap;
+
+  svg {
+    width: 0.65625rem;
+    height: 0.65625rem;
+    flex-shrink: 0;
+  }
+}
+
+.tabRail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0.21875rem;
+  margin-bottom: 1.75rem;
+  background: $tabRail;
+  border-radius: 0.796875rem;
+  min-height: 1.96875rem;
+}
+
+.tabBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  flex: 1 1 auto;
+  min-width: 7.5rem;
+  padding: 0.296875rem 0.5rem;
+  border: 0.8px solid transparent;
+  border-radius: 0.796875rem;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  line-height: 1.43;
+  color: $textBody;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  &:hover {
+    background: rgb(255 255 255 / 0.45);
+  }
+}
+
+.tabBtnActive {
+  background: #fff;
+  box-shadow: 0 0 0 0.8px rgb(0 0 0 / 0.04);
+}
+
+.panels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3125rem;
+}
+
+.card {
+  background: #fff;
+  border: 0.8px solid $borderCard;
+  border-radius: 0.796875rem;
+  padding: 0.8px;
+  box-shadow: 0 1px 2px rgb(15 23 43 / 0.04);
+}
+
+.cardHeader {
+  padding: 1.3125rem 1.3125rem 0;
+}
+
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4375rem;
+  margin: 0 0 0.4375rem;
+
+  svg {
+    width: 1.09375rem;
+    height: 1.09375rem;
+    flex-shrink: 0;
+    color: $textBody;
+  }
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: $textBody;
+}
+
+.cardDesc {
+  margin: 0;
+  padding-left: 1.53125rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $textSoft;
+}
+
+.cardBody {
+  padding: 0 1.3125rem 1.3125rem;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem 1rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.765625rem;
+  line-height: 1;
+  color: $textBody;
+}
+
+.required {
+  color: $required;
+  font-weight: 600;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 0.8px solid transparent;
+  border-radius: 0.421875rem;
+  background: $bgInput;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  line-height: 1.43;
+  color: $textBody;
+  padding: 0.4375rem 0.65625rem;
+  min-height: 1.96875rem;
+
+  &::placeholder {
+    color: $textSoft;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(21 93 252 / 0.2);
+  }
+}
+
+.textarea {
+  min-height: 7.3125rem;
+  resize: vertical;
+}
+
+.logoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: flex-start;
+}
+
+.logoPreview {
+  width: 5.25rem;
+  height: 5.25rem;
+  border-radius: 0.546875rem;
+  background: linear-gradient(90deg, #155dfc 0%, #1447e6 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.uploadZone {
+  flex: 1;
+  min-width: 12rem;
+  border: 1.6px solid #e2e8f0;
+  border-radius: 0.546875rem;
+  padding: 1.4375rem 1.4375rem 1.25rem;
+  text-align: center;
+  background: #fff;
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: $textMuted;
+    margin-bottom: 0.3125rem;
+  }
+}
+
+.uploadTitle {
+  margin: 0;
+  font-size: 0.765625rem;
+  line-height: 1.43;
+  color: $textMuted;
+}
+
+.uploadHint {
+  margin: 0.3125rem 0 0;
+  font-size: 0.65625rem;
+  line-height: 1.33;
+  color: $textPlaceholder;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4375rem;
+  padding-top: 0.875rem;
+  margin-top: 0.25rem;
+  grid-column: 1 / -1;
+}
+
+.btnGhost {
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.925rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  color: $textBody;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.875rem 0.4875rem 0.65625rem;
+  border: none;
+  border-radius: 0.421875rem;
+  background: $primary;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &:hover {
+    filter: brightness(1.04);
+  }
+}
+
+.toggleList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65625rem;
+  padding: 0 0 0.25rem;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4375rem 0.65625rem;
+  background: $bgRow;
+  border-radius: 0.546875rem;
+}
+
+.toggleText {
+  min-width: 0;
+}
+
+.toggleLabel {
+  margin: 0 0 0.125rem;
+  font-size: 0.765625rem;
+  font-weight: 500;
+  color: $textBody;
+}
+
+.toggleHint {
+  margin: 0;
+  font-size: 0.765625rem;
+  line-height: 1.43;
+  color: $textMuted;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1.75rem;
+  height: 1.00625rem;
+  border-radius: 624.9375rem;
+  border: 0.8px solid transparent;
+  padding: 0.05rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: $toggleOff;
+  transition: background 0.15s ease;
+
+  &[data-on='true'] {
+    background: $toggleOn;
+    justify-content: flex-end;
+  }
+}
+
+.switchKnob {
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.selectBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 1.96875rem;
+  padding: 0.05rem 0.70625rem;
+  border: 0.8px solid transparent;
+  border-radius: 0.421875rem;
+  background: $bgInput;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  color: $textBody;
+  cursor: pointer;
+  text-align: left;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  &:hover {
+    filter: brightness(0.98);
+  }
+}
+
+.placeholderPanel {
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: $textMuted;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* —— Segurança / Email / demais abas (Figma) —— */
+$orangeAction: #e17100;
+
+.passwordFieldWrap {
+  position: relative;
+  width: 100%;
+}
+
+.passwordInput {
+  padding-right: 2.25rem;
+}
+
+.inputIconBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.96875rem;
+  height: 1.96875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 0.421875rem;
+  cursor: pointer;
+  color: $textMuted;
+
+  &:hover {
+    color: $textBody;
+  }
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.fieldHint {
+  margin: 0;
+  font-size: 0.65625rem;
+  line-height: 1.33;
+  color: $textPlaceholder;
+}
+
+.btnOrange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.875rem 0.4875rem 0.65625rem;
+  border: none;
+  border-radius: 0.421875rem;
+  background: $orangeAction;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+}
+
+.actionsRowEnd {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.875rem;
+}
+
+.sectionRule {
+  height: 1px;
+  background: rgb(0 0 0 / 0.1);
+  margin: 0.75rem 0;
+  border: none;
+}
+
+.subheading {
+  margin: 0 0 0.5rem;
+  font-size: 0.765625rem;
+  font-weight: 600;
+  color: $textBody;
+}
+
+.sessionBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65625rem 0.70625rem;
+  border: 0.8px solid #e2e8f0;
+  border-radius: 0.546875rem;
+  background: #fff;
+}
+
+.sessionMeta {
+  min-width: 0;
+}
+
+.sessionTitle {
+  margin: 0 0 0.125rem;
+  font-size: 0.765625rem;
+  color: $textBody;
+}
+
+.sessionSub {
+  margin: 0;
+  font-size: 0.65625rem;
+  color: $textPlaceholder;
+}
+
+.badgeAtiva {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.4875rem;
+  border-radius: 0.421875rem;
+  background: $badgeOkBg;
+  border: 0.8px solid transparent;
+  font-size: 0.65625rem;
+  color: $badgeOkText;
+  font-weight: 500;
+}
+
+.logList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.logRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65625rem;
+  padding: 0.65625rem 0.65625rem;
+  background: $bgRow;
+  border-radius: 0.546875rem;
+}
+
+.logDot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.logDotGreen {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #00c950;
+}
+
+.logDotBlue {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #2b7fff;
+}
+
+.logDotOrange {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #fe9a00;
+}
+
+.logText {
+  min-width: 0;
+  flex: 1;
+}
+
+.logTitle {
+  margin: 0 0 0.125rem;
+  font-size: 0.765625rem;
+  color: $textBody;
+}
+
+.logTime {
+  margin: 0;
+  font-size: 0.65625rem;
+  color: $textPlaceholder;
+}
+
+.btnFullGhost {
+  width: 100%;
+  justify-content: center;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.925rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  color: $textBody;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.btnRowSplit {
+  display: flex;
+  gap: 0.4375rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 0.875rem;
+}
+
+.templateList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65625rem;
+}
+
+.templateBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  min-height: 1.96875rem;
+  padding: 0.4375rem 0.75rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  color: $textBody;
+  cursor: pointer;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.notifPrefRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4375rem 0.65625rem;
+  background: $bgRow;
+  border-radius: 0.546875rem;
+}
+
+.channelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4375rem 0.65625rem;
+  background: $bgRow;
+  border-radius: 0.546875rem;
+}
+
+.channelLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.channelIcon {
+  width: 1.09375rem;
+  height: 1.09375rem;
+  flex-shrink: 0;
+  color: $textMuted;
+}
+
+.scheduledInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 0.70625rem;
+  background: $bgRow;
+  border-radius: 0.546875rem;
+  margin-bottom: 0.875rem;
+}
+
+.scheduledIcon {
+  width: 1.09375rem;
+  height: 1.09375rem;
+  margin-top: 0.125rem;
+  color: $textMuted;
+}
+
+.badgeSucesso {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.4rem;
+  border-radius: 0.421875rem;
+  background: $badgeOkBg;
+  font-size: 0.65625rem;
+  color: $badgeOkText;
+  font-weight: 500;
+}
+
+.manualSummary {
+  padding: 0.875rem;
+  border: 0.8px solid #e2e8f0;
+  border-radius: 0.546875rem;
+  margin-bottom: 0.875rem;
+}
+
+.manualRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.manualTitle {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $textBody;
+}
+
+.manualDate {
+  margin: 0;
+  font-size: 0.765625rem;
+  color: $textMuted;
+}
+
+.manualMeta {
+  margin: 0.25rem 0 0;
+  font-size: 0.765625rem;
+  color: $textMuted;
+}
+
+.backupActions {
+  display: flex;
+  gap: 0.4375rem;
+  flex-wrap: wrap;
+}
+
+.backupPrimaryBtn {
+  flex: 1 1 12rem;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.875rem;
+  border: none;
+  border-radius: 0.421875rem;
+  background: $primary;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &:hover {
+    filter: brightness(1.04);
+  }
+}
+
+.backupSecondaryBtn {
+  min-width: 6.5rem;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.925rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  color: $textBody;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.historyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.70625rem 0.70625rem;
+  border: 0.8px solid #e2e8f0;
+  border-radius: 0.546875rem;
+  margin-bottom: 0.5rem;
+  background: #fff;
+}
+
+.historyMeta {
+  min-width: 0;
+}
+
+.historyDate {
+  margin: 0 0 0.125rem;
+  font-size: 0.765625rem;
+  color: $textBody;
+}
+
+.historySize {
+  margin: 0;
+  font-size: 0.65625rem;
+  color: $textPlaceholder;
+}
+
+.historyActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconOnlyBtn {
+  width: 1.96875rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.8px solid $borderCard;
+  border-radius: 0.421875rem;
+  background: #fff;
+  cursor: pointer;
+  color: $textMuted;
+
+  &:hover {
+    background: #fafafa;
+    color: $textBody;
+  }
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.integrationsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.integrationCard {
+  border: 0.8px solid $borderCard;
+  border-radius: 0.546875rem;
+  padding: 0.8px;
+  background: #fff;
+}
+
+.integrationCardInner {
+  padding: 0.875rem;
+}
+
+.integrationHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65625rem;
+  margin-bottom: 0.875rem;
+}
+
+.integrationLogo {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  border-radius: 0.421875rem;
+  background: $bgInput;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $textMuted;
+}
+
+.integrationTitle {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $textBody;
+}
+
+.badgeConnected {
+  display: inline-block;
+  padding: 0.1rem 0.4875rem;
+  border-radius: 0.421875rem;
+  background: $badgeOkBg;
+  font-size: 0.65625rem;
+  color: $badgeOkText;
+  font-weight: 500;
+}
+
+.badgeDisconnected {
+  display: inline-block;
+  padding: 0.1rem 0.4875rem;
+  border-radius: 0.421875rem;
+  background: #f1f5f9;
+  font-size: 0.65625rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.integrationFooterBtn {
+  width: 100%;
+  min-height: 1.75rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  color: $textBody;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.apiKeyBlock {
+  border: 0.8px solid $borderCard;
+  border-radius: 0.546875rem;
+  padding: 0.70625rem;
+  margin-bottom: 0.75rem;
+  background: #fafafa;
+}
+
+.apiKeyLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.apiKeyLabel {
+  margin: 0;
+  font-size: 0.765625rem;
+  color: $textBody;
+}
+
+.codeMono {
+  margin: 0;
+  padding: 0.45rem 0.65625rem;
+  background: #fff;
+  border: 0.8px solid rgb(0 0 0 / 0.06);
+  border-radius: 0.35rem;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  font-size: 0.765625rem;
+  color: $textBody;
+  overflow-x: auto;
+}
+
+.btnGenerateKeys {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4375rem;
+  margin-top: 0.25rem;
+  min-height: 1.96875rem;
+  padding: 0.4875rem 0.925rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  color: $textBody;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.25rem, 1fr));
+  gap: 0.6875rem;
+}
+
+.swatchBtn {
+  position: relative;
+  aspect-ratio: 1;
+  max-height: 9.5rem;
+  border-radius: 0.546875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+
+  &[data-selected='true'] {
+    border-color: $primary;
+    box-shadow: 0 0 0 1px rgb(21 93 252 / 0.35);
+  }
+}
+
+.swatchInner {
+  width: 100%;
+  height: 100%;
+}
+
+.swatchLabel {
+  position: absolute;
+  bottom: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65625rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+  pointer-events: none;
+}
+
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65625rem;
+  padding: 0.4375rem 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.starsSwatch {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  border-radius: 0.421875rem;
+  flex-shrink: 0;
+}
+
+.starsText {
+  flex: 1;
+  min-width: 0;
+}
+
+.starsName {
+  margin: 0 0 0.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $textBody;
+}
+
+.starsHex {
+  margin: 0;
+  font-size: 0.65625rem;
+  color: $textPlaceholder;
+}
+
+.btnAlterar {
+  min-width: 3.75rem;
+  height: 1.75rem;
+  padding: 0 0.75rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.faviconRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.faviconPreview {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.421875rem;
+  background: linear-gradient(90deg, #155dfc 0%, #1447e6 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.faviconActions {
+  display: flex;
+  gap: 0.4375rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.btnSm {
+  min-height: 1.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.421875rem;
+  border: 0.8px solid $borderCard;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.765625rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  &:hover {
+    background: #fafafa;
+  }
+}

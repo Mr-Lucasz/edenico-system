@@ -62,17 +62,13 @@ $hex-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
 }
 
 .stars {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0.25rem;
-
-  @include sm {
-    gap: 0.5rem;
-  }
+  display: none;
 
   @include md {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
     gap: 0.65rem;
   }
 }

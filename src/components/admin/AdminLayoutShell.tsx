@@ -30,8 +30,8 @@ const NAV: NavEntry[] = [
   { id: 'courses', label: 'Cursos', icon: <FiBookOpen aria-hidden />, href: '/admin/cursos' },
   { id: 'comms', label: 'Comunicações', icon: <FiMessageSquare aria-hidden /> },
   { id: 'support', label: 'Atendimento', icon: <FiHeadphones aria-hidden />, href: '/admin/atendimento' },
-  { id: 'reviews', label: 'Avaliações', icon: <FiStar aria-hidden /> },
-  { id: 'settings', label: 'Configurações', icon: <FiSettings aria-hidden /> },
+  { id: 'reviews', label: 'Avaliações', icon: <FiStar aria-hidden />, href: '/admin/avaliacoes' },
+  { id: 'settings', label: 'Configurações', icon: <FiSettings aria-hidden />, href: '/admin/configuracoes' },
 ]
 
 type Notif = { id: string; tempo: string; texto: string; lida: boolean }
@@ -47,6 +47,8 @@ function isNavActive(item: NavEntry, pathname: string): boolean {
   if (item.id === 'users') return pathname.startsWith('/admin/usuarios')
   if (item.id === 'courses') return pathname.startsWith('/admin/cursos')
   if (item.id === 'support') return pathname.startsWith('/admin/atendimento')
+  if (item.id === 'settings') return pathname.startsWith('/admin/configuracoes')
+  if (item.id === 'reviews') return pathname.startsWith('/admin/avaliacoes')
   return pathname === item.href
 }
 
@@ -93,6 +95,8 @@ export function AdminLayoutShell({ children }: Props) {
       setSearchHint(`“${term}”: use a busca na lista de tickets para filtrar por número, título ou usuário (demo).`)
     } else if (pathname.startsWith('/admin/usuarios')) {
       setSearchHint(`“${term}”: use o campo de busca na Lista Geral para filtrar por nome, e-mail, CPF ou ID (demo).`)
+    } else if (pathname.startsWith('/admin/configuracoes')) {
+      setSearchHint(`“${term}”: busca nas configurações será integrada à API (demo).`)
     } else {
       setSearchHint(`Busca por “${term}” — módulos específicos terão busca integrada à API (demo).`)
     }
@@ -120,7 +124,13 @@ export function AdminLayoutShell({ children }: Props) {
           {NAV.map((item) => {
             const active = isNavActive(item, pathname)
             const activeClass =
-              active && item.id === 'courses' ? styles.navItemActiveCursos : active ? styles.navItemActive : ''
+              active && item.id === 'courses'
+                ? styles.navItemActiveCursos
+                : active && (item.id === 'settings' || item.id === 'reviews')
+                  ? styles.navItemActiveSettings
+                  : active
+                    ? styles.navItemActive
+                    : ''
             const className = [styles.navItem, activeClass, item.href ? '' : styles.navItemMuted]
               .filter(Boolean)
               .join(' ')

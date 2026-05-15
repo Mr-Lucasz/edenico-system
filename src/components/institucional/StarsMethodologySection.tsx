@@ -2,6 +2,11 @@
 
 import { useState, useEffect, useCallback, type CSSProperties } from 'react'
 import { institutionalCopy } from '@src/constants/institutionalCopy'
+import {
+  PHILOSOPHY_50_SELECT_EVENT,
+  PHILOSOPHY_50_SHORT_LABEL,
+  type Philosophy50SelectDetail,
+} from '@src/constants/philosophy50Nav'
 import { starsCategories, type StarsCategoryId } from '@src/data/starsContent'
 import { getLeftIcon, getRightActivityAccent, getRightIcon } from '@src/data/starsMethodologyIcons'
 import { philosophy50Dimensions } from '@src/data/philosophy50Content'
@@ -27,14 +32,6 @@ const STAR_CARD_BORDER: Record<StarsCategoryId, string> = {
   service: '#ffc9c9',
 }
 
-const PHIL_SHORT_LABEL: Record<string, string> = {
-  fisica: 'Física',
-  mental: 'Mental',
-  espiritual: 'Espiritual',
-  relacional: 'Relacional',
-  profissional: 'Profissional',
-}
-
 export function StarsMethodologySection() {
   const { stars: copy } = institutionalCopy
   const [activeId, setActiveId] = useState<StarsCategoryId>('science')
@@ -52,6 +49,8 @@ export function StarsMethodologySection() {
   }, [])
 
   useEffect(() => {
+    if (isMobile) return
+
     const nodes = starsCategories
       .map((c) => document.getElementById(`stars-block-${c.id}`))
       .filter((n): n is HTMLElement => Boolean(n))
@@ -74,7 +73,7 @@ export function StarsMethodologySection() {
 
     nodes.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [isMobile])
 
   const scrollToBlock = useCallback((id: StarsCategoryId) => {
     document.getElementById(`stars-block-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -85,23 +84,9 @@ export function StarsMethodologySection() {
     el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [])
 
-  const blocks = starsCategories.map((cat) => (
-    <section
-      key={cat.id}
-      id={`stars-block-${cat.id}`}
-      data-star-id={cat.id}
-      className={styles.starBlock}
-      style={
-        {
-          background: STAR_CARD_GRADIENT[cat.id],
-          '--star-inner-border': STAR_CARD_BORDER[cat.id],
-        } as CSSProperties
-      }
-      aria-labelledby={`stars-cat-${cat.id}`}
-    >
-      <StarsCategoryContent category={cat} headingId={`stars-cat-${cat.id}`} />
-    </section>
-  ))
+  const blocks = starsCategories.map((cat) => <StarMethodologyBlock key={cat.id} cat={cat} />)
+
+  const mobileCat = starsCategories.find((c) => c.id === activeId) ?? starsCategories[0]
 
   const desktopNav = (
     <aside className={styles.asideSticky} aria-label={copy.navTitle}>
@@ -168,9 +153,16 @@ export function StarsMethodologySection() {
                     <button
                       type="button"
                       className={styles.accLink}
-                      onClick={() => scrollToHash(`filosofia-dim-${dim.id}`)}
+                      onClick={() => {
+                        globalThis.dispatchEvent(
+                          new CustomEvent<Philosophy50SelectDetail>(PHILOSOPHY_50_SELECT_EVENT, {
+                            detail: { id: dim.id },
+                          })
+                        )
+                        scrollToHash('filosofia-5')
+                      }}
                     >
-                      {PHIL_SHORT_LABEL[dim.id] ?? dim.title}
+                      {PHILOSOPHY_50_SHORT_LABEL[dim.id] ?? dim.title}
                     </button>
                   </li>
                 ))}
@@ -233,11 +225,10 @@ export function StarsMethodologySection() {
                   <button
                     key={cat.id}
                     type="button"
-                    role="tab"
-                    aria-selected={active}
+                    aria-controls="stars-mobile-panel"
                     className={cn(styles.mobileTab, active && styles.mobileTabActive)}
                     style={{ '--accent': hex } as CSSProperties}
-                    onClick={() => scrollToBlock(cat.id)}
+                    onClick={() => setActiveId(cat.id)}
                   >
                     <span className={styles.mobileLetter}>{cat.letter}</span>
                     <span className={styles.mobileShort}>{cat.title}</span>
@@ -245,7 +236,14 @@ export function StarsMethodologySection() {
                 )
               })}
             </div>
-            <div className={styles.mobileStack}>{blocks}</div>
+            <div
+              id="stars-mobile-panel"
+              className={styles.mobileStack}
+              role="tabpanel"
+              aria-labelledby={`stars-cat-${mobileCat.id}`}
+            >
+              <StarMethodologyBlock cat={mobileCat} />
+            </div>
           </>
         ) : (
           <div className={styles.layoutDesktop}>
@@ -254,6 +252,25 @@ export function StarsMethodologySection() {
           </div>
         )}
       </div>
+    </section>
+  )
+}
+
+function StarMethodologyBlock({ cat }: { readonly cat: (typeof starsCategories)[number] }) {
+  return (
+    <section
+      id={`stars-block-${cat.id}`}
+      data-star-id={cat.id}
+      className={styles.starBlock}
+      style={
+        {
+          background: STAR_CARD_GRADIENT[cat.id],
+          '--star-inner-border': STAR_CARD_BORDER[cat.id],
+        } as CSSProperties
+      }
+      aria-labelledby={`stars-cat-${cat.id}`}
+    >
+      <StarsCategoryContent category={cat} headingId={`stars-cat-${cat.id}`} />
     </section>
   )
 }

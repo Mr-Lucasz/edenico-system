@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { FiHeadphones, FiMessageCircle, FiGlobe, FiChevronDown } from 'react-icons/fi'
+import { FiHeadphones, FiGlobe, FiChevronDown } from 'react-icons/fi'
 import { cn } from '@src/utils/cn'
 import styles from './LandingHeader.module.scss'
 
@@ -126,13 +126,9 @@ export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
     <>
       <div className={styles.topBar}>
         <div className={styles.topLinks}>
-          <Link href="#contato" className={styles.topLink}>
+          <Link href="/#contato" className={styles.topLink}>
             <FiHeadphones className={styles.topIcon} aria-hidden />
             Suporte
-          </Link>
-          <Link href="#contato" className={styles.topLink}>
-            <FiMessageCircle className={styles.topIcon} aria-hidden />
-            Contactos
           </Link>
         </div>
         <div className={styles.langWrap}>

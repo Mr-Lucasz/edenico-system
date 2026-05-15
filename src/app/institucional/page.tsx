@@ -70,7 +70,7 @@ export default function InstitucionalPage() {
         <Philosophy50Section />
         <IdentityAcademySection />
         <InstitutionalPreFooterCta />
-        <LandingFooter variant="institucional" />
+        <LandingFooter />
       </main>
     </div>
   )

@@ -8,6 +8,5 @@ export { SectionTransitionShape, STARS_SECTION_DIVIDER_WAVE } from './SectionTra
 export { TestimonialsSection } from './TestimonialsSection'
 export { EdenicosTitleBridgeSection } from './EdenicosTitleBridgeSection'
 export { AppDownloadCloudDivider } from './AppDownloadCloudDivider'
-export { AppDownloadSection } from './AppDownloadSection'
 export { ContactForm } from './ContactForm'
 export { LandingFooter } from './LandingFooter'

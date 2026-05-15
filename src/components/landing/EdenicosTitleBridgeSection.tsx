@@ -1,9 +1,7 @@
 import Image from 'next/image'
 
-import styles from './EdenicosTitleBridgeSection.module.scss'
-
-
 import { institutionalStats } from '@src/constants/institutionalStats'
+import styles from './EdenicosTitleBridgeSection.module.scss'
 
 const TITLE_SRC = '/Title.svg'
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.edenicos.academy'
@@ -14,10 +12,10 @@ export function EdenicosTitleBridgeSection() {
   const { app } = institutionalStats
 
   return (
-    <section
-      className={styles.section}
-      aria-label="Edênicos"
-    >
+    <section className={styles.section} aria-labelledby="edenicos-bridge-heading">
+      <h2 id="edenicos-bridge-heading" className={styles.srOnly}>
+        Edênicos — baixe o app
+      </h2>
       <div className={styles.inner}>
         <div className={styles.titleWrap}>
           <Image
@@ -31,8 +29,7 @@ export function EdenicosTitleBridgeSection() {
             unoptimized
           />
         </div>
-      </div>
-      <div className={styles.contentStack}>
+
         <p className={styles.sub}>Baixe o app e estude onde estiver</p>
 
         <div className={styles.statsCard}>
@@ -57,7 +54,10 @@ export function EdenicosTitleBridgeSection() {
           </div>
         </div>
 
-        <div className={styles.badgesRow}>
+        <h3 id="edenicos-app-stores-heading" className={styles.srOnly}>
+          Lojas de aplicativos
+        </h3>
+        <div className={styles.badgesRow} aria-labelledby="edenicos-app-stores-heading">
           <a
             href={`${GOOGLE_PLAY_URL}?${UTM_PARAMS}`}
             target="_blank"

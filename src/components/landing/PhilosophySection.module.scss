@@ -2,6 +2,10 @@
 
 .pb {
   padding-bottom: 9rem;
+
+  @media (max-width: 639.98px) {
+    padding-bottom: 3.5rem;
+  }
 }
 
 .bg {

@@ -23,10 +23,10 @@ $hero-lower-bg: #111827;
 /* Escudo embaixo do cartão (padding) + stack acima das nuvens */
 .upper {
   position: relative;
-  z-index: 10;
+  z-index: 12;
   /* Barra utilitária (2.25rem) + header fixo + pill — evita o menu a tapar logo/cartão */
   padding-top: clamp(8.75rem, 14vw, 11.5rem);
-  padding-bottom: clamp(6rem, 12vw, 10rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .inner {
@@ -60,7 +60,7 @@ $hero-lower-bg: #111827;
 }
 
 .tagline {
-  margin: 1rem 0 0;
+  margin: 0.65rem 0 0;
   font-size: clamp(1.125rem, 2.8vw, 1.375rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -68,7 +68,9 @@ $hero-lower-bg: #111827;
 }
 
 .statsCard {
-  margin-top: 1.75rem;
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
   border-radius: 1.875rem;
   background-color: #fff;
   padding: 1.75rem 1.25rem;
@@ -77,7 +79,7 @@ $hero-lower-bg: #111827;
     0 20px 40px -12px rgb(15 23 42 / 0.15);
 
   @include sm {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     padding: 2rem 1.75rem;
   }
 }
@@ -142,19 +144,19 @@ $hero-lower-bg: #111827;
 
 .cloudDividerContainer {
   position: relative;
-  z-index: 5;
+  z-index: 4;
   width: 100%;
-  /* Puxa o divisor para cima: fecha o “buraco” branco e sobrepõe a base do cartão */
-  margin-top: clamp(-36rem, -55vw, -23rem);
+  /* Puxa o divisor para cima sem tapar o cartão (z-index da .upper/.statsCard > nuvens) */
+  margin-top: clamp(-22rem, -38vw, -14rem);
   line-height: 0;
   pointer-events: none;
 }
 
 .ctaBand {
   position: relative;
-  z-index: 2;
-  margin-top: -1px;
-  padding-top: clamp(2rem, 4vw, 3rem);
+  z-index: 6;
+  margin-top: clamp(-4.5rem, -9vw, -2.5rem);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
   padding-bottom: clamp(4rem, 8vw, 6rem);
   background-color: $hero-lower-bg;
 }

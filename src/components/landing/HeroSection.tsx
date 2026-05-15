@@ -41,19 +41,19 @@ export function HeroSection() {
       }}
       aria-labelledby="hero-heading"
     >
-      <div className={styles.hexWrap} aria-hidden>
-        <Image
-          src="/HexagonoDouradoHeroSection.png"
-          alt=""
-          width={520}
-          height={520}
-          className={styles.hexImg}
-          priority
-        />
-      </div>
-
       <div className={styles.grid}>
-        <div className={styles.spacer} aria-hidden />
+        <div className={styles.hexColumn} aria-hidden>
+          <div className={styles.hexInner}>
+            <Image
+              src="/HexagonoDouradoHeroSection.png"
+              alt=""
+              width={640}
+              height={640}
+              className={styles.hexImg}
+              priority
+            />
+          </div>
+        </div>
 
         <div className={styles.content}>
           <h1 id="hero-heading" className={styles.headline}>

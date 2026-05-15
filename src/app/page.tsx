@@ -7,7 +7,6 @@ import {
   StarsBelowPhilosophySection,
   EdenicosTitleBridgeSection,
   AppDownloadCloudDivider,
-  AppDownloadSection,
   ContactForm,
   LandingFooter,
 } from '@src/components/landing'
@@ -23,9 +22,15 @@ export default function HomePage() {
         <WhyChooseSection />
         <PhilosophySection />
         <StarsBelowPhilosophySection />
-        <EdenicosTitleBridgeSection />
-        <AppDownloadCloudDivider />
-        <AppDownloadSection />
+        {/*
+          Conteúdo branco (EdenicosTitleBridgeSection), depois nuvens, depois contacto navy.
+        */}
+        <div className={styles.appPromoStack}>
+          <EdenicosTitleBridgeSection />
+          <div className={styles.appPromoCloudWrap}>
+            <AppDownloadCloudDivider />
+          </div>
+        </div>
         <section className={styles.contactSection} aria-labelledby="contato">
           <div className={styles.contactInner}>
             <ContactForm variant="help" />

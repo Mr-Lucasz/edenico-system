@@ -2,16 +2,20 @@
 
 .section {
   position: relative;
-  min-height: 100vh;
+  min-height: 0;
   overflow: hidden;
   background-color: #fff;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 4rem 0;
+  padding: 3.25rem 0 1.75rem;
 
   @include sm {
-    padding: 5rem 0;
+    padding: 4rem 0 2.25rem;
+  }
+
+  @include md {
+    padding-bottom: 2rem;
   }
 }
 
@@ -48,11 +52,15 @@
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 420px;
+  min-height: 0;
   align-items: center;
 
   @include md {
-    min-height: 520px;
+    min-height: min(480px, 70vh);
+  }
+
+  @include lg {
+    min-height: min(500px, 72vh);
   }
 }
 
@@ -66,7 +74,11 @@
   max-width: 48rem;
 
   @include md {
-    margin-right: 6rem;
+    margin-right: 8.5rem;
+  }
+
+  @include lg {
+    margin-right: 10rem;
   }
 }
 
@@ -82,6 +94,11 @@
     padding: 2rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    padding-right: 2.5rem;
+  }
+
+  @include lg {
+    padding-right: 3rem;
   }
 }
 
@@ -154,30 +171,37 @@
 }
 
 .mascotWrap {
-  position: absolute;
-  right: -0.5rem;
-  top: 50%;
-  z-index: 20;
-  display: flex;
-  transform: translateY(-50%) translateX(0.75rem);
-  align-items: center;
-  justify-content: flex-end;
-  pointer-events: none;
-  width: 45%;
-  min-width: 210px;
+  display: none;
 
   @include md {
+    position: absolute;
     right: 0;
-    transform: translateY(-50%) translateX(4rem);
+    top: 50%;
+    z-index: 20;
+    display: flex;
+    transform: translateY(-50%) translateX(clamp(3.25rem, 5vw, 6.5rem));
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none;
+    width: 40%;
+    min-width: 200px;
+  }
+
+  @include lg {
+    transform: translateY(-50%) translateX(clamp(4rem, 6vw, 7.5rem));
+    width: 36%;
+    min-width: 210px;
   }
 }
 
 .mascotWrapA {
-  width: 40%;
-  min-width: 185px;
-
   @include md {
-    width: 46%;
+    width: 36%;
+    min-width: 180px;
+  }
+
+  @include lg {
+    width: 34%;
   }
 }
 
