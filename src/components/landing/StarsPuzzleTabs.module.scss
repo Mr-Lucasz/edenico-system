@@ -16,8 +16,8 @@
   z-index: 10;
   flex-shrink: 0;
   cursor: pointer;
-  height: 5rem;
-  width: 5rem;
+  height: 5.35rem;
+  width: 5.35rem;
   border: none;
   padding: 0;
   background: none;
@@ -34,8 +34,18 @@
   }
 
   @include sm {
-    height: 7rem;
-    width: 7rem;
+    height: 8.75rem;
+    width: 8.75rem;
+  }
+
+  @include md {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  @include lg {
+    height: 10.75rem;
+    width: 10.75rem;
   }
 }
 
@@ -44,10 +54,18 @@
 }
 
 .overlap {
-  margin-left: -1.5rem;
+  margin-left: -1.55rem;
 
   @include sm {
-    margin-left: -2.5rem;
+    margin-left: -3.1rem;
+  }
+
+  @include md {
+    margin-left: -3.45rem;
+  }
+
+  @include lg {
+    margin-left: -3.75rem;
   }
 }
 
@@ -62,11 +80,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: 700;
 
   @include sm {
-    font-size: 2.25rem;
+    font-size: 2.875rem;
+  }
+
+  @include md {
+    font-size: 3.125rem;
+  }
+
+  @include lg {
+    font-size: 3.375rem;
   }
 }
 

@@ -236,10 +236,20 @@
   position: absolute;
   left: 50%;
   display: flex;
+  max-width: calc(100% - 11rem);
   transform: translateX(-50%);
   align-items: center;
+  justify-content: center;
   transition: opacity 0.2s ease;
   text-decoration: none;
+
+  @include sm {
+    max-width: calc(100% - 14rem);
+  }
+
+  @include md {
+    max-width: none;
+  }
 
   &:hover {
     opacity: 0.9;
@@ -266,13 +276,43 @@
   color: rgb(255 255 255 / 0.8);
 }
 
-.logoImg {
-  height: 2.5rem;
+.logoLockup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.logoMark {
+  /* símbolo árvore: +10% sobre a altura anterior */
+  height: 2.34rem;
   width: auto;
+  flex-shrink: 0;
   object-fit: contain;
 
   @include sm {
-    height: 3rem;
+    height: 2.68rem;
+  }
+
+  @include md {
+    height: 3.03rem;
+  }
+}
+
+.logoWordmarkImg {
+  display: block;
+  /* wordmark: -5% em relação às alturas anteriores */
+  height: 2.02rem;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+
+  @include sm {
+    height: 2.26rem;
+  }
+
+  @include md {
+    height: 2.61rem;
   }
 }
 

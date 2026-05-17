@@ -12,6 +12,10 @@ export type LandingHeaderProps = {
   variant?: 'default' | 'institucional'
 }
 
+/** Símbolo + wordmark central do header (landing) — arquivos em `public/` */
+const LANDING_HEADER_TREE = '/arvore-logo-branco.png'
+const LANDING_HEADER_WORDMARK = '/logo-edenicos-branco-horizontal-2.svg'
+
 const INSTIT_NAV = [
   { label: 'Início', href: '#inicio' },
   { label: 'Ecossistema', href: '#ecossistema' },
@@ -200,15 +204,28 @@ export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
                 <span className={styles.logoLine2}>ACADEMY</span>
               </span>
             ) : (
-              <Image
-                src="/LogoEdenicos.png"
-                alt="Edênicos Academy"
-                width={160}
-                height={48}
-                className={styles.logoImg}
-                priority
-                onError={() => setLogoError(true)}
-              />
+              <span className={styles.logoLockup}>
+                <Image
+                  src={LANDING_HEADER_TREE}
+                  alt=""
+                  width={45}
+                  height={53}
+                  className={styles.logoMark}
+                  priority
+                  aria-hidden
+                  onError={() => setLogoError(true)}
+                />
+                <Image
+                  src={LANDING_HEADER_WORDMARK}
+                  alt="Edênicos Academy"
+                  width={118}
+                  height={41}
+                  className={styles.logoWordmarkImg}
+                  priority
+                  unoptimized
+                  onError={() => setLogoError(true)}
+                />
+              </span>
             )}
           </Link>
 

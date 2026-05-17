@@ -84,6 +84,12 @@
   }
 }
 
+/* Alvo interno para scale/filter (GSAP) sem conflitar com transform do Framer Motion no .stackItem */
+.stackShrinkTarget {
+  width: 100%;
+  transform-origin: top center;
+}
+
 .cardWrap {
   position: relative;
   margin-left: auto;

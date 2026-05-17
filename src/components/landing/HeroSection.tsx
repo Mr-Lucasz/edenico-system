@@ -1,33 +1,80 @@
 'use client'
 
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { FiBook, FiUsers } from 'react-icons/fi'
+import gsap from 'gsap'
+import { heroStarsSlides } from '@src/data/heroStarsSlides'
 import styles from './HeroSection.module.scss'
 
 type PersonaId = 'estudantes' | 'professores' | 'pais'
 
-const PERSONAS: Record<PersonaId, { title: string; description: string }> = {
-  estudantes: {
-    title: 'Science',
-    description:
-      'Os alunos exploram os mistérios da criação por meio da observação, experimentação e pensamento crítico. Aprendem a investigar, questionar e compreender o mundo físico com curiosidade e propósito.',
-  },
-  professores: {
-    title: 'Ferramentas Pedagógicas',
-    description:
-      'Recursos digitais avançados para apoiar educadores em suas práticas. Planos de aula, acompanhamento de progresso e conteúdos alinhados à metodologia STARS e à Filosofia Educação 5.0.',
-  },
-  pais: {
-    title: 'Acompanhamento e Resultados',
-    description:
-      'Acompanhe a evolução do seu filho com relatórios claros e indicadores de desenvolvimento. Transparência sobre conquistas, atividades realizadas e sugestões para apoiar o aprendizado em casa.',
-  },
+const SLIDE_INTERVAL_SEC = 5.5
+
+function panelDescriptionForPersona(title: string, fullDescription: string, persona: PersonaId): string {
+  if (persona === 'estudantes') return fullDescription
+  if (persona === 'professores') {
+    return `Recursos e trilhas em ${title} para planejar aulas envolventes, alinhadas à metodologia STARS e à Filosofia Educação 5.0.`
+  }
+  return `Acompanhe como seu filho vivencia ${title} na prática, com relatórios claros e conquistas visíveis na plataforma.`
 }
 
 export function HeroSection() {
   const [persona, setPersona] = useState<PersonaId>('estudantes')
-  const content = PERSONAS[persona]
+  const [slideIndex, setSlideIndex] = useState(0)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const heptImgWrapRef = useRef<HTMLDivElement>(null)
+
+  const slide = heroStarsSlides[slideIndex]
+  const panelText = panelDescriptionForPersona(slide.title, slide.description, persona)
+  const skipIntroAnim = useRef(true)
+
+  useLayoutEffect(() => {
+    const panel = panelRef.current
+    const hept = heptImgWrapRef.current
+    if (!panel || !hept) return
+
+    if (skipIntroAnim.current) {
+      skipIntroAnim.current = false
+      return
+    }
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      gsap.set([panel, hept], { clearProps: 'all' })
+      return
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        panel,
+        { autoAlpha: 0.75, y: 10 },
+        { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out' }
+      )
+      gsap.fromTo(hept, { autoAlpha: 0.35, scale: 0.98 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: 'power2.out' })
+    })
+
+    return () => ctx.revert()
+  }, [slideIndex])
+
+  useLayoutEffect(() => {
+    let tween: gsap.core.Tween | null = null
+
+    const schedule = () => {
+      tween?.kill()
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const sec = reduce ? 12 : SLIDE_INTERVAL_SEC
+      tween = gsap.delayedCall(sec, () => {
+        setSlideIndex((i) => (i + 1) % heroStarsSlides.length)
+        schedule()
+      })
+    }
+
+    schedule()
+    return () => {
+      tween?.kill()
+    }
+  }, [])
 
   return (
     <section
@@ -42,16 +89,22 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
     >
       <div className={styles.grid}>
-        <div className={styles.hexColumn} aria-hidden>
-          <div className={styles.hexInner}>
-            <Image
-              src="/HexagonoDouradoHeroSection.png"
-              alt=""
-              width={640}
-              height={640}
-              className={styles.hexImg}
-              priority
-            />
+        <div className={styles.heptColumn}>
+          <div className={styles.heptFrame} aria-label={`Imagem da metodologia: ${slide.title}`}>
+            <div className={styles.heptClip}>
+              <div ref={heptImgWrapRef} className={styles.heptImgWrap}>
+                <Image
+                  key={slide.heroImage}
+                  src={slide.heroImage}
+                  alt=""
+                  fill
+                  className={styles.heptImg}
+                  sizes="(max-width: 1023px) 90vw, 50vw"
+                  priority={slideIndex === 0}
+                  unoptimized
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -62,12 +115,19 @@ export function HeroSection() {
 
           <div
             id="persona-panel"
+            ref={panelRef}
             role="tabpanel"
             aria-labelledby={`tab-${persona}`}
+            aria-live="polite"
             className={styles.panel}
           >
-            <h2 className={styles.panelTitle}>{content.title}</h2>
-            <p className={styles.panelText}>{content.description}</p>
+            <p className={styles.starsLetter}>
+              <span className={styles.starsLetterMuted}>S.T.A.R.S</span>
+              <span className={styles.starsLetterSep}> · </span>
+              <span className={styles.starsLetterAccent}>{slide.letter}</span>
+            </p>
+            <h2 className={styles.panelTitle}>{slide.title}</h2>
+            <p className={styles.panelText}>{panelText}</p>
           </div>
 
           <div className={styles.tabs} role="tablist" aria-label="Segmentar por público">
