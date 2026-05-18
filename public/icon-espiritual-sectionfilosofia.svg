@@ -1,0 +1,22 @@
+<svg width="115" height="117" viewBox="0 0 115 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_150_35359)">
+<g clip-path="url(#clip0_150_35359)">
+<path d="M28.8345 76.4201L83.6517 92.2013L99.4329 37.384C101.44 30.4119 97.4126 23.0876 90.4139 21.0727L48.2619 8.93765C41.2897 6.93046 33.9654 10.958 31.9505 17.9567L14.9522 77.0016C12.945 83.9737 16.9725 91.2981 23.9713 93.3129L75.0762 108.025C77.1264 108.616 79.267 107.432 79.8572 105.382L81.2227 100.639L26.4054 84.8576C24.0872 84.1902 22.7224 81.7487 23.3949 79.4128C24.0622 77.0948 26.4986 75.7476 28.8345 76.4201ZM57.1911 36.9856L61.9074 38.3433L63.2677 33.6181C63.858 31.5679 65.9985 30.3843 68.0488 30.9745L69.0617 31.2661C71.1119 31.8564 72.2955 33.9969 71.7053 36.0472L70.3449 40.7724L75.0701 42.1327C77.1204 42.723 78.304 44.8635 77.7137 46.9138L77.4221 47.9267C76.8319 49.9769 74.6913 51.1605 72.6411 50.5702L67.9159 49.2099L64.129 62.3638C63.5388 64.414 61.3983 65.5976 59.348 65.0074L58.3351 64.7157C56.2848 64.1255 55.1013 61.985 55.6915 59.9347L59.4784 46.7809L54.762 45.4231C52.7118 44.8328 51.5282 42.6923 52.1184 40.642L52.41 39.6292C53.0003 37.5789 55.1408 36.3953 57.1911 36.9856Z" fill="white"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_150_35359" x="-4" y="0" width="122.386" height="122.385" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_150_35359"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_150_35359" result="shape"/>
+</filter>
+<clipPath id="clip0_150_35359">
+<rect width="92.4233" height="92.4233" fill="white" transform="translate(25.5693) rotate(16.0605)"/>
+</clipPath>
+</defs>
+</svg>

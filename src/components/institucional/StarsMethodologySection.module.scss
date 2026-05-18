@@ -86,25 +86,202 @@
   color: $gray-600;
 }
 
-/* —— Mobile: faixa horizontal + conteúdo empilhado —— */
-.mobileRail {
+/* —— Mobile: cabeçalho compacto (só «Metodologia STARS» + traço roxo, mockup) —— */
+.headerMobileAcc {
+  .sectionBadge,
+  .sectionHeading,
+  .titleRuleBlue {
+    display: none;
+  }
+
+  .starsSubtitle {
+    margin-top: 0;
+    font-size: 1.75rem;
+  }
+
+  .titleRulePurple {
+    margin-top: 0.65rem;
+  }
+}
+
+/* —— Mobile: acordeão por pilar STARS —— */
+.mobileAccordionRoot {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobileAccCard {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid $gray-200;
+  background: #fff;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.06);
+}
+
+.mobileAccTrigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: background 0.15s ease;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px $blue-600;
+  }
+}
+
+.mobileAccTriggerOpen {
+  background: rgb(249 250 251);
+}
+
+.mobileAccIconWrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+}
+
+.mobileAccIconSvg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.mobileAccText {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.mobileAccTitle {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $gray-900;
+}
+
+.mobileAccSub {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: $gray-600;
+}
+
+.mobileAccChevron {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: $gray-500;
+  transition: transform 0.2s ease;
+}
+
+.mobileAccChevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileAccPanel {
+  border-top: 1px solid $gray-100;
+  padding: 0 0.35rem 0.85rem;
+}
+
+.starBlockInAccordion {
+  scroll-margin-top: 0;
+  border: none;
+  border-radius: 0 0 0.85rem 0.85rem;
+  box-shadow: none;
+  padding: 0.5rem 0.65rem 1rem;
+}
+
+/* —— Mobile: bloco sticky (capítulos + pilares STARS) + conteúdo —— */
+.mobileNavStickyWrap {
   position: sticky;
   top: calc(var(--institucional-header-height, 4.25rem) - 2px);
   z-index: 20;
   margin: 2rem -1rem 1.5rem;
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.75rem 1rem;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  background: linear-gradient(to bottom, #fff 70%, rgb(255 255 255 / 0));
+  padding-bottom: 0.25rem;
+  background: linear-gradient(to bottom, #fff 78%, rgb(255 255 255 / 0));
   border-bottom: 1px solid $gray-100;
-  scrollbar-width: thin;
 
   @include lg {
     display: none;
   }
+}
+
+.mobileChapterBar {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 1rem 0.6rem;
+}
+
+.mobileChapterBtn {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 7.5rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid $gray-200;
+  background: $gray-50;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $gray-700;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $blue-600;
+  }
+
+  &:hover {
+    background: #fff;
+    border-color: $gray-300;
+  }
+
+  @include sm {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.65rem;
+  }
+}
+
+.mobileChapterBtnActive {
+  background: #fff;
+  border-color: $blue-600;
+  color: $gray-900;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 0.07);
+}
+
+/* —— Mobile: faixa horizontal pilares STARS —— */
+.mobileRail {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.35rem 1rem 0.65rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .mobileTab {
@@ -400,6 +577,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
   }
+}
+
+.grid2AccordionAttached {
+  margin-top: 0;
 }
 
 .colTitle {

@@ -28,7 +28,8 @@ html {
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  /* `hidden` cria scrollport e quebra `position: sticky` no viewport; `clip` corta overflow-x sem isso */
+  overflow-x: clip;
   font-family: var(--font-inter, var(--font-sans));
 }
 
@@ -96,8 +97,8 @@ a {
 
 @media (max-width: 639.98px) {
   .filosofia-section {
-    overflow-x: hidden;
-    overflow-y: visible;
+    /* visible: ancestrais com overflow não-visible quebram position:sticky dos cards */
+    overflow: visible;
     min-height: 0;
   }
 }
@@ -105,6 +106,14 @@ a {
 @include sm {
   .filosofia-section {
     padding-top: calc(var(--filosofia-overlap) + 5rem + 3px);
+    /* Mais área roxa (protótipo — cards + CTA com respiro) */
+    min-height: 46rem;
+  }
+}
+
+@include lg {
+  .filosofia-section {
+    min-height: 52rem;
   }
 }
 

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import {
-  FiChevronDown,
   FiFacebook,
   FiHeart,
   FiInstagram,
@@ -8,7 +7,9 @@ import {
   FiTwitter,
   FiYoutube,
 } from 'react-icons/fi'
+import { DesktopSiteViewToggle } from './DesktopSiteViewToggle'
 import { FooterCountryFlag } from './FooterCountryFlag'
+import { LandingFooterLangSelect } from './LandingFooterLangSelect'
 import styles from './LandingFooter.module.scss'
 
 const SOCIAL = [
@@ -52,24 +53,7 @@ export function LandingFooter() {
 
         <div className={styles.midRow}>
           <div className={styles.localeBlock}>
-            <div className={styles.localeRow}>
-              <label htmlFor="footer-lang" className={styles.localeLabel}>
-                Idioma:
-              </label>
-              <div className={styles.selectWrap}>
-                <select
-                  id="footer-lang"
-                  className={styles.select}
-                  defaultValue="pt"
-                  aria-label="Idioma do site"
-                >
-                  <option value="pt">Português</option>
-                  <option value="en">English</option>
-                  <option value="es">Español</option>
-                </select>
-                <FiChevronDown className={styles.selectChevron} aria-hidden />
-              </div>
-            </div>
+            <LandingFooterLangSelect />
 
             <fieldset className={styles.countryField}>
               <legend className={styles.countryLegend}>País:</legend>
@@ -92,6 +76,7 @@ export function LandingFooter() {
                 ))}
               </div>
             </fieldset>
+            <DesktopSiteViewToggle className={styles.desktopSiteToggle} />
             <span className={styles.decorHeadphones} aria-hidden>
               🎧
             </span>

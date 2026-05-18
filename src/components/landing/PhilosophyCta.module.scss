@@ -7,6 +7,14 @@
   width: 320px;
   flex-shrink: 0;
 
+  @media (max-width: 639.98px) {
+    width: auto;
+    max-width: none;
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+  }
+
   @include sm {
     width: min(560px, 92vw);
     max-width: 620px;
@@ -14,8 +22,19 @@
 
   @include lg {
     margin-top: 0;
-    width: min(520px, 42vw);
-    max-width: 600px;
+    /* Menor que antes: mais respiro nas bordas roxas, alinhado ao protótipo */
+    width: min(400px, 32vw);
+    max-width: 440px;
+    align-self: center;
+  }
+}
+
+.octoVisual {
+  position: absolute;
+  inset: 0;
+
+  @media (max-width: 639.98px) {
+    display: none;
   }
 }
 
@@ -24,6 +43,17 @@
   aspect-ratio: 653 / 637;
   width: 100%;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
+
+  @media (max-width: 639.98px) {
+    aspect-ratio: auto;
+    width: auto;
+    min-height: 0;
+    filter: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: none !important;
+  }
 }
 
 .img {
@@ -50,6 +80,18 @@
   transition:
     filter 0.15s ease,
     box-shadow 0.15s ease;
+
+  @media (max-width: 639.98px) {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2.25rem;
+    font-size: 0.9375rem;
+  }
 
   &:hover {
     filter: brightness(1.1);

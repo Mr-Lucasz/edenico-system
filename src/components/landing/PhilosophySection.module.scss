@@ -3,6 +3,14 @@
 .pb {
   padding-bottom: 9rem;
 
+  @include sm {
+    padding-bottom: 10.5rem;
+  }
+
+  @include lg {
+    padding-bottom: 12rem;
+  }
+
   @media (max-width: 639.98px) {
     padding-bottom: 3.5rem;
   }
@@ -129,8 +137,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: flex-start;
-    gap: 2rem 3rem;
+    /* Centraliza heptágono na altura do bloco de cards (protótipo) */
+    align-items: center;
+    column-gap: clamp(2.75rem, 5vw, 5.5rem);
+    row-gap: 2.5rem;
   }
 }
 
@@ -143,6 +153,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 
   @include lg {
     /* width: 100% na row faria um item ocupar a linha inteira e quebrar o layout */
@@ -161,6 +172,11 @@
   width: 100%;
   margin-bottom: 2rem;
   text-align: center;
+
+  @media (max-width: 639.98px) {
+    /* Mais ar entre título e pilha de cards no mobile */
+    margin-bottom: 2.75rem;
+  }
 }
 
 .heading {

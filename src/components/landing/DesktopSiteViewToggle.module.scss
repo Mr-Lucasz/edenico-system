@@ -1,0 +1,54 @@
+@use 'styles/variables' as *;
+
+.wrap {
+  display: none;
+
+  @media (max-width: 1023.98px) {
+    display: block;
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+}
+
+.placeholder {
+  display: block;
+  min-height: 3.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 0.5rem;
+  background: rgb(255 255 255 / 0.06);
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: rgb(255 255 255 / 0.1);
+    border-color: rgb(255 255 255 / 0.26);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: $edenicos-yellow;
+    box-shadow: 0 0 0 2px #111827, 0 0 0 4px $edenicos-yellow;
+  }
+}
+
+.hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: rgb(203 213 225 / 0.95);
+}

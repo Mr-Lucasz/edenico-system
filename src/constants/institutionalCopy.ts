@@ -156,17 +156,23 @@ export const institutionalCopy = {
       { label: 'Cores', anchor: 'identidade-cores' },
       { label: 'Tipografia', anchor: 'identidade-tipografia' },
     ],
+    mobileChapterNavAriaLabel: 'Capítulos: metodologia, filosofia e identidade',
+    mobileChapterJumpStars: 'STARS',
+    mobileChapterJumpPhilosophy: 'Filosofia',
+    mobileChapterJumpIdentity: 'Identidade',
   },
   philosophy50: {
     tag: 'EXPLORE NOSSA',
     title: 'Filosofia Educação 5.0',
     intro:
       'Uma abordagem holística que desenvolve cinco dimensões essenciais do ser humano, cuidando integralmente de cada estudante através de práticas específicas e acompanhamento personalizado.',
+    localNavAriaLabel: 'Navegação: dimensões da Filosofia Educação 5.0',
   },
   identity: {
     title: 'Identidade Edênicos Academy',
     intro:
       'Nossa identidade visual reflete nossos valores fundamentais: inovação educacional, inclusão e excelência acadêmica através da metodologia STARS.',
+    localNavAriaLabel: 'Navegação: identidade visual (logos, cores e tipografia)',
     philosophyTitle: 'Nossa Filosofia',
     philosophyPoints: [
       {

@@ -21,17 +21,17 @@ $hex-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
 
 .surface {
   background: transparent;
-  padding: 4rem 0 1.25rem;
-  min-height: 22rem;
+  padding: 5rem 0 1.5rem;
+  min-height: 28.5rem;
 
   @include sm {
-    padding: 4.75rem 0 1.5rem;
-    min-height: 24rem;
+    padding: 5.75rem 0 1.75rem;
+    min-height: 31rem;
   }
 
   @include lg {
-    padding: 5.5rem 0 1.75rem;
-    min-height: 26rem;
+    padding: 6.5rem 0 2rem;
+    min-height: 34rem;
   }
 }
 
@@ -69,7 +69,7 @@ $hex-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
-    gap: 0.65rem;
+    gap: 0.85rem;
   }
 }
 
@@ -85,19 +85,8 @@ $hex-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
   height: auto;
 }
 
+/* ~+30% vs valores anteriores (protótipo mais legível) */
 .starSm {
-  width: 2.65rem;
-
-  @include sm {
-    width: 3.15rem;
-  }
-
-  @include md {
-    width: 3.4rem;
-  }
-}
-
-.starMd {
   width: 3.45rem;
 
   @include sm {
@@ -109,15 +98,27 @@ $hex-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
   }
 }
 
-.starLg {
-  width: 4.55rem;
+.starMd {
+  width: 4.5rem;
 
   @include sm {
     width: 5.35rem;
   }
 
   @include md {
-    width: 5.85rem;
+    width: 5.8rem;
+  }
+}
+
+.starLg {
+  width: 5.9rem;
+
+  @include sm {
+    width: 6.95rem;
+  }
+
+  @include md {
+    width: 7.6rem;
   }
 }
 

@@ -1,10 +1,44 @@
 @use 'styles/variables' as *;
 
 .root {
+  /* Largura única dos cards (mobile); no grid sm+ cada coluna = metade do track */
+  --philosophy-card-max: min(309px, 100%);
+  --philosophy-grid-gap: 32px;
+  /* Mobile: gap máx. 25px entre cards + largura mais próxima do quadrado (referência) */
+  --philosophy-mobile-stack-gap: 25px;
+  --philosophy-mobile-card-max: min(21.25rem, calc(100vw - 1.5rem));
+
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   max-width: 642px;
+  /* Espaço lateral para o ícone “vazar” sem clip da secção */
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+
+  @include sm {
+    max-width: min(42rem, 100%);
+    padding-left: 0.875rem;
+    padding-right: 0.5rem;
+  }
+
+  @include lg {
+    padding-left: 1.125rem;
+    padding-right: 0.75rem;
+  }
+
+  @media (max-width: 639.98px) {
+    padding-top: 0.5rem;
+    --philosophy-card-max: var(--philosophy-mobile-card-max);
+  }
+
+  /* globals.scss aplica transition em * incl. transform — quebra scrub do GSAP */
+  @media (max-width: 639.98px) {
+    .stack .stackItem,
+    .stack .stackShrinkTarget {
+      transition-property: none !important;
+    }
+  }
 }
 
 .stack {
@@ -13,53 +47,70 @@
   align-items: center;
   width: 100%;
   gap: 0;
+  overflow: visible;
 
   @media (max-width: 639.98px) {
-    /* margin-bottom nos itens cria o espaço de scroll do empilhamento sticky */
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--philosophy-mobile-stack-gap);
   }
 
   @include sm {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
-    column-gap: 18px;
-    row-gap: 24px;
-    justify-items: center;
+    column-gap: var(--philosophy-grid-gap);
+    row-gap: 26px;
+    justify-items: stretch;
     padding-bottom: 0;
   }
 }
 
 .stackItem {
   width: 100%;
-  max-width: 309px;
+  max-width: var(--philosophy-card-max);
   display: flex;
   justify-content: center;
+  overflow: visible;
+
+  @include sm {
+    max-width: none;
+    width: 100%;
+  }
 
   @media (max-width: 639.98px) {
     position: sticky;
-    /* Cabeçalho fixo (~2.25rem suporte + ~3.5rem pill) + respiro */
-    margin-bottom: clamp(2.75rem, 10vw, 3.5rem);
-    /* Cada card “trava” um pouco mais abaixo: mostra o topo do empilhamento */
+
+    /*
+      Altura do “trilho” de scroll por card: antes ~58vh/30rem deixava roxo enorme.
+      Mantém empilhamento + scrub GSAP com trilho mais curto; gap visual entre cards ≤ 25px (margin).
+    */
+    &:not(.stackItemLast) {
+      min-height: clamp(11.5rem, 11vh + 9.25rem, 15rem);
+    }
+    margin-bottom: var(--philosophy-mobile-stack-gap);
+    top: calc(7.5rem + env(safe-area-inset-top, 0px));
+
     &:nth-child(1) {
-      top: calc(5rem + env(safe-area-inset-top, 0px));
       z-index: 1;
     }
     &:nth-child(2) {
-      top: calc(5.5rem + env(safe-area-inset-top, 0px));
       z-index: 2;
     }
     &:nth-child(3) {
-      top: calc(6rem + env(safe-area-inset-top, 0px));
       z-index: 3;
     }
     &:nth-child(4) {
-      top: calc(6.5rem + env(safe-area-inset-top, 0px));
       z-index: 4;
     }
     &:nth-child(5) {
-      top: calc(7rem + env(safe-area-inset-top, 0px));
       z-index: 5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      position: static;
+      top: auto;
+      z-index: auto;
+      min-height: 0;
+      margin-bottom: var(--philosophy-mobile-stack-gap);
     }
   }
 
@@ -76,37 +127,207 @@
 
 .stackItemLast {
   @media (max-width: 639.98px) {
-    margin-bottom: 3.5rem;
+    margin-bottom: var(--philosophy-mobile-stack-gap);
+
+    @media (prefers-reduced-motion: reduce) {
+      margin-bottom: var(--philosophy-mobile-stack-gap);
+    }
   }
 
   @include sm {
-    grid-column: span 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--philosophy-grid-gap)) / 2);
+    max-width: calc((100% - var(--philosophy-grid-gap)) / 2);
   }
 }
 
-/* Alvo interno para scale/filter (GSAP) sem conflitar com transform do Framer Motion no .stackItem */
 .stackShrinkTarget {
   width: 100%;
   transform-origin: top center;
+  overflow: visible;
 }
 
-.cardWrap {
+.card {
+  --card-surface: #2563eb;
+  --card-border: rgb(255 255 255 / 0.2);
+
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  width: 100%;
+  max-width: var(--philosophy-card-max);
   margin-left: auto;
   margin-right: auto;
-  height: 146px;
-  width: 100%;
-  max-width: 309px;
+  padding: 1.25rem 1.125rem 1.5rem 0.65rem;
+  min-height: 8.5rem;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  background: var(--card-surface);
+  box-shadow:
+    0 6px 20px rgb(0 0 0 / 0.18),
+    0 16px 40px rgb(0 0 0 / 0.12);
   flex-shrink: 0;
-  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.2));
+  overflow: visible;
+
+  @media (max-width: 639.98px) {
+    isolation: isolate;
+    width: 100%;
+    max-width: none;
+    /* Mais alto / próximo de quadrado no mobile (referência) */
+    min-height: clamp(11.75rem, 34vw, 13.25rem);
+    padding: 1.35rem 1.125rem 1.65rem 0.75rem;
+    border-radius: 22px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgb(255 255 255 / 0.14), transparent 42%);
+    }
+  }
 
   @include sm {
-    width: 309px;
-    filter: none;
+    max-width: none;
+    width: 100%;
+    min-height: 8.5rem;
+    padding: 1.25rem 1.25rem 1.5rem 0.5rem;
+    box-shadow:
+      0 8px 22px rgb(0 0 0 / 0.16),
+      0 18px 44px rgb(0 0 0 / 0.1);
   }
 }
 
-.cardImg {
+.cardWarm .cardLabel,
+.cardWarm .cardDesc {
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.35),
+    0 2px 14px rgb(0 0 0 / 0.2);
+}
+
+/* Ícone maior, parcialmente fora da caixa (protótipo) */
+.cardIconWrap {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.25rem;
+  min-height: 5.75rem;
+  margin-left: -0.65rem;
+  margin-top: -0.2rem;
+  align-self: center;
+
+  @media (max-width: 639.98px) {
+    width: 5.65rem;
+    min-height: 6.15rem;
+    margin-left: -0.5rem;
+    margin-top: -0.15rem;
+  }
+
+  @include sm {
+    width: 5.5rem;
+    min-height: 6rem;
+    margin-left: -0.85rem;
+    margin-top: -0.25rem;
+  }
+}
+
+.cardIcon {
+  display: block;
+  width: 5rem;
+  height: auto;
+  max-height: 6.25rem;
   object-fit: contain;
   object-position: center;
+  filter: drop-shadow(0 3px 8px rgb(0 0 0 / 0.28));
+
+  @media (max-width: 639.98px) {
+    width: 5.4rem;
+    max-height: 6.85rem;
+  }
+
+  @include sm {
+    width: 5.25rem;
+    max-height: 6.5rem;
+  }
+}
+
+.cardBody {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  flex: 1 1 auto;
+  padding-right: 1.75rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.cardLabel {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+
+  @media (max-width: 639.98px) {
+    font-size: 1.0625rem;
+  }
+
+  @include sm {
+    font-size: 1.0625rem;
+  }
+}
+
+.cardDesc {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+
+  @media (max-width: 639.98px) {
+    font-size: 0.875rem;
+  }
+
+  @include sm {
+    font-size: 0.875rem;
+  }
+}
+
+.cardStar {
+  position: absolute;
+  right: 11px;
+  bottom: 9px;
+  z-index: 4;
+  line-height: 0;
+  filter: drop-shadow(0 2px 5px rgb(0 0 0 / 0.3));
+
+  img {
+    display: block;
+    width: 1.28rem;
+    height: auto;
+  }
+
+  @include sm {
+    right: 13px;
+    bottom: 11px;
+
+    img {
+      width: 1.36rem;
+    }
+  }
 }

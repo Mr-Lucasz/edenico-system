@@ -17,10 +17,10 @@
   @include lg {
     min-height: auto;
     padding: 0 2rem;
-    padding-top: clamp(5.25rem, 4.5rem + 4vw, 6.25rem);
-    padding-bottom: 0;
-    overflow-x: hidden;
-    overflow-y: visible;
+    padding-top: clamp(4.75rem, 4rem + 3.25vw, 5.75rem);
+    padding-bottom: 0.75rem;
+    /* overflow-x + overflow-y: visible vira `auto` no eixo Y (spec) e pode criar scroll na seção */
+    overflow: hidden;
   }
 }
 
@@ -36,7 +36,7 @@
   @include lg {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
     align-items: stretch;
-    gap: 2rem 2.5rem;
+    gap: 1.75rem 2.5rem;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -117,7 +117,7 @@
     text-align: left;
     justify-self: stretch;
     align-self: start;
-    padding-top: 0.35rem;
+    padding-top: 0.15rem;
   }
 }
 
@@ -132,8 +132,8 @@
   }
 
   @include lg {
-    font-size: clamp(2.75rem, 1.5rem + 2.4vw, 3.75rem);
-    line-height: 1.15;
+    font-size: clamp(2.45rem, 1.2rem + 2vw, 3.35rem);
+    line-height: 1.12;
     max-width: 22ch;
   }
 }
@@ -174,9 +174,9 @@
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 
   @include lg {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     max-width: 42rem;
-    padding: 1.75rem 2rem;
+    padding: 1.5rem 1.75rem;
     border-radius: 1.125rem;
   }
 }
@@ -205,14 +205,25 @@
 .tabs {
   margin-top: 2rem;
   display: grid;
-  max-width: 36rem;
+  width: 100%;
+  max-width: min(36rem, 100%);
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  /* Mobile: uma coluna evita “Professores” espremido entre ícone e borda */
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+
+  @include sm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  @include md {
+    gap: 1rem;
+  }
 
   @include lg {
-    margin-top: 1.5rem;
+    margin-top: 1.125rem;
     max-width: 42rem;
     margin-left: 0;
     margin-right: 0;
@@ -228,16 +239,36 @@
   border-radius: 0.75rem;
   border: none;
   cursor: pointer;
+  width: 100%;
+  min-height: 2.75rem;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: #fff;
   transition: opacity 0.15s ease;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.25;
+
+  @include sm {
+    width: auto;
+    min-height: 2.875rem;
+    padding: 0.625rem 0.4rem;
+    font-size: 0.8125rem;
+    gap: 0.35rem;
+  }
+
+  @include md {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.875rem;
+    gap: 0.45rem;
+  }
 
   @include lg {
     padding: 0.85rem 1.1rem;
     font-size: 0.9375rem;
     border-radius: 0.875rem;
+    gap: 0.5rem;
   }
 
   &:hover {

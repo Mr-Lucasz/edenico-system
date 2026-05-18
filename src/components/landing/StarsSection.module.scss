@@ -53,14 +53,13 @@
   display: flex;
   width: 100%;
   min-height: 0;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
 
   @include md {
-    min-height: min(480px, 70vh);
-  }
-
-  @include lg {
-    min-height: min(500px, 72vh);
+    flex-direction: row;
+    align-items: flex-end;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
   }
 }
 
@@ -74,11 +73,9 @@
   max-width: 48rem;
 
   @include md {
-    margin-right: 8.5rem;
-  }
-
-  @include lg {
-    margin-right: 10rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: min(48rem, 100%);
   }
 }
 
@@ -86,19 +83,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1.5rem;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
 
   @include md {
-    padding: 2rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-right: 2.5rem;
-  }
-
-  @include lg {
-    padding-right: 3rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -174,68 +163,64 @@
   display: none;
 
   @include md {
-    position: absolute;
-    right: 0;
-    top: 50%;
     z-index: 20;
     display: flex;
-    transform: translateY(-50%) translateX(clamp(3.25rem, 5vw, 6.5rem));
-    align-items: center;
-    justify-content: flex-end;
+    flex: 0 0 clamp(11rem, 30%, 17.5rem);
+    min-width: 0;
+    min-height: 0;
+    align-items: flex-end;
+    justify-content: center;
     pointer-events: none;
-    width: 40%;
-    min-width: 200px;
   }
 
   @include lg {
-    transform: translateY(-50%) translateX(clamp(4rem, 6vw, 7.5rem));
-    width: 36%;
-    min-width: 210px;
+    flex-basis: clamp(12rem, 28%, 18rem);
   }
 }
 
-.mascotWrapA {
+/** Coluna do mascote maior (Science, Technology, Relations, Service): +26,5% vs. base (+15% +10%) */
+.mascotWrapLarge {
   @include md {
-    width: 36%;
-    min-width: 180px;
+    flex: 0 0 clamp(13.915rem, 37.95%, 22.1375rem);
   }
 
   @include lg {
-    width: 34%;
+    flex-basis: clamp(15.18rem, 35.42%, 22.77rem);
   }
 }
 
 .mascotImgBase {
   object-fit: contain;
-  object-position: bottom;
+  object-position: bottom center;
   width: 100%;
+  height: auto;
 }
 
+/** Mesmo teto de altura para todos os pilares — alinhado à base do card (padrão Technology) */
 .mascotImgTall {
-  height: 305px;
-  min-height: 260px;
+  max-height: 280px;
+  width: 100%;
+  height: auto;
 
   @include md {
-    height: 420px;
-    min-height: 360px;
+    max-height: clamp(280px, 52vh, 420px);
   }
 
   @include lg {
-    height: 470px;
+    max-height: clamp(300px, 50vh, 440px);
   }
 }
 
-.mascotImgShort {
-  height: 270px;
-  min-height: 230px;
+/** Teto da imagem +26,5% vs. base (exceto Arts) */
+.mascotImgLarge {
+  max-height: calc(280px * 1.265);
 
   @include md {
-    height: 370px;
-    min-height: 320px;
+    max-height: clamp(calc(280px * 1.265), calc(52vh * 1.265), calc(420px * 1.265));
   }
 
   @include lg {
-    height: 410px;
+    max-height: clamp(calc(300px * 1.265), calc(50vh * 1.265), calc(440px * 1.265));
   }
 }
 

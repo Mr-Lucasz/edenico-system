@@ -5,6 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { FiHeadphones, FiGlobe, FiChevronDown } from 'react-icons/fi'
+import {
+  LANDING_LANG_CHANGE_EVENT,
+  LANDING_LANG_LABELS,
+  LANDING_LANG_STORAGE_KEY,
+  type LandingLang,
+} from '@src/constants/landingPreferences'
 import { cn } from '@src/utils/cn'
 import styles from './LandingHeader.module.scss'
 
@@ -27,9 +33,40 @@ const INSTIT_NAV = [
 export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const [lang, setLang] = useState<LandingLang>('pt')
   const [logoError, setLogoError] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const stored = window.localStorage.getItem(LANDING_LANG_STORAGE_KEY) as LandingLang | null
+    if (stored === 'pt' || stored === 'en' || stored === 'es') {
+      setLang(stored)
+    }
+    const onLang = (e: Event) => {
+      const d = (e as CustomEvent<LandingLang>).detail
+      if (d === 'pt' || d === 'en' || d === 'es') setLang(d)
+    }
+    const onStorage = (e: StorageEvent) => {
+      if (e.key !== LANDING_LANG_STORAGE_KEY || !e.newValue) return
+      const v = e.newValue as LandingLang
+      if (v === 'pt' || v === 'en' || v === 'es') setLang(v)
+    }
+    window.addEventListener(LANDING_LANG_CHANGE_EVENT, onLang as EventListener)
+    window.addEventListener('storage', onStorage)
+    return () => {
+      window.removeEventListener(LANDING_LANG_CHANGE_EVENT, onLang as EventListener)
+      window.removeEventListener('storage', onStorage)
+    }
+  }, [])
+
+  const selectLang = (code: LandingLang) => {
+    setLang(code)
+    window.localStorage.setItem(LANDING_LANG_STORAGE_KEY, code)
+    window.dispatchEvent(new CustomEvent(LANDING_LANG_CHANGE_EVENT, { detail: code }))
+    setLangOpen(false)
+  }
 
   useEffect(() => {
     if (variant !== 'institucional') return
@@ -145,7 +182,7 @@ export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
             aria-label="Selecionar idioma"
           >
             <FiGlobe className={styles.topIcon} aria-hidden />
-            Português
+            {LANDING_LANG_LABELS[lang]}
             <FiChevronDown
               className={cn(styles.chevron, langOpen && styles.chevronOpen)}
               aria-hidden
@@ -154,15 +191,22 @@ export function LandingHeader({ variant = 'default' }: LandingHeaderProps) {
           {langOpen && (
             <>
               <div className={styles.backdrop} aria-hidden onClick={() => setLangOpen(false)} />
-              <ul role="listbox" className={styles.dropdown}>
-                <li role="option" aria-selected>
-                  <span className={styles.dropdownItem}>Português</span>
-                </li>
-                <li role="option">
-                  <button type="button" className={styles.dropdownBtn}>
-                    Español
-                  </button>
-                </li>
+              <ul role="listbox" className={styles.dropdown} aria-label="Idiomas">
+                {(['pt', 'en', 'es'] as const).map((code) => (
+                  <li key={code} role="option" aria-selected={lang === code}>
+                    {lang === code ? (
+                      <span className={styles.dropdownItem}>{LANDING_LANG_LABELS[code]}</span>
+                    ) : (
+                      <button
+                        type="button"
+                        className={styles.dropdownBtn}
+                        onClick={() => selectLang(code)}
+                      >
+                        {LANDING_LANG_LABELS[code]}
+                      </button>
+                    )}
+                  </li>
+                ))}
               </ul>
             </>
           )}

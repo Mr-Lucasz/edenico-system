@@ -1,0 +1,101 @@
+@use 'styles/variables' as *;
+
+/* Mobile: três secções em scroll contínuo (mockup acordeão por bloco) */
+.mobileFlow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.hub {
+  position: relative;
+  z-index: 21;
+}
+
+.hubTabs {
+  position: sticky;
+  top: calc(var(--institucional-header-height, 4.25rem) - 2px);
+  z-index: 26;
+  display: flex;
+  gap: 0.45rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 -1rem;
+  padding: 0.65rem 1rem 0.85rem;
+  background: linear-gradient(to bottom, #fff 90%, rgb(255 255 255 / 0));
+  border-bottom: 1px solid $gray-100;
+
+  @include sm {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+
+  @include lg {
+    margin: 0;
+    padding-top: 0.85rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.hubTab {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 10rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid $gray-200;
+  background: $gray-50;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $gray-700;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px $blue-600;
+  }
+
+  &:hover {
+    background: #fff;
+    border-color: $gray-300;
+  }
+
+  @include sm {
+    font-size: 0.875rem;
+    padding: 0.55rem 0.85rem;
+  }
+}
+
+.hubTabActive {
+  background: #fff;
+  border-color: $blue-600;
+  color: $gray-900;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.08);
+}
+
+.panels {
+  position: relative;
+  overflow-x: clip;
+}
+
+.panel {
+  width: 100%;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    will-change: auto;
+  }
+}

@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState, useEffect, useCallback, type CSSProperties } from 'react'
 import { institutionalCopy } from '@src/constants/institutionalCopy'
 import {
@@ -13,6 +14,7 @@ import { philosophy50Dimensions } from '@src/data/philosophy50Content'
 import { FiChevronDown, FiGlobe, FiHeart } from 'react-icons/fi'
 import { HiOutlineLightBulb } from 'react-icons/hi2'
 import { cn } from '@src/utils/cn'
+import { useMetodologiaHub } from '@src/components/institucional/metodologiaHubContext'
 import styles from './StarsMethodologySection.module.scss'
 
 /** Fundos e bordas extraídos de Section.svg (gradientes + stroke por bloco) */
@@ -32,13 +34,21 @@ const STAR_CARD_BORDER: Record<StarsCategoryId, string> = {
   service: '#ffc9c9',
 }
 
+type NavAccordionKey = 'stars' | 'philosophy' | 'identity'
+
+const ACC_PANEL_STARS = 'stars-methodology-acc-panel-stars'
+const ACC_PANEL_PHILOSOPHY = 'stars-methodology-acc-panel-philosophy'
+const ACC_PANEL_IDENTITY = 'stars-methodology-acc-panel-identity'
+
 export function StarsMethodologySection() {
+  const hub = useMetodologiaHub()
   const { stars: copy } = institutionalCopy
   const [activeId, setActiveId] = useState<StarsCategoryId>('science')
   const [isMobile, setIsMobile] = useState(false)
-  const [openStars, setOpenStars] = useState(true)
-  const [openPhilosophy, setOpenPhilosophy] = useState(true)
-  const [openIdentity, setOpenIdentity] = useState(false)
+  /** Acordeão exclusivo no desktop: um grupo aberto (ou nenhum, se o utilizador fechar o activo). Inicial: só STARS. */
+  const [openSection, setOpenSection] = useState<NavAccordionKey | null>('stars')
+  /** Mobile: um pilar STARS expandido em acordeão (mockup) */
+  const [expandedMobileStar, setExpandedMobileStar] = useState<StarsCategoryId | null>(null)
 
   useEffect(() => {
     const mq = globalThis.matchMedia('(max-width: 1023px)')
@@ -75,6 +85,10 @@ export function StarsMethodologySection() {
     return () => observer.disconnect()
   }, [isMobile])
 
+  const toggleAccordion = useCallback((key: NavAccordionKey) => {
+    setOpenSection((prev) => (prev === key ? null : key))
+  }, [])
+
   const scrollToBlock = useCallback((id: StarsCategoryId) => {
     document.getElementById(`stars-block-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [])
@@ -86,7 +100,9 @@ export function StarsMethodologySection() {
 
   const blocks = starsCategories.map((cat) => <StarMethodologyBlock key={cat.id} cat={cat} />)
 
-  const mobileCat = starsCategories.find((c) => c.id === activeId) ?? starsCategories[0]
+  const openStars = openSection === 'stars'
+  const openPhilosophy = openSection === 'philosophy'
+  const openIdentity = openSection === 'identity'
 
   const desktopNav = (
     <aside className={styles.asideSticky} aria-label={copy.navTitle}>
@@ -102,34 +118,39 @@ export function StarsMethodologySection() {
               type="button"
               className={styles.accTrigger}
               aria-expanded={openStars}
-              onClick={() => setOpenStars((o) => !o)}
+              aria-controls={ACC_PANEL_STARS}
+              id="stars-methodology-acc-trigger-stars"
+              onClick={() => toggleAccordion('stars')}
             >
               <FiHeart className={styles.accTriggerIcon} aria-hidden />
               <span className={styles.accTriggerLabel}>{copy.navGroupStars}</span>
               <FiChevronDown className={cn(styles.accChevron, openStars && styles.accChevronOpen)} aria-hidden />
             </button>
-            {openStars && (
-              <ul className={styles.accList}>
-                {starsCategories.map((cat) => {
-                  const active = activeId === cat.id
-                  const hex = cat.colorHex ?? '#64748b'
-                  return (
-                    <li key={cat.id}>
-                      <button
-                        type="button"
-                        className={cn(styles.accLink, active && styles.accLinkActive)}
-                        style={{ '--acc': hex } as CSSProperties}
-                        aria-current={active ? 'true' : undefined}
-                        onClick={() => scrollToBlock(cat.id)}
-                      >
-                        <cat.icon className={styles.accLinkIcon} aria-hidden />
-                        <span>{cat.title}</span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
+            <ul
+              id={ACC_PANEL_STARS}
+              className={styles.accList}
+              hidden={!openStars}
+              aria-labelledby="stars-methodology-acc-trigger-stars"
+            >
+              {starsCategories.map((cat) => {
+                const active = activeId === cat.id
+                const hex = cat.colorHex ?? '#64748b'
+                return (
+                  <li key={cat.id}>
+                    <button
+                      type="button"
+                      className={cn(styles.accLink, active && styles.accLinkActive)}
+                      style={{ '--acc': hex } as CSSProperties}
+                      aria-current={active ? 'true' : undefined}
+                      onClick={() => scrollToBlock(cat.id)}
+                    >
+                      <cat.icon className={styles.accLinkIcon} aria-hidden />
+                      <span>{cat.title}</span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
 
           <div className={styles.accItem}>
@@ -137,7 +158,9 @@ export function StarsMethodologySection() {
               type="button"
               className={cn(styles.accTrigger, styles.accTriggerPhilosophy)}
               aria-expanded={openPhilosophy}
-              onClick={() => setOpenPhilosophy((o) => !o)}
+              aria-controls={ACC_PANEL_PHILOSOPHY}
+              id="stars-methodology-acc-trigger-philosophy"
+              onClick={() => toggleAccordion('philosophy')}
             >
               <FiGlobe className={styles.accTriggerIcon} aria-hidden />
               <span className={styles.accTriggerLabel}>{copy.navGroupPhilosophy}</span>
@@ -146,28 +169,35 @@ export function StarsMethodologySection() {
                 aria-hidden
               />
             </button>
-            {openPhilosophy && (
-              <ul className={styles.accList}>
-                {philosophy50Dimensions.map((dim) => (
-                  <li key={dim.id}>
-                    <button
-                      type="button"
-                      className={styles.accLink}
-                      onClick={() => {
+            <ul
+              id={ACC_PANEL_PHILOSOPHY}
+              className={styles.accList}
+              hidden={!openPhilosophy}
+              aria-labelledby="stars-methodology-acc-trigger-philosophy"
+            >
+              {philosophy50Dimensions.map((dim) => (
+                <li key={dim.id}>
+                  <button
+                    type="button"
+                    className={styles.accLink}
+                    onClick={() => {
+                      if (hub) {
+                        hub.setActive('philosophy', { philosophyDim: dim.id })
+                      } else {
                         globalThis.dispatchEvent(
                           new CustomEvent<Philosophy50SelectDetail>(PHILOSOPHY_50_SELECT_EVENT, {
                             detail: { id: dim.id },
                           })
                         )
                         scrollToHash('filosofia-5')
-                      }}
-                    >
-                      {PHILOSOPHY_50_SHORT_LABEL[dim.id] ?? dim.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+                      }
+                    }}
+                  >
+                    {PHILOSOPHY_50_SHORT_LABEL[dim.id] ?? dim.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className={styles.accItem}>
@@ -175,7 +205,9 @@ export function StarsMethodologySection() {
               type="button"
               className={styles.accTrigger}
               aria-expanded={openIdentity}
-              onClick={() => setOpenIdentity((o) => !o)}
+              aria-controls={ACC_PANEL_IDENTITY}
+              id="stars-methodology-acc-trigger-identity"
+              onClick={() => toggleAccordion('identity')}
             >
               <HiOutlineLightBulb className={styles.accTriggerIcon} aria-hidden />
               <span className={styles.accTriggerLabel}>{copy.navGroupIdentity}</span>
@@ -184,17 +216,33 @@ export function StarsMethodologySection() {
                 aria-hidden
               />
             </button>
-            {openIdentity && (
-              <ul className={styles.accList}>
-                {copy.identityNav.map((item) => (
-                  <li key={item.anchor}>
-                    <button type="button" className={styles.accLink} onClick={() => scrollToHash(item.anchor)}>
-                      {item.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <ul
+              id={ACC_PANEL_IDENTITY}
+              className={styles.accList}
+              hidden={!openIdentity}
+              aria-labelledby="stars-methodology-acc-trigger-identity"
+            >
+              {copy.identityNav.map((item) => (
+                <li key={item.anchor}>
+                  <button
+                    type="button"
+                    className={styles.accLink}
+                    onClick={() => {
+                      if (hub) {
+                        hub.setActive('identity')
+                        requestAnimationFrame(() => {
+                          requestAnimationFrame(() => scrollToHash(item.anchor))
+                        })
+                      } else {
+                        scrollToHash(item.anchor)
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </nav>
@@ -204,7 +252,7 @@ export function StarsMethodologySection() {
   return (
     <section id="metodologia-stars" className={styles.section} aria-labelledby="stars-heading">
       <div className={styles.container}>
-        <header className={styles.header}>
+        <header className={cn(styles.header, isMobile && styles.headerMobileAcc)}>
           <span className={styles.sectionBadge}>{copy.sectionBadge}</span>
           <h2 id="stars-heading" className={styles.sectionHeading}>
             {copy.sectionHeading}
@@ -216,35 +264,65 @@ export function StarsMethodologySection() {
         </header>
 
         {isMobile ? (
-          <>
-            <div className={styles.mobileRail} role="tablist" aria-label={copy.navTitle}>
-              {starsCategories.map((cat) => {
-                const active = activeId === cat.id
-                const hex = cat.colorHex ?? '#64748b'
-                return (
+          <div className={styles.mobileAccordionRoot} role="list" aria-label={copy.navGroupStars}>
+            {starsCategories.map((cat) => {
+              const hex = cat.colorHex ?? '#64748b'
+              const open = expandedMobileStar === cat.id
+              return (
+                <div key={cat.id} className={styles.mobileAccCard} role="listitem">
                   <button
-                    key={cat.id}
                     type="button"
-                    aria-controls="stars-mobile-panel"
-                    className={cn(styles.mobileTab, active && styles.mobileTabActive)}
-                    style={{ '--accent': hex } as CSSProperties}
-                    onClick={() => setActiveId(cat.id)}
+                    className={cn(styles.mobileAccTrigger, open && styles.mobileAccTriggerOpen)}
+                    aria-expanded={open}
+                    aria-controls={`stars-mobile-acc-panel-${cat.id}`}
+                    id={`stars-mobile-acc-trigger-${cat.id}`}
+                    onClick={() =>
+                      setExpandedMobileStar((prev) => (prev === cat.id ? null : cat.id))
+                    }
                   >
-                    <span className={styles.mobileLetter}>{cat.letter}</span>
-                    <span className={styles.mobileShort}>{cat.title}</span>
+                    <div
+                      className={styles.mobileAccIconWrap}
+                      style={
+                        cat.headerIconGradient
+                          ? ({
+                              background: cat.headerIconGradient,
+                              borderColor: 'rgb(255 255 255 / 0.35)',
+                            } as CSSProperties)
+                          : ({ backgroundColor: hex, borderColor: `${hex}e6` } as CSSProperties)
+                      }
+                    >
+                      <cat.icon className={styles.mobileAccIconSvg} style={{ color: '#fff' }} aria-hidden />
+                    </div>
+                    <div className={styles.mobileAccText}>
+                      <span className={styles.mobileAccTitle}>{cat.title}</span>
+                      <span className={styles.mobileAccSub}>{cat.subtitle}</span>
+                    </div>
+                    <FiChevronDown
+                      className={cn(styles.mobileAccChevron, open && styles.mobileAccChevronOpen)}
+                      aria-hidden
+                    />
                   </button>
-                )
-              })}
-            </div>
-            <div
-              id="stars-mobile-panel"
-              className={styles.mobileStack}
-              role="tabpanel"
-              aria-labelledby={`stars-cat-${mobileCat.id}`}
-            >
-              <StarMethodologyBlock cat={mobileCat} />
-            </div>
-          </>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        key={cat.id}
+                        id={`stars-mobile-acc-panel-${cat.id}`}
+                        role="region"
+                        aria-labelledby={`stars-mobile-acc-trigger-${cat.id}`}
+                        className={styles.mobileAccPanel}
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <StarMethodologyBlock cat={cat} omitCategoryHeader />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )
+            })}
+          </div>
         ) : (
           <div className={styles.layoutDesktop}>
             <div className={styles.mainColumn}>{blocks}</div>
@@ -256,12 +334,18 @@ export function StarsMethodologySection() {
   )
 }
 
-function StarMethodologyBlock({ cat }: { readonly cat: (typeof starsCategories)[number] }) {
+function StarMethodologyBlock({
+  cat,
+  omitCategoryHeader,
+}: {
+  readonly cat: (typeof starsCategories)[number]
+  readonly omitCategoryHeader?: boolean
+}) {
   return (
     <section
       id={`stars-block-${cat.id}`}
       data-star-id={cat.id}
-      className={styles.starBlock}
+      className={cn(styles.starBlock, omitCategoryHeader && styles.starBlockInAccordion)}
       style={
         {
           background: STAR_CARD_GRADIENT[cat.id],
@@ -270,7 +354,11 @@ function StarMethodologyBlock({ cat }: { readonly cat: (typeof starsCategories)[
       }
       aria-labelledby={`stars-cat-${cat.id}`}
     >
-      <StarsCategoryContent category={cat} headingId={`stars-cat-${cat.id}`} />
+      <StarsCategoryContent
+        category={cat}
+        headingId={`stars-cat-${cat.id}`}
+        omitHeader={omitCategoryHeader}
+      />
     </section>
   )
 }
@@ -278,9 +366,11 @@ function StarMethodologyBlock({ cat }: { readonly cat: (typeof starsCategories)[
 function StarsCategoryContent({
   category,
   headingId,
+  omitHeader,
 }: {
   category: (typeof starsCategories)[0]
   headingId: string
+  omitHeader?: boolean
 }) {
   const hex = category.colorHex ?? '#A66B46'
   const leftUseRows = category.leftColumnLayout === 'rows'
@@ -289,28 +379,30 @@ function StarsCategoryContent({
 
   return (
     <>
-      <div className={styles.catHeader}>
-        <div
-          className={styles.catIconBox}
-          style={
-            category.headerIconGradient
-              ? {
-                  background: category.headerIconGradient,
-                  borderColor: 'rgb(255 255 255 / 0.35)',
-                }
-              : { backgroundColor: hex, borderColor: `${hex}e6` }
-          }
-        >
-          <category.icon className={styles.catIcon} style={{ color: '#fff' }} aria-hidden />
+      {!omitHeader && (
+        <div className={styles.catHeader}>
+          <div
+            className={styles.catIconBox}
+            style={
+              category.headerIconGradient
+                ? {
+                    background: category.headerIconGradient,
+                    borderColor: 'rgb(255 255 255 / 0.35)',
+                  }
+                : { backgroundColor: hex, borderColor: `${hex}e6` }
+            }
+          >
+            <category.icon className={styles.catIcon} style={{ color: '#fff' }} aria-hidden />
+          </div>
+          <div className={styles.catBody}>
+            <h3 id={headingId} className={styles.catTitle}>
+              {category.title}
+            </h3>
+            <p className={styles.catSubtitle}>{category.subtitle}</p>
+          </div>
         </div>
-        <div className={styles.catBody}>
-          <h3 id={headingId} className={styles.catTitle}>
-            {category.title}
-          </h3>
-          <p className={styles.catSubtitle}>{category.subtitle}</p>
-        </div>
-      </div>
-      <div className={styles.grid2}>
+      )}
+      <div className={cn(styles.grid2, omitHeader && styles.grid2AccordionAttached)}>
         <div>
           <h4 className={styles.colTitle}>{category.leftColumnTitle}</h4>
           <div

@@ -6,9 +6,7 @@ import { AboutSection } from '@src/components/institucional/AboutSection'
 import { PrinciplesSection } from '@src/components/institucional/PrinciplesSection'
 import { DifferentiatorsImpactSection } from '@src/components/institucional/DifferentiatorsImpactSection'
 import { InstitutionalCtaSection } from '@src/components/institucional/InstitutionalCtaSection'
-import { StarsMethodologySection } from '@src/components/institucional/StarsMethodologySection'
-import { Philosophy50Section } from '@src/components/institucional/Philosophy50Section'
-import { IdentityAcademySection } from '@src/components/institucional/IdentityAcademySection'
+import { InstitucionalMetodologiaHub } from '@src/components/institucional/InstitucionalMetodologiaHub'
 import { InstitutionalPreFooterCta } from '@src/components/institucional/InstitutionalPreFooterCta'
 import styles from './institucionalPage.module.scss'
 
@@ -66,9 +64,7 @@ export default function InstitucionalPage() {
         <PrinciplesSection />
         <DifferentiatorsImpactSection />
         <InstitutionalCtaSection />
-        <StarsMethodologySection />
-        <Philosophy50Section />
-        <IdentityAcademySection />
+        <InstitucionalMetodologiaHub />
         <InstitutionalPreFooterCta />
         <LandingFooter />
       </main>

@@ -15,7 +15,6 @@ export function StarsSection() {
   const description = category.description ?? category.subtitle
   const areas = category.areas ?? category.leftCards.map((c) => c.title)
   const colorHex = category.colorHex ?? '#b45309'
-  const isLetterA = activeLetterIndex === 2
 
   return (
     <section
@@ -61,7 +60,7 @@ export function StarsSection() {
           </div>
 
           <div
-            className={cn(styles.mascotWrap, isLetterA && styles.mascotWrapA)}
+            className={cn(styles.mascotWrap, category.id !== 'arts' && styles.mascotWrapLarge)}
           >
             {category.image ? (
               <Image
@@ -71,9 +70,10 @@ export function StarsSection() {
                 height={567}
                 className={cn(
                   styles.mascotImgBase,
-                  isLetterA ? styles.mascotImgShort : styles.mascotImgTall
+                  styles.mascotImgTall,
+                  category.id !== 'arts' && styles.mascotImgLarge
                 )}
-                sizes={isLetterA ? '(max-width: 768px) 40vw, 46vw' : '(max-width: 768px) 45vw, 52vw'}
+                sizes="(max-width: 768px) 45vw, 52vw"
               />
             ) : (
               <div className={styles.placeholder}>[Mascote]</div>
